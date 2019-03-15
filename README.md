@@ -5,12 +5,16 @@ Erstes Testprojekt mit einem XCode Projekt, dass unter macOS ein Fenster öffnet
 
 ## Installation auf macOS
 * XCode installieren/aktualisieren
-* XCode CommandLine Tools installieren
+* XCode CommandLine Tools installieren über den Terminal
 ```
 $ sudo xcode-select --install
 ```
-* Brew-Packetmanager installen über den Befehl
-* Notwendige Bibliotheken installieren
+* Brew-Packetmanager installen über den Befehl im Terminal
+```
+$ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+Quelle: https://brew.sh/
+* Notwendige Bibliotheken über den Terminal installieren
 GLFW ... Context- / Fenstermanager
 GLEW ... Wrapper für OpenGL für diverse Systeme
 GLM ... Mathematische Bibliothek für OpenGL (Vektoren, Matrizen, ...)
