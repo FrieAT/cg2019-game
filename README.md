@@ -24,10 +24,10 @@ $ brew install glfw glew glm
 
 
 ## TODO: Prototyp Aufgaben bis 22.03.2019
-a) 3D Modell einladen und planarer Boden in den Hoprizont (einfärbig)
-b) Physik Bibliothek einbauen Test: Ball fliegt nach unten. (z.B. Abprallen)
-c) Steuerung
-Noch nicht wichtig: Direktionale Beleuchtung
+* 3D Modell einladen und planarer Boden in den Hoprizont (einfärbig)
+* Physik Bibliothek einbauen Test: Ball fliegt nach unten. (z.B. Abprallen)
+* Steuerung
+* Noch nicht wichtig: Direktionale Beleuchtung
 
 ## Quellen:
 
