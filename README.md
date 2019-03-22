@@ -1,9 +1,9 @@
 # cg2019-game
 
 ## Mitglieder
-Mostafa Masud (01123222)
-Maryia Davidouskaya (01123283)
-Friedrich Alexander Schmidt (11736211)
+* Mostafa Masud (01123222)
+* Maryia Davidouskaya (01123283)
+* Friedrich Alexander Schmidt (11736211)
 
 ## Beschreibung
 Ein Spiel. Der Charakter versucht von Spielbeginn bis zu einem Zeitlimit alle Bälle vom Himmel abzuschießen.
