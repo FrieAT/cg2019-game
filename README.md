@@ -56,8 +56,8 @@ $ brew install glfw glew glm
 * -> Dafür Aber: Testprojekte von fliegenden Bällen und einem sehr simplen gerendertem Dreieck.
 
 ## Meeting von 22. März 2019 (TODO bis 12. April 2019)
-* Terraingenerierung mit einer Planaren-Fläche @Mustafa
-* Steuerung eines Quaders auf horizontaler Ebene. Möglichkeit die Schießrichtung mit einem Mausklick zu definieren. @Maryia 
+* Terraingenerierung mit einer Planaren-Fläche @Mariya
+* Steuerung eines Quaders auf horizontaler Ebene. Möglichkeit die Schießrichtung mit einem Mausklick zu definieren. @Mostafa 
 * Einbettung der Physik. Beim Anklicken der Bälle, soll simuliert werden, das Treffen eines Balles. (Aufprall, Gravitation, Verschwinden) @Friedrich
 
 ## Quellen:
