@@ -11,7 +11,7 @@
 
 #include "DummyTriangleDrawing.hpp"
 
-void SphereDrawing::Draw()
+void DummyTriangleDrawing::Draw()
 {
     float points[] = {
         0.0f,  0.5f,  0.0f,

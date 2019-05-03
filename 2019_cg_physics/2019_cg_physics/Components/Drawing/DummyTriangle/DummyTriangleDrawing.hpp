@@ -11,7 +11,7 @@
 
 #include "IDrawing.hpp"
 
-class SphereDrawing : public IDrawing
+class DummyTriangleDrawing : public IDrawing
 {
 public:
     void Draw();

@@ -99,17 +99,8 @@ void WindowManager::Loop()
     /*
      Program Loop
      */
-    while(!glfwWindowShouldClose(this->_window)) {
-        // wipe the drawing surface clear
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        glUseProgram(this->_defaultShaderPrograms);
-        
-        //TODO: Drawing.
-        
-        // update other events like input handling
-        glfwPollEvents();
-        // put the stuff we've been drawing onto the display
-        glfwSwapBuffers(this->_window);
+    if(glfwWindowShouldClose(this->_window)) {
+        //TODO: Break Loop if window is closing.
     }
     
     

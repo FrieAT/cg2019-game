@@ -19,6 +19,8 @@ public:
     
     void Loop() override;
     
+    const GLFWwindow * GetWindow() const();
+    
     WindowManager(const Game & engine);
     ~WindowManager() = default;
 private:
