@@ -21,6 +21,7 @@
 		D8F6D71E226DA85900E39805 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8F6D71D226DA85900E39805 /* main.cpp */; };
 		D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D725226DA87600E39805 /* OpenGL.framework */; };
 		D8F6D728226DA88B00E39805 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D727226DA88B00E39805 /* libGLEW.2.1.0.dylib */; };
+		EDFD6B21227C8BF900613D2F /* glfw in Frameworks */ = {isa = PBXBuildFile; fileRef = D858CABC227C22A100ABFE72 /* glfw */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -73,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDFD6B21227C8BF900613D2F /* glfw in Frameworks */,
 				D858CABE227C22D100ABFE72 /* libglfw.3.3.dylib in Frameworks */,
 				D8F6D728226DA88B00E39805 /* libGLEW.2.1.0.dylib in Frameworks */,
 				D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */,
@@ -422,6 +424,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/glew/2.1.0/include/,
 					/usr/local/Cellar/glfw/3.3/include,
+					/usr/local/Cellar/glm/0.9.9.5/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -440,6 +443,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/Cellar/glew/2.1.0/include/,
 					/usr/local/Cellar/glfw/3.3/include,
+					/usr/local/Cellar/glm/0.9.9.5/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
