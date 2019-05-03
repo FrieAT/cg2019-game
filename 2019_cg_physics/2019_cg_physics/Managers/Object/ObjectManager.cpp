@@ -1,7 +1,3 @@
-/*=================================================================
- Copyright (c) MultiMediaTechnology, 2015
- =================================================================*/
-
 #include "ObjectManager.hpp"
 
 ObjectManager::ObjectManager(const Game &engine)

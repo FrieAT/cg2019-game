@@ -1,11 +1,3 @@
-//
-//  Game.cpp
-//  2019_cg_physics
-//
-//  Created by Friedrich Schmidt on 23.04.19.
-//  Copyright © 2019 Universität Salzburg. All rights reserved.
-//
-
 #include <GL/glew.h> // include GLEW and new version of GL on Windows
 #include <GLFW/glfw3.h> // GLFW helper library
 
@@ -14,23 +6,33 @@
 #include "RenderManager.hpp"
 #include "WindowManager.hpp"
 #include "ObjectManager.hpp"
+#include "PrimitiveObjects.hpp"
 
 Game::Game()
+: _shutdown(false)
 {
 }
 
 void Game::Initialize()
 {
+    // Adding Managers below.
     AddManager<RenderManager>();
     AddManager<WindowManager>();
     AddManager<ObjectManager>();
     
+    // Adding GameObjects below.
+    
     this->initializeManagers();
     
-    while(true) // TODO: Check for Keyboard Interrupt!
+    while(!this->_shutdown) // TODO: Check for Keyboard Interrupt!
     {
         this->loopManagers();
     }
+}
+
+void Game::Shutdown()
+{
+    this->_shutdown = true;
 }
 
 void Game::initializeManagers()

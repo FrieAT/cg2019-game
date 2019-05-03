@@ -17,6 +17,7 @@
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
 		D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD4B227C2F7000D08539 /* SphereDrawing.cpp */; };
 		D8EBCD52227C320500D08539 /* DummyTriangleDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD50227C320500D08539 /* DummyTriangleDrawing.cpp */; };
+		D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD54227C75ED00D08539 /* PrimitiveObjects.cpp */; };
 		D8F6D71E226DA85900E39805 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8F6D71D226DA85900E39805 /* main.cpp */; };
 		D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D725226DA87600E39805 /* OpenGL.framework */; };
 		D8F6D728226DA88B00E39805 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D727226DA88B00E39805 /* libGLEW.2.1.0.dylib */; };
@@ -57,6 +58,8 @@
 		D8EBCD4C227C2F7000D08539 /* SphereDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SphereDrawing.hpp; sourceTree = "<group>"; };
 		D8EBCD50227C320500D08539 /* DummyTriangleDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DummyTriangleDrawing.cpp; sourceTree = "<group>"; };
 		D8EBCD51227C320500D08539 /* DummyTriangleDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DummyTriangleDrawing.hpp; sourceTree = "<group>"; };
+		D8EBCD54227C75ED00D08539 /* PrimitiveObjects.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PrimitiveObjects.cpp; sourceTree = "<group>"; };
+		D8EBCD55227C75ED00D08539 /* PrimitiveObjects.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PrimitiveObjects.hpp; sourceTree = "<group>"; };
 		D8F6D71A226DA85900E39805 /* 2019_cg_physics */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 2019_cg_physics; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F6D71D226DA85900E39805 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D8F6D725226DA87600E39805 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -172,6 +175,15 @@
 			path = DummyTriangle;
 			sourceTree = "<group>";
 		};
+		D8EBCD53227C75D800D08539 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				D8EBCD54227C75ED00D08539 /* PrimitiveObjects.cpp */,
+				D8EBCD55227C75ED00D08539 /* PrimitiveObjects.hpp */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		D8F6D711226DA85900E39805 = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +204,7 @@
 		D8F6D71C226DA85900E39805 /* 2019_cg_physics */ = {
 			isa = PBXGroup;
 			children = (
+				D8EBCD53227C75D800D08539 /* Factory */,
 				D858CACB227C27B900ABFE72 /* Components */,
 				D858CAC9227C279900ABFE72 /* Managers */,
 				D8F6D71D226DA85900E39805 /* main.cpp */,
@@ -278,6 +291,7 @@
 				D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */,
 				D8EBCD52227C320500D08539 /* DummyTriangleDrawing.cpp in Sources */,
 				D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */,
+				D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */,
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
 				D82D408A226EE90200F5B73D /* Game.cpp in Sources */,
 				D858CABB227C1FB200ABFE72 /* RenderManager.cpp in Sources */,

@@ -1,13 +1,3 @@
-//
-//  WindowManager.cpp
-//  2019_cg_physics
-//
-//  Created by Friedrich Schmidt on 23.04.19.
-//  Copyright © 2019 Universität Salzburg. All rights reserved.
-//
-
-#include <GL/glew.h> // include GLEW and new version of GL on Windows
-#include <GLFW/glfw3.h> // GLFW helper library
 #include <stdio.h>
 #include <math.h>
 
@@ -100,10 +90,14 @@ void WindowManager::Loop()
      Program Loop
      */
     if(glfwWindowShouldClose(this->_window)) {
-        //TODO: Break Loop if window is closing.
+        // close GL context and any other GLFW resources
+        glfwTerminate();
+    } else {
+        glUseProgram(this->_defaultShaderPrograms);
     }
-    
-    
-    // close GL context and any other GLFW resources
-    glfwTerminate();
+}
+
+GLFWwindow * WindowManager::GetWindow()
+{
+    return this->_window;
 }

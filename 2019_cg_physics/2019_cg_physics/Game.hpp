@@ -1,11 +1,3 @@
-//
-//  Game.hpp
-//  2019_cg_physics
-//
-//  Created by Friedrich Schmidt on 23.04.19.
-//  Copyright © 2019 Universität Salzburg. All rights reserved.
-//
-
 #ifndef Game_hpp
 #define Game_hpp
 
@@ -22,6 +14,7 @@ public:
     ~Game() = default;
     
     void Initialize();
+    void Shutdown();
     
     template<typename T>
     void AddManager()
@@ -35,14 +28,15 @@ public:
     }
     
     template<typename T>
-    const T * GetManager()
+    T * GetManager()
     {
         auto it = _managers.begin();
         while(it != _managers.end())
         {
-            if(typeid(*it) == typeid(T))
+            T* manager = dynamic_cast<T*>(*it);
+            if(manager != nullptr)
             {
-                return *it;
+                return manager;
             }
             it++;
         }
@@ -53,6 +47,7 @@ private:
     void loopManagers();
     
     std::vector<AbstractManager *> _managers;
+    bool _shutdown = false;
 };
 
 #endif /* Game_hpp */

@@ -1,13 +1,8 @@
-//
-//  WindowManager.hpp
-//  2019_cg_physics
-//
-//  Created by Friedrich Schmidt on 23.04.19.
-//  Copyright © 2019 Universität Salzburg. All rights reserved.
-//
-
 #ifndef WindowManager_hpp
 #define WindowManager_hpp
+
+#include <GL/glew.h> // include GLEW and new version of GL on Windows
+#include <GLFW/glfw3.h> // GLFW helper library
 
 #include "AbstractManager.hpp"
 
@@ -19,7 +14,7 @@ public:
     
     void Loop() override;
     
-    const GLFWwindow * GetWindow() const();
+    GLFWwindow * GetWindow();
     
     WindowManager(const Game & engine);
     ~WindowManager() = default;

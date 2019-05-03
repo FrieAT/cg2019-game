@@ -1,11 +1,3 @@
-//
-//  AbstractManager.hpp
-//  2019_cg_physics
-//
-//  Created by Friedrich Schmidt on 03.05.19.
-//  Copyright © 2019 Universität Salzburg. All rights reserved.
-//
-
 #ifndef AbstractManager_hpp
 #define AbstractManager_hpp
 
@@ -18,6 +10,7 @@ public:
     
     virtual void Initialize() { }
     virtual void Loop() { }
+    Game & GetEngine() { return const_cast<Game&>(_engine); }
 private:
     const Game &_engine;
 };
