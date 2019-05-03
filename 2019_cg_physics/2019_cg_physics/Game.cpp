@@ -20,10 +20,14 @@ void Game::Initialize()
     AddManager<WindowManager>();
     AddManager<ObjectManager>();
     
-    // Adding GameObjects below.
-    
+    // Initialize Managers below.
     this->initializeManagers();
     
+    // Adding GameObjects below.
+    auto triangle = PrimitiveObjects::CreateTriangleDummy();
+    GetManager<ObjectManager>()->AddGameObject(triangle);
+    
+    // Run the loop.
     while(!this->_shutdown) // TODO: Check for Keyboard Interrupt!
     {
         this->loopManagers();

@@ -7,7 +7,7 @@
 class PrimitiveObjects
 {
 public:
-    static GameObject * CreateTriangleDummy(const Game & engine);
+    static GameObject * CreateTriangleDummy();
 };
 
 #endif /* PrimitiveObjects_hpp */
