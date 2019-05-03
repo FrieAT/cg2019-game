@@ -6,6 +6,7 @@
 #include "RenderManager.hpp"
 #include "WindowManager.hpp"
 #include "ObjectManager.hpp"
+#include "KeyboardManager.hpp"
 #include "PrimitiveObjects.hpp"
 
 Game::Game()
@@ -19,6 +20,7 @@ void Game::Initialize()
     AddManager<RenderManager>();
     AddManager<WindowManager>();
     AddManager<ObjectManager>();
+    AddManager<KeyboardManager>();
     
     // Initialize Managers below.
     this->initializeManagers();

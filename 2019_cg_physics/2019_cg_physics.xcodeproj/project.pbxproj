@@ -14,6 +14,7 @@
 		D858CABE227C22D100ABFE72 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */; };
 		D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CABF227C261100ABFE72 /* ObjectManager.cpp */; };
 		D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAC2227C264E00ABFE72 /* GameObject.cpp */; };
+		D8D44E2F227C8DF500B33932 /* KeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D44E2D227C8DF400B33932 /* KeyboardManager.cpp */; };
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
 		D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD4B227C2F7000D08539 /* SphereDrawing.cpp */; };
 		D8EBCD52227C320500D08539 /* DummyTriangleDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD50227C320500D08539 /* DummyTriangleDrawing.cpp */; };
@@ -52,6 +53,8 @@
 		D858CAC3227C264E00ABFE72 /* GameObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
 		D858CAC7227C279200ABFE72 /* IComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IComponent.hpp; sourceTree = "<group>"; };
 		D858CAC8227C279200ABFE72 /* EComponentType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EComponentType.hpp; sourceTree = "<group>"; };
+		D8D44E2D227C8DF400B33932 /* KeyboardManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardManager.cpp; sourceTree = "<group>"; };
+		D8D44E2E227C8DF500B33932 /* KeyboardManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardManager.hpp; sourceTree = "<group>"; };
 		D8EBCD43227C287500D08539 /* AbstractManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractManager.cpp; sourceTree = "<group>"; };
 		D8EBCD44227C287500D08539 /* AbstractManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AbstractManager.hpp; sourceTree = "<group>"; };
 		D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IDrawing.hpp; sourceTree = "<group>"; };
@@ -87,6 +90,7 @@
 		D858CAC9227C279900ABFE72 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				D8D44E2C227C8DDB00B33932 /* Keyboard */,
 				D8EBCD42227C285900D08539 /* Object */,
 				D8EBCD41227C285500D08539 /* Rendering */,
 				D8EBCD40227C285000D08539 /* Window */,
@@ -130,6 +134,15 @@
 				D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */,
 			);
 			path = Drawing;
+			sourceTree = "<group>";
+		};
+		D8D44E2C227C8DDB00B33932 /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				D8D44E2D227C8DF400B33932 /* KeyboardManager.cpp */,
+				D8D44E2E227C8DF500B33932 /* KeyboardManager.hpp */,
+			);
+			path = Keyboard;
 			sourceTree = "<group>";
 		};
 		D8EBCD40227C285000D08539 /* Window */ = {
@@ -288,6 +301,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8D44E2F227C8DF500B33932 /* KeyboardManager.cpp in Sources */,
 				D8F6D71E226DA85900E39805 /* main.cpp in Sources */,
 				D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */,
 				D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */,
