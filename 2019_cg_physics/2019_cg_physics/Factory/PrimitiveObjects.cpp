@@ -4,7 +4,7 @@
 
 GameObject * PrimitiveObjects::CreateTriangleDummy()
 {
-    GameObject * g = new GameObject("test", "Triangle");
+    GameObject * g = new GameObject("Triangle", "Opaque");
     
     g->SetComponent(new DummyTriangleDrawing());
     

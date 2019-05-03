@@ -23,7 +23,7 @@ void RenderManager::Loop()
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
     //TODO: Drawing.
-    auto objects = objectManager->GetObjectsByName("test");
+    auto objects = objectManager->GetObjectsByName("Opaque");
     auto it = objects.begin();
     while(it != objects.end())
     {
