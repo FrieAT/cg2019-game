@@ -92,8 +92,6 @@ void WindowManager::Loop()
     if(glfwWindowShouldClose(this->_window)) {
         // close GL context and any other GLFW resources
         glfwTerminate();
-    } else {
-        //glUseProgram(this->_defaultShaderPrograms);
     }
 }
 

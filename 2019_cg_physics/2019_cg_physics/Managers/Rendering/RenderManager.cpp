@@ -30,6 +30,7 @@ void RenderManager::Loop()
         auto drawing = dynamic_cast<IDrawing*>((*it)->GetComponent(EComponentType::Drawing));
         if(drawing != nullptr)
         {
+            glUseProgram(windowManager->getDefaultShaderProgram());
             drawing->Draw();
         }
         it++;

@@ -71,15 +71,14 @@ void DummyCubeDrawing::Init()
     };
     
     /* create and bind one Vertex Array Object */
-    glGenVertexArrays(1, &myVAO);
+    glGenVertexArrays(1, std::addressof(myVAO));
     glBindVertexArray(myVAO);
     
-    glGenBuffers(1, &myVBO);
+    glGenBuffers(1, std::addressof(myVBO));
     glBindBuffer(GL_ARRAY_BUFFER, myVBO);
     
     /* copy the vertex data to it */
-    glBufferData(GL_ARRAY_BUFFER, sizeof(
-                                         points), points, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(points), points, GL_STATIC_DRAW);
     
     
     
@@ -134,9 +133,6 @@ void DummyCubeDrawing::Init()
     //        exit(EXIT_FAILURE);
     //    }
     
-    /* make the shader program active */
-    glUseProgram(shaderProgram);
-    
     /* define how the input is organized */
     const char* attributeName;
     attributeName = "position";
@@ -148,13 +144,13 @@ void DummyCubeDrawing::Init()
     glEnableVertexAttribArray(posAttrib);
     glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE,
                           3 * sizeof(GLfloat), 0);
-    
-    
-    
 }
 
 void DummyCubeDrawing::Draw()
 {
+    /* make the shader program active */
+    glUseProgram(shaderProgram);
+    
     /* define a view transformation */
     glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 1.5f, 3.0f),
                                  glm::vec3(0.0f, 0.0f, 0.0f),

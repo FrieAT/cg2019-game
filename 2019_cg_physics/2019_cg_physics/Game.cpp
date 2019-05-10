@@ -29,8 +29,8 @@ void Game::Initialize()
     auto cube = PrimitiveObjects::CreateCubeDummy();
     GetManager<ObjectManager>()->AddGameObject(cube);
     
-    //auto triangle = PrimitiveObjects::CreateTriangleDummy();
-    //GetManager<ObjectManager>()->AddGameObject(triangle);
+    auto triangle = PrimitiveObjects::CreateTriangleDummy();
+    GetManager<ObjectManager>()->AddGameObject(triangle);
     
     // Run the loop.
     while(!this->_shutdown) // TODO: Check for Keyboard Interrupt!
