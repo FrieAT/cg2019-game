@@ -19,9 +19,11 @@ public:
     WindowManager(const Game & engine);
     ~WindowManager() = default;
 private:
-    int windowWidth = 1024;
+    int windowWidth =1024;
+
     
-    int windowHeight = 768;
+    int windowHeight =768;
+   
     
     const char* windowName = "The Game";
     

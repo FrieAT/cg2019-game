@@ -7,6 +7,7 @@
 #include "WindowManager.hpp"
 #include "ObjectManager.hpp"
 #include "PrimitiveObjects.hpp"
+#include "KeyboardManager.hpp"
 
 Game::Game()
 : _shutdown(false)
@@ -19,14 +20,24 @@ void Game::Initialize()
     AddManager<RenderManager>();
     AddManager<WindowManager>();
     AddManager<ObjectManager>();
+    AddManager<KeyboardManager>();
     
     // Initialize Managers below.
     this->initializeManagers();
-    
+    auto stage = PrimitiveObjects::CreateStageDummy();
+    GetManager<ObjectManager>()->AddGameObject(stage);
     // Adding GameObjects below.
     auto triangle = PrimitiveObjects::CreateTriangleDummy();
     GetManager<ObjectManager>()->AddGameObject(triangle);
-    
+    // Adding GameObjects below.
+    auto spfhere = PrimitiveObjects::CreateSphereDummy();
+    GetManager<ObjectManager>()->AddGameObject(spfhere);
+    auto spfhere1 = PrimitiveObjects::CreateSphereDummy();
+     GetManager<ObjectManager>()->AddGameObject(spfhere1);
+    auto spfhere2 = PrimitiveObjects::CreateSphereDummy();
+    GetManager<ObjectManager>()->AddGameObject(spfhere2);
+    // Adding GameObjects below.
+  
     // Run the loop.
     while(!this->_shutdown) // TODO: Check for Keyboard Interrupt!
     {
