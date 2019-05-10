@@ -16,7 +16,7 @@
 /* We use glew.h instead of gl.h to get all the GL prototypes declared */
 #include <GL/glew.h>
 /* SOIL is used for loading (texture) images */
-#include <SOIL.h>
+//#include <SOIL.h>
 /* GLFW is used for creating and manipulating graphics windows */
 #include<GLFW/glfw3.h>
 /* GLNM is used for handling vector and matrix math */
@@ -29,7 +29,7 @@
 
 const GLfloat SPEED = 0.03f;
 
-void DummyCubeDrawing::Draw()
+void DummyCubeDrawing::Init()
 {
     GLfloat points[] = {
         -0.2f,-0.96f,-0.2f, /* bottom */
@@ -71,11 +71,9 @@ void DummyCubeDrawing::Draw()
     };
     
     /* create and bind one Vertex Array Object */
-    GLuint myVAO;
     glGenVertexArrays(1, &myVAO);
     glBindVertexArray(myVAO);
     
-    GLuint myVBO;
     glGenBuffers(1, &myVBO);
     glBindBuffer(GL_ARRAY_BUFFER, myVBO);
     
@@ -101,10 +99,10 @@ void DummyCubeDrawing::Draw()
     glCompileShader(vertexShader);
     
     /* check whether the vertex shader compiled without an error */
-//    if (!checkShaderCompileStatus(vertexShader)) {
-//        fprintf(stderr, "Vertex shader did not compile\n");
-//        exit(EXIT_FAILURE);
-//    }
+    //    if (!checkShaderCompileStatus(vertexShader)) {
+    //        fprintf(stderr, "Vertex shader did not compile\n");
+    //        exit(EXIT_FAILURE);
+    //    }
     
     /* define and compile the fragment shader */
     const char* fragmentShaderSource = GLSL(
@@ -118,10 +116,10 @@ void DummyCubeDrawing::Draw()
     glCompileShader(fragmentShader);
     
     /* check whether the fragment shader compiled without an error */
-//    if (!checkShaderCompileStatus(fragmentShader)) {
-//        fprintf(stderr, "Fragment shader did not compile\n");
-//        exit(EXIT_FAILURE);
-//    }
+    //    if (!checkShaderCompileStatus(fragmentShader)) {
+    //        fprintf(stderr, "Fragment shader did not compile\n");
+    //        exit(EXIT_FAILURE);
+    //    }
     
     /* create a shader program by linking the vertex and fragment shader */
     shaderProgram  = glCreateProgram();
@@ -131,10 +129,10 @@ void DummyCubeDrawing::Draw()
     glLinkProgram(shaderProgram);
     
     /* check whether the shader program linked without an error */
-//    if (!checkShaderProgramLinkStatus(shaderProgram)) {
-//        fprintf(stderr, "Shader did not link\n");
-//        exit(EXIT_FAILURE);
-//    }
+    //    if (!checkShaderProgramLinkStatus(shaderProgram)) {
+    //        fprintf(stderr, "Shader did not link\n");
+    //        exit(EXIT_FAILURE);
+    //    }
     
     /* make the shader program active */
     glUseProgram(shaderProgram);
@@ -143,14 +141,20 @@ void DummyCubeDrawing::Draw()
     const char* attributeName;
     attributeName = "position";
     GLint posAttrib = glGetAttribLocation(shaderProgram, attributeName);
-//    if (posAttrib == -1) {
-//        fprintf(stderr, "Error: could not bind attribute %s\n", attributeName);
-//        exit(EXIT_FAILURE);
-//    }
+    //    if (posAttrib == -1) {
+    //        fprintf(stderr, "Error: could not bind attribute %s\n", attributeName);
+    //        exit(EXIT_FAILURE);
+    //    }
     glEnableVertexAttribArray(posAttrib);
     glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE,
                           3 * sizeof(GLfloat), 0);
     
+    
+    
+}
+
+void DummyCubeDrawing::Draw()
+{
     /* define a view transformation */
     glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 1.5f, 3.0f),
                                  glm::vec3(0.0f, 0.0f, 0.0f),
@@ -161,31 +165,30 @@ void DummyCubeDrawing::Draw()
     
     /* define a transformation matrix for the animation */
     
-    
     /* bind uniforms and pass data to the shader program */
     
     uniformName = "view";
     GLint uniformView = glGetUniformLocation(shaderProgram, uniformName);
-//    if (uniformView == -1) {
-//        fprintf(stderr, "Error: could not bind uniform %s\n", uniformName);
-//        exit(EXIT_FAILURE);
-//    }
+    //    if (uniformView == -1) {
+    //        fprintf(stderr, "Error: could not bind uniform %s\n", uniformName);
+    //        exit(EXIT_FAILURE);
+    //    }
     glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(view));
     
     uniformName = "proj";
     GLint uniformProj = glGetUniformLocation(shaderProgram, "proj");
-//    if (uniformProj == -1) {
-//        fprintf(stderr, "Error: could not bind uniform %s\n", uniformName);
-//        exit(EXIT_FAILURE);
-//    }
+    //    if (uniformProj == -1) {
+    //        fprintf(stderr, "Error: could not bind uniform %s\n", uniformName);
+    //        exit(EXIT_FAILURE);
+    //    }
     glUniformMatrix4fv(uniformProj, 1, GL_FALSE, glm::value_ptr(proj));
     
     uniformName = "anim";
     GLint uniformAnim = glGetUniformLocation(shaderProgram, uniformName);
-//    if (uniformAnim == -1) {
-//        fprintf(stderr, "Error: could not bind uniform %s\n", uniformName);
-//        exit(EXIT_FAILURE);
-//    }
+    //    if (uniformAnim == -1) {
+    //        fprintf(stderr, "Error: could not bind uniform %s\n", uniformName);
+    //        exit(EXIT_FAILURE);
+    //    }
     
     dir = KeyboardManager::GetMoveDirection();
     
@@ -204,9 +207,12 @@ void DummyCubeDrawing::Draw()
     }
     glUniformMatrix4fv(uniformAnim, 1, GL_FALSE, glm::value_ptr(anim));
     
+    glBindVertexArray(myVAO);
+    
     /* draw the VAO */
     glDrawArrays(GL_TRIANGLES, 0, 36);
     
+    glBindVertexArray(0);
 }
 
 bool DummyCubeDrawing:: checkShaderCompileStatus(GLuint shaderID)

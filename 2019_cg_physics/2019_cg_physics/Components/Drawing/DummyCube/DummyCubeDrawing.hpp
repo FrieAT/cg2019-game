@@ -22,6 +22,7 @@
 class DummyCubeDrawing : public IDrawing
 {
 public:
+    void Init();
     void Draw();
     bool checkShaderCompileStatus(GLuint shaderID);
     bool checkShaderProgramLinkStatus(GLuint programID);
@@ -35,6 +36,8 @@ public:
     float stageWidthHalf;
     float stageLengthHalf;
 private:
+    GLuint myVBO;
+    GLuint myVAO;
 };
 
 #endif /* DummyCube_hpp */
