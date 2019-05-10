@@ -93,7 +93,7 @@ void WindowManager::Loop()
         // close GL context and any other GLFW resources
         glfwTerminate();
     } else {
-        glUseProgram(this->_defaultShaderPrograms);
+        //glUseProgram(this->_defaultShaderPrograms);
     }
 }
 

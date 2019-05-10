@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6628870C2284A70E003DD132 /* DummyCubeDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6628870A2284A70D003DD132 /* DummyCubeDrawing.cpp */; };
+		6656A70522841AB5001F7397 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6656A70422841AB5001F7397 /* libglfw.3.3.dylib */; };
+		6656A70722841C52001F7397 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6656A70622841C51001F7397 /* libGLEW.2.1.0.dylib */; };
+		6656A70922841CE3001F7397 /* glm.hpp in Frameworks */ = {isa = PBXBuildFile; fileRef = 6656A70822841CE2001F7397 /* glm.hpp */; };
 		D82D408A226EE90200F5B73D /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82D4088226EE90200F5B73D /* Game.cpp */; };
 		D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82D408B226EE9B000F5B73D /* WindowManager.cpp */; };
 		D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAB72279C06F00ABFE72 /* Exception.cpp */; };
@@ -38,6 +42,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6628870A2284A70D003DD132 /* DummyCubeDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DummyCubeDrawing.cpp; sourceTree = "<group>"; };
+		6628870B2284A70E003DD132 /* DummyCubeDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DummyCubeDrawing.hpp; sourceTree = "<group>"; };
+		6656A70422841AB5001F7397 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../../usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		6656A70622841C51001F7397 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
+		6656A70822841CE2001F7397 /* glm.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = glm.hpp; path = ../../../../../../usr/local/Cellar/glm/0.9.9.3/include/glm/glm.hpp; sourceTree = "<group>"; };
 		D82D4088226EE90200F5B73D /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		D82D4089226EE90200F5B73D /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		D82D408B226EE9B000F5B73D /* WindowManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WindowManager.cpp; sourceTree = "<group>"; };
@@ -77,16 +86,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6656A70922841CE3001F7397 /* glm.hpp in Frameworks */,
+				6656A70722841C52001F7397 /* libGLEW.2.1.0.dylib in Frameworks */,
+				6656A70522841AB5001F7397 /* libglfw.3.3.dylib in Frameworks */,
+				D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */,
 				EDFD6B21227C8BF900613D2F /* glfw in Frameworks */,
 				D858CABE227C22D100ABFE72 /* libglfw.3.3.dylib in Frameworks */,
 				D8F6D728226DA88B00E39805 /* libGLEW.2.1.0.dylib in Frameworks */,
-				D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6696C0EF2285AC3C00212A4D /* DummyCube */ = {
+			isa = PBXGroup;
+			children = (
+				6628870A2284A70D003DD132 /* DummyCubeDrawing.cpp */,
+				6628870B2284A70E003DD132 /* DummyCubeDrawing.hpp */,
+			);
+			path = DummyCube;
+			sourceTree = "<group>";
+		};
 		D858CAC9227C279900ABFE72 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +150,7 @@
 		D858CACE227C27E300ABFE72 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				6696C0EF2285AC3C00212A4D /* DummyCube */,
 				D8EBCD4F227C31F700D08539 /* DummyTriangle */,
 				D8EBCD49227C2EF500D08539 /* Sphere */,
 				D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */,
@@ -207,6 +229,7 @@
 				D8F6D724226DA87600E39805 /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		D8F6D71B226DA85900E39805 /* Products */ = {
 			isa = PBXGroup;
@@ -236,6 +259,9 @@
 		D8F6D724226DA87600E39805 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6656A70822841CE2001F7397 /* glm.hpp */,
+				6656A70622841C51001F7397 /* libGLEW.2.1.0.dylib */,
+				6656A70422841AB5001F7397 /* libglfw.3.3.dylib */,
 				D858CABC227C22A100ABFE72 /* glfw */,
 				D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */,
 				D8F6D729226DA90600E39805 /* libglfw.3.2.dylib */,
@@ -310,6 +336,7 @@
 				D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */,
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
 				D82D408A226EE90200F5B73D /* Game.cpp in Sources */,
+				6628870C2284A70E003DD132 /* DummyCubeDrawing.cpp in Sources */,
 				D858CABB227C1FB200ABFE72 /* RenderManager.cpp in Sources */,
 				D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */,
 				D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */,
@@ -439,6 +466,7 @@
 					/usr/local/Cellar/glew/2.1.0/include/,
 					/usr/local/Cellar/glfw/3.3/include,
 					/usr/local/Cellar/glm/0.9.9.5/include,
+					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -458,6 +486,7 @@
 					/usr/local/Cellar/glew/2.1.0/include/,
 					/usr/local/Cellar/glfw/3.3/include,
 					/usr/local/Cellar/glm/0.9.9.5/include,
+					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

@@ -17,9 +17,11 @@ public:
     KeyboardManager(const Game & engine);
     ~KeyboardManager() = default;
     
-    static void keyCallback(GLFWwindow* myWindow, int key, int scanCode, int action, int mod) { } // TODO.
+    static int GetMoveDirection() { return _dir; }
+    
+    static void keyCallbackM(GLFWwindow* myWindow, int key, int scanCode, int action, int mod); // TODO.
 private:
-
+    static int _dir;
 };
 
 #endif /* KeyboardManager_hpp */
