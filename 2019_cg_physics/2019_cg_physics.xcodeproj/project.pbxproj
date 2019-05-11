@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6628870C2284A70E003DD132 /* DummyCubeDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6628870A2284A70D003DD132 /* DummyCubeDrawing.cpp */; };
-		6656A70522841AB5001F7397 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6656A70422841AB5001F7397 /* libglfw.3.3.dylib */; };
-		6656A70722841C52001F7397 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6656A70622841C51001F7397 /* libGLEW.2.1.0.dylib */; };
-		6656A70922841CE3001F7397 /* glm.hpp in Frameworks */ = {isa = PBXBuildFile; fileRef = 6656A70822841CE2001F7397 /* glm.hpp */; };
 		D82D408A226EE90200F5B73D /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82D4088226EE90200F5B73D /* Game.cpp */; };
 		D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82D408B226EE9B000F5B73D /* WindowManager.cpp */; };
 		D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAB72279C06F00ABFE72 /* Exception.cpp */; };
@@ -18,7 +14,6 @@
 		D858CABE227C22D100ABFE72 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */; };
 		D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CABF227C261100ABFE72 /* ObjectManager.cpp */; };
 		D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAC2227C264E00ABFE72 /* GameObject.cpp */; };
-		D8D44E2F227C8DF500B33932 /* KeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D44E2D227C8DF400B33932 /* KeyboardManager.cpp */; };
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
 		D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD4B227C2F7000D08539 /* SphereDrawing.cpp */; };
 		D8EBCD52227C320500D08539 /* DummyTriangleDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD50227C320500D08539 /* DummyTriangleDrawing.cpp */; };
@@ -26,6 +21,9 @@
 		D8F6D71E226DA85900E39805 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8F6D71D226DA85900E39805 /* main.cpp */; };
 		D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D725226DA87600E39805 /* OpenGL.framework */; };
 		D8F6D728226DA88B00E39805 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D727226DA88B00E39805 /* libGLEW.2.1.0.dylib */; };
+		ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */; };
+		ED87FC28228205AE00056205 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED87FC26228205AE00056205 /* Camera.cpp */; };
+		EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDA36262227DFDF800F5055C /* StageDrawing.cpp */; };
 		EDFD6B21227C8BF900613D2F /* glfw in Frameworks */ = {isa = PBXBuildFile; fileRef = D858CABC227C22A100ABFE72 /* glfw */; };
 /* End PBXBuildFile section */
 
@@ -42,11 +40,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6628870A2284A70D003DD132 /* DummyCubeDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DummyCubeDrawing.cpp; sourceTree = "<group>"; };
-		6628870B2284A70E003DD132 /* DummyCubeDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DummyCubeDrawing.hpp; sourceTree = "<group>"; };
-		6656A70422841AB5001F7397 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../../usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
-		6656A70622841C51001F7397 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
-		6656A70822841CE2001F7397 /* glm.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = glm.hpp; path = ../../../../../../usr/local/Cellar/glm/0.9.9.3/include/glm/glm.hpp; sourceTree = "<group>"; };
 		D82D4088226EE90200F5B73D /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		D82D4089226EE90200F5B73D /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		D82D408B226EE9B000F5B73D /* WindowManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WindowManager.cpp; sourceTree = "<group>"; };
@@ -62,8 +55,6 @@
 		D858CAC3227C264E00ABFE72 /* GameObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
 		D858CAC7227C279200ABFE72 /* IComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IComponent.hpp; sourceTree = "<group>"; };
 		D858CAC8227C279200ABFE72 /* EComponentType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EComponentType.hpp; sourceTree = "<group>"; };
-		D8D44E2D227C8DF400B33932 /* KeyboardManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardManager.cpp; sourceTree = "<group>"; };
-		D8D44E2E227C8DF500B33932 /* KeyboardManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardManager.hpp; sourceTree = "<group>"; };
 		D8EBCD43227C287500D08539 /* AbstractManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractManager.cpp; sourceTree = "<group>"; };
 		D8EBCD44227C287500D08539 /* AbstractManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AbstractManager.hpp; sourceTree = "<group>"; };
 		D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IDrawing.hpp; sourceTree = "<group>"; };
@@ -79,6 +70,12 @@
 		D8F6D727226DA88B00E39805 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
 		D8F6D729226DA90600E39805 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
 		D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardManager.cpp; sourceTree = "<group>"; };
+		ED01EBAA2284A6620088ED35 /* KeyboardManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardManager.hpp; sourceTree = "<group>"; };
+		ED87FC26228205AE00056205 /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		ED87FC27228205AE00056205 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
+		EDA36262227DFDF800F5055C /* StageDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StageDrawing.cpp; sourceTree = "<group>"; };
+		EDA36263227DFDF800F5055C /* StageDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StageDrawing.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,32 +83,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6656A70922841CE3001F7397 /* glm.hpp in Frameworks */,
-				6656A70722841C52001F7397 /* libGLEW.2.1.0.dylib in Frameworks */,
-				6656A70522841AB5001F7397 /* libglfw.3.3.dylib in Frameworks */,
-				D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */,
 				EDFD6B21227C8BF900613D2F /* glfw in Frameworks */,
 				D858CABE227C22D100ABFE72 /* libglfw.3.3.dylib in Frameworks */,
 				D8F6D728226DA88B00E39805 /* libGLEW.2.1.0.dylib in Frameworks */,
+				D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6696C0EF2285AC3C00212A4D /* DummyCube */ = {
-			isa = PBXGroup;
-			children = (
-				6628870A2284A70D003DD132 /* DummyCubeDrawing.cpp */,
-				6628870B2284A70E003DD132 /* DummyCubeDrawing.hpp */,
-			);
-			path = DummyCube;
-			sourceTree = "<group>";
-		};
 		D858CAC9227C279900ABFE72 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				D8D44E2C227C8DDB00B33932 /* Keyboard */,
+				ED01EBA52284A5E50088ED35 /* KeyBoard */,
 				D8EBCD42227C285900D08539 /* Object */,
 				D8EBCD41227C285500D08539 /* Rendering */,
 				D8EBCD40227C285000D08539 /* Window */,
@@ -126,18 +111,10 @@
 			children = (
 				D858CACE227C27E300ABFE72 /* Drawing */,
 				D858CACD227C27DF00ABFE72 /* Movement */,
-				D858CACC227C27DA00ABFE72 /* Position */,
 				D858CAC8227C279200ABFE72 /* EComponentType.hpp */,
 				D858CAC7227C279200ABFE72 /* IComponent.hpp */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		D858CACC227C27DA00ABFE72 /* Position */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Position;
 			sourceTree = "<group>";
 		};
 		D858CACD227C27DF00ABFE72 /* Movement */ = {
@@ -150,21 +127,12 @@
 		D858CACE227C27E300ABFE72 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
-				6696C0EF2285AC3C00212A4D /* DummyCube */,
+				EDA3625D227DCC8000F5055C /* Stage */,
 				D8EBCD4F227C31F700D08539 /* DummyTriangle */,
 				D8EBCD49227C2EF500D08539 /* Sphere */,
 				D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */,
 			);
 			path = Drawing;
-			sourceTree = "<group>";
-		};
-		D8D44E2C227C8DDB00B33932 /* Keyboard */ = {
-			isa = PBXGroup;
-			children = (
-				D8D44E2D227C8DF400B33932 /* KeyboardManager.cpp */,
-				D8D44E2E227C8DF500B33932 /* KeyboardManager.hpp */,
-			);
-			path = Keyboard;
 			sourceTree = "<group>";
 		};
 		D8EBCD40227C285000D08539 /* Window */ = {
@@ -229,7 +197,6 @@
 				D8F6D724226DA87600E39805 /* Frameworks */,
 			);
 			sourceTree = "<group>";
-			usesTabs = 0;
 		};
 		D8F6D71B226DA85900E39805 /* Products */ = {
 			isa = PBXGroup;
@@ -242,6 +209,7 @@
 		D8F6D71C226DA85900E39805 /* 2019_cg_physics */ = {
 			isa = PBXGroup;
 			children = (
+				ED87FC252282058200056205 /* Camera */,
 				D8EBCD53227C75D800D08539 /* Factory */,
 				D858CACB227C27B900ABFE72 /* Components */,
 				D858CAC9227C279900ABFE72 /* Managers */,
@@ -259,9 +227,6 @@
 		D8F6D724226DA87600E39805 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6656A70822841CE2001F7397 /* glm.hpp */,
-				6656A70622841C51001F7397 /* libGLEW.2.1.0.dylib */,
-				6656A70422841AB5001F7397 /* libglfw.3.3.dylib */,
 				D858CABC227C22A100ABFE72 /* glfw */,
 				D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */,
 				D8F6D729226DA90600E39805 /* libglfw.3.2.dylib */,
@@ -269,6 +234,33 @@
 				D8F6D725226DA87600E39805 /* OpenGL.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED01EBA52284A5E50088ED35 /* KeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */,
+				ED01EBAA2284A6620088ED35 /* KeyboardManager.hpp */,
+			);
+			path = KeyBoard;
+			sourceTree = "<group>";
+		};
+		ED87FC252282058200056205 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				ED87FC26228205AE00056205 /* Camera.cpp */,
+				ED87FC27228205AE00056205 /* Camera.hpp */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		EDA3625D227DCC8000F5055C /* Stage */ = {
+			isa = PBXGroup;
+			children = (
+				EDA36262227DFDF800F5055C /* StageDrawing.cpp */,
+				EDA36263227DFDF800F5055C /* StageDrawing.hpp */,
+			);
+			path = Stage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,7 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8D44E2F227C8DF500B33932 /* KeyboardManager.cpp in Sources */,
+				ED87FC28228205AE00056205 /* Camera.cpp in Sources */,
 				D8F6D71E226DA85900E39805 /* main.cpp in Sources */,
 				D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */,
 				D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */,
@@ -336,8 +328,9 @@
 				D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */,
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
 				D82D408A226EE90200F5B73D /* Game.cpp in Sources */,
-				6628870C2284A70E003DD132 /* DummyCubeDrawing.cpp in Sources */,
 				D858CABB227C1FB200ABFE72 /* RenderManager.cpp in Sources */,
+				ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */,
+				EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */,
 				D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */,
 				D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */,
 			);
@@ -466,7 +459,6 @@
 					/usr/local/Cellar/glew/2.1.0/include/,
 					/usr/local/Cellar/glfw/3.3/include,
 					/usr/local/Cellar/glm/0.9.9.5/include,
-					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -486,7 +478,6 @@
 					/usr/local/Cellar/glew/2.1.0/include/,
 					/usr/local/Cellar/glfw/3.3/include,
 					/usr/local/Cellar/glm/0.9.9.5/include,
-					/usr/local/include,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

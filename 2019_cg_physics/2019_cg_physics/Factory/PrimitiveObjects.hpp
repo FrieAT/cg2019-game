@@ -8,7 +8,10 @@ class PrimitiveObjects
 {
 public:
     static GameObject * CreateTriangleDummy();
-    static GameObject * CreateCubeDummy();
+public:
+    static GameObject * CreateSphereDummy();
+public:
+    static GameObject * CreateStageDummy();
 };
 
 #endif /* PrimitiveObjects_hpp */
