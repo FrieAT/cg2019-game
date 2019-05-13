@@ -19,11 +19,13 @@ void Camera:: initialize(){
     shininessAttrib =organizeInputUniform(shader, "shininess");
     uniformCam = organizeInputUniform(shader, "cameraPosition");
     glUniform3f(uniformCam, cameraPosition[0], cameraPosition[1], cameraPosition[2]);
-     view = glm::lookAt(cameraPosition,
+    //camera
+    view = glm::lookAt(cameraPosition,
                     glm::vec3(0.0f, 1.0f, 0.0f),
                     glm::vec3(0.0f, 1.0f, 0.0f));
     /* define a  projection transformation */
-    glm::mat4 proj = glm::perspective(glm::radians(60.0f), 4.0f / 3.0f, 0.1f, 10.0f);
+    glm::mat4 proj = glm::perspective(glm::radians(60.0f),4.0f / 3.0f, 0.1f, 10.0f);
+  
     /* bind uniforms and pass data to the shader program */
     uniformView =organizeInputUniform(shader, "view");
     glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(view));

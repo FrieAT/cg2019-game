@@ -17,11 +17,10 @@ Camera camera1;
 void StageDrawing::Draw()
 
 {
-
     camera1.initialize();
     organize(camera1.posAttrib, camera1.normAttrib);
     draw(camera1.colAttrib, camera1.uniformAnim, camera1.uniformMode, camera1.shininessAttrib);
-       // glBindVertexArray(0);
+    deleteBufferAndArray();
    
 }
 void StageDrawing::organize(GLint posAttrib, GLint normAttrib)

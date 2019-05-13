@@ -27,15 +27,13 @@ void Game::Initialize()
     auto stage = PrimitiveObjects::CreateStageDummy();
     GetManager<ObjectManager>()->AddGameObject(stage);
     // Adding GameObjects below.
-    auto triangle = PrimitiveObjects::CreateTriangleDummy();
-    GetManager<ObjectManager>()->AddGameObject(triangle);
+    auto cube = PrimitiveObjects::CreateTriangleDummy();
+    GetManager<ObjectManager>()->AddGameObject(cube);
     // Adding GameObjects below.
-    auto spfhere = PrimitiveObjects::CreateSphereDummy();
-    GetManager<ObjectManager>()->AddGameObject(spfhere);
-    auto spfhere1 = PrimitiveObjects::CreateSphereDummy();
-     GetManager<ObjectManager>()->AddGameObject(spfhere1);
-    auto spfhere2 = PrimitiveObjects::CreateSphereDummy();
-    GetManager<ObjectManager>()->AddGameObject(spfhere2);
+    for(int i = 0; i < 10; i++) {
+        auto spfhere = PrimitiveObjects::CreateSphereDummy();
+        GetManager<ObjectManager>()->AddGameObject(spfhere);
+    }
     // Adding GameObjects below.
   
     // Run the loop.

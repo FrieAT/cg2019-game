@@ -10,44 +10,16 @@
 #include <time.h>
 #include "KeyboardManager.hpp"
 
-/* generate and organize buffers */
-  Camera camera;
+
+Camera camera;
 void SphereDrawing::Draw()
 {
-
-    
     camera.initialize();
     ballCount = 0;
-    /* start with two balls */
-    //ballList.push_back(generateBall(camera.posAttrib,camera.normAttrib));
-   // ballList.push_back(generateBall(camera.posAttrib,camera.normAttrib));
-    /* draw the balls */
-   //glBindVertexArray(0);
     time = glfwGetTime();
     organize(camera.posAttrib,camera.normAttrib);
-    //generateBall(camera.posAttrib,camera.normAttrib);
-    //for (int i = 0; i < ballList.size(); i++) {
-        //SphereDrawing* current = &ballList[0];
-       // current->
     draw(time,camera.colAttrib,camera.uniformAnim, camera.uniformMode,camera.shininessAttrib);
-//
-//        if (current->checkFinished() == 1) {
-//            ballCount++;
-//
-//            current->deleteBufferAndArray();
-//            //remove
-//            ballList.erase(ballList.begin() + i);
-//
-//            //Adds a new element at the end of the vector, after its current last element. The content of val is copied (or moved) to the new element.
-//
-//            ballList.push_back(generateBall(posAttrib, normAttrib));
-//            if ((ballCount % 2) == 1) //two new balls for every second vanishing ball
-//                ballList.push_back(generateBall(posAttrib, normAttrib));
-//
-//        }
-//
-//
-//    }
+
 }
 void SphereDrawing::SetRadius(float radius)
 {
@@ -105,17 +77,7 @@ void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint uniformAnim, GLin
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 36 * 18 * 2);
     
-//    if (cx + dx + _radius >= -stageLengthHalf) // for efficiency; would be overlayed by black surface anyway
-//    {
-//        glUniformMatrix4fv(uniformAnim, 1, GL_FALSE, glm::value_ptr(animPlane));
-//
-//        glVertexAttrib3f(colAttrib, std::max(colorValues[0], BRIGHTNESS_FACTOR * dy / MAX_AMP),
-//                         std::max(colorValues[1], BRIGHTNESS_FACTOR * dy / MAX_AMP),
-//                         std::max(colorValues[2], BRIGHTNESS_FACTOR * dy / MAX_AMP));
-//        // one of the colorValues[i] is 1, the others 0 -> max(...) leaves the 1 unchanged and overwrites the others
-//
-//        glDrawArrays(GL_TRIANGLE_FAN, 36 * 18 * 2, 38);
-//    }
+
 }
 void SphereDrawing::update(GLdouble time)
 {
