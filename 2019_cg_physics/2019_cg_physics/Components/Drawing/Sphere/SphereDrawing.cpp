@@ -84,6 +84,7 @@ void SphereDrawing::update(GLdouble time)
     dx = speed * (time -birthTime)/ per;
     dy = std::abs(amp * sinf(speed * (time - birthTime) + phase));
     
+
     
     anim = glm::translate(glm::mat4(1.0f), glm::vec3(dx,dy, 0.0f)); // anim matrix for the ball
     animPlane = glm::translate(glm::mat4(1.0f), glm::vec3(dx, 0.0f, 0.0f)); // anim matrix for the shadow

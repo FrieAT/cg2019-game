@@ -28,4 +28,17 @@ GameObject * PrimitiveObjects::CreateSphereDummy()
     return g;
 }
 
-
+void PrimitiveObjects::GenerateBallsForLevel(Vector3 centerPosition, float laenge, float breite)
+{
+    float ballSize = 5;
+    float startingHeight = 4.0;
+    for(float y = centerPosition.y - laenge; y < centerPosition.y + laenge; y+=ballSize) {
+        for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=ballSize) {
+            GameObject* p = CreateSphereDummy();
+            /*
+            auto position = dynamic_cast<IPosition*>(p->GetComponent(EComponentType::Position));
+            position->SetPosition(Vector3(x, y, startingHeight));
+             */
+        }
+    }
+}

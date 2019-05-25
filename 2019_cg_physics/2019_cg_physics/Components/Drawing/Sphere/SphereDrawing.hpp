@@ -59,6 +59,7 @@ private:
     static constexpr float MIN_RADIUS = 0.1;
     static constexpr float MIN_AMP = 2.5;
     static constexpr float MAX_AMP = 3;
+     static constexpr float MAX_AMPL = 10;
     static constexpr float BRIGHTNESS_FACTOR = 0.5; // constant to set the maximal brightness for shadows to avoid totally white shadows
     static constexpr float MAX_PHASE = PI;
     static constexpr float MAX_PER = 2;
