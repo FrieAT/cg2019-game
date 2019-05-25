@@ -164,7 +164,7 @@ void RenderManager::Loop()
                 posAttrib = getAttribId(shaderProgram, "positionIn");
                 normAttrib = getAttribId(shaderProgram, "normalIn");
                 colAttrib = getAttribId(shaderProgram, "colorVtxIn");
-                shininessAttrib = getAttribId(shaderProgram, "shininess");
+                shininessAttrib = getUniformId(shaderProgram, "shininess");
                 
                 auto drawing = dynamic_cast<IDrawing*>((*it)->GetComponent(EComponentType::Drawing));
                 auto position = dynamic_cast<IPosition*>((*it)->GetComponent(EComponentType::Position));
