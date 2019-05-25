@@ -36,10 +36,10 @@ void Game::Initialize()
     auto stage = PrimitiveObjects::CreateStageDummy();
     GetManager<ObjectManager>()->AddGameObject(stage);
     // Adding GameObjects below.
-    //auto cube = PrimitiveObjects::CreateCubeDummy();
-    //GetManager<ObjectManager>()->AddGameObject(cube);
+//    auto cube = PrimitiveObjects::CreateCubeDummy();
+//    GetManager<ObjectManager>()->AddGameObject(cube);
     
-    auto triangle = PrimitiveObjects::CreateTriangleDummy();
+   auto triangle = PrimitiveObjects::CreateTriangleDummy();
     GetManager<ObjectManager>()->AddGameObject(triangle);
     
     // Adding GameObjects below.

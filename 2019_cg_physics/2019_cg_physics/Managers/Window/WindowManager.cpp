@@ -12,7 +12,7 @@ WindowManager::WindowManager(const Game & engine)
 
 void WindowManager::Initialize()
 {
-    glfwSetErrorCallback(WindowManager::errorCallback);
+    //glfwSetErrorCallback(WindowManager::errorCallback);
     
     // start GL context and O/S window using the GLFW helper library
     if (!glfwInit()) {
@@ -47,11 +47,11 @@ void WindowManager::Initialize()
     glEnable(GL_DEPTH_TEST); // enable depth-testing
     glDepthFunc(GL_LESS); // depth-testing interprets a smaller value as "closer"
 }
-
-void WindowManager::errorCallback(int error, const char*logText)
-{
-    fprintf(stderr, "GLFW error %d: %s\n", error, logText);
-}
+//
+//void WindowManager::errorCallback(int error, const char*logText)
+//{
+//    fprintf(stderr, "GLFW error %d: %s\n", error, logText);
+//}
 
 void WindowManager::Loop()
 {
