@@ -23,6 +23,8 @@
 		D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D725226DA87600E39805 /* OpenGL.framework */; };
 		D8F6D728226DA88B00E39805 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D727226DA88B00E39805 /* libGLEW.2.1.0.dylib */; };
 		D8FC4136229991FB00614AE5 /* PrototypeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8CE66D8228EBDFA005C2478 /* PrototypeView.cpp */; };
+		D8FC413A2299976500614AE5 /* PhysicsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8FC41382299976500614AE5 /* PhysicsManager.cpp */; };
+		D8FC413F22999AE100614AE5 /* LinearMovement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8FC413D22999AE100614AE5 /* LinearMovement.cpp */; };
 		ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */; };
 		ED4DB1A92288705B00AAA0D1 /* CubeDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4DB1A72288705B00AAA0D1 /* CubeDrawing.cpp */; };
 		EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDA36262227DFDF800F5055C /* StageDrawing.cpp */; };
@@ -80,6 +82,12 @@
 		D8F6D727226DA88B00E39805 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
 		D8F6D729226DA90600E39805 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
 		D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		D8FC41382299976500614AE5 /* PhysicsManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsManager.cpp; sourceTree = "<group>"; };
+		D8FC41392299976500614AE5 /* PhysicsManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PhysicsManager.hpp; sourceTree = "<group>"; };
+		D8FC413B2299993C00614AE5 /* IMovement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IMovement.hpp; sourceTree = "<group>"; };
+		D8FC413D22999AE100614AE5 /* LinearMovement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LinearMovement.cpp; sourceTree = "<group>"; };
+		D8FC413E22999AE100614AE5 /* LinearMovement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LinearMovement.hpp; sourceTree = "<group>"; };
+		D8FC414122999C0D00614AE5 /* IPlayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IPlayer.hpp; sourceTree = "<group>"; };
 		ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardManager.cpp; sourceTree = "<group>"; };
 		ED01EBAA2284A6620088ED35 /* KeyboardManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardManager.hpp; sourceTree = "<group>"; };
 		ED4DB1A72288705B00AAA0D1 /* CubeDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CubeDrawing.cpp; sourceTree = "<group>"; };
@@ -106,6 +114,7 @@
 		D858CAC9227C279900ABFE72 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				D8FC41372299975300614AE5 /* PhysicsManager */,
 				ED01EBA52284A5E50088ED35 /* KeyBoard */,
 				D8EBCD42227C285900D08539 /* Object */,
 				D8EBCD41227C285500D08539 /* Rendering */,
@@ -119,6 +128,7 @@
 		D858CACB227C27B900ABFE72 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D8FC414022999BFF00614AE5 /* Player */,
 				D8CE66D5228EAEB4005C2478 /* View */,
 				D879638C228E7C71002FDFD8 /* Shader */,
 				D8BA0D042287084E008B4580 /* Position */,
@@ -133,6 +143,8 @@
 		D858CACD227C27DF00ABFE72 /* Movement */ = {
 			isa = PBXGroup;
 			children = (
+				D8FC413C22999ACB00614AE5 /* LinearMovement */,
+				D8FC413B2299993C00614AE5 /* IMovement.hpp */,
 			);
 			path = Movement;
 			sourceTree = "<group>";
@@ -294,6 +306,32 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D8FC41372299975300614AE5 /* PhysicsManager */ = {
+			isa = PBXGroup;
+			children = (
+				D8FC41382299976500614AE5 /* PhysicsManager.cpp */,
+				D8FC41392299976500614AE5 /* PhysicsManager.hpp */,
+			);
+			path = PhysicsManager;
+			sourceTree = "<group>";
+		};
+		D8FC413C22999ACB00614AE5 /* LinearMovement */ = {
+			isa = PBXGroup;
+			children = (
+				D8FC413D22999AE100614AE5 /* LinearMovement.cpp */,
+				D8FC413E22999AE100614AE5 /* LinearMovement.hpp */,
+			);
+			path = LinearMovement;
+			sourceTree = "<group>";
+		};
+		D8FC414022999BFF00614AE5 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				D8FC414122999C0D00614AE5 /* IPlayer.hpp */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		ED01EBA52284A5E50088ED35 /* KeyBoard */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,7 +428,9 @@
 				EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */,
 				ED4DB1A92288705B00AAA0D1 /* CubeDrawing.cpp in Sources */,
 				D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */,
+				D8FC413A2299976500614AE5 /* PhysicsManager.cpp in Sources */,
 				D8BA0D0722870AC9008B4580 /* PixelPosition.cpp in Sources */,
+				D8FC413F22999AE100614AE5 /* LinearMovement.cpp in Sources */,
 				D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */,
 				D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */,
 			);

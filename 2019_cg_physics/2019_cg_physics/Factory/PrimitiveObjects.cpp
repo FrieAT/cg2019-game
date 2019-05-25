@@ -6,6 +6,8 @@
 #include "PixelPosition.hpp"
 #include "SphereShader.hpp"
 #include "PrototypeView.hpp"
+#include "LinearMovement.hpp"
+#include "IPlayer.hpp"
 
 GameObject * PrimitiveObjects::CreateStageDummy()
 {
@@ -23,6 +25,10 @@ GameObject * PrimitiveObjects::CreateTriangleDummy()
     
     g->SetComponent(new CubeDrawing());
     g->SetComponent(new PixelPosition());
+    auto movement = new LinearMovement();
+    movement->SetSpeed(0.23f);
+    g->SetComponent(movement);
+    g->SetComponent(new IPlayer());
     //g->SetComponent(new DummyTriangleDrawing());
     
     return g;

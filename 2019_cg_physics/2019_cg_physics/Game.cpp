@@ -9,6 +9,7 @@
 #include "KeyboardManager.hpp"
 #include "PrimitiveObjects.hpp"
 #include "KeyboardManager.hpp"
+#include "PhysicsManager.hpp"
 
 Game* Game::_engine = nullptr;
 
@@ -29,6 +30,7 @@ void Game::Initialize()
     AddManager<KeyboardManager>();
     AddManager<RenderManager>();
     AddManager<ObjectManager>();
+    AddManager<PhysicsManager>();
     
     // Adding GameObjects below.
 

@@ -28,7 +28,6 @@ public:
     ~CubeDrawing();
     void Init();
     void Draw(RenderManager* renderManager);
-    void movement();
     void organize(GLint posAttrib);
     void draw(GLint colAttrib, GLint shininessAttrib);
     void deleteBufferAndArray();
