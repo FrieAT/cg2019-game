@@ -16,6 +16,13 @@ public:
     void Initialize();
     void Shutdown();
     
+    static Game* GetEngine()
+    {
+        return _engine;
+    }
+    
+    bool IsInitialized() { return _initialized; }
+    
     template<typename T>
     void AddManager()
     {
@@ -48,6 +55,8 @@ private:
     
     std::vector<AbstractManager *> _managers;
     bool _shutdown = false;
+    static Game* _engine;
+    bool _initialized = false;
 };
 
 #endif /* Game_hpp */
