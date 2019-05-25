@@ -128,6 +128,7 @@
 		D858CACB227C27B900ABFE72 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D88B5F1A2299A214000F9BFA /* Collider */,
 				D8FC414022999BFF00614AE5 /* Player */,
 				D8CE66D5228EAEB4005C2478 /* View */,
 				D879638C228E7C71002FDFD8 /* Shader */,
@@ -177,6 +178,13 @@
 				D8796390228E7D93002FDFD8 /* SphereShader.hpp */,
 			);
 			path = SphereShader;
+			sourceTree = "<group>";
+		};
+		D88B5F1A2299A214000F9BFA /* Collider */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Collider;
 			sourceTree = "<group>";
 		};
 		D8BA0D042287084E008B4580 /* Position */ = {

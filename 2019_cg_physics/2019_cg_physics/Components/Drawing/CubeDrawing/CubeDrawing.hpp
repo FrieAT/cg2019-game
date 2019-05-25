@@ -44,8 +44,6 @@ private:
     const GLfloat STAGE_AREA_LENGTH_HALF = 2.5f;
     const GLfloat STAGE_AREA_WIDTH_HALF = 1.0f;
     const GLfloat STAGE_AREA_WIDTH_HALF_BOTTOM = 2.0f;
-    int dir;
-
 };
 
 #endif /* CubeDrawing_hpp */

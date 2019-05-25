@@ -38,8 +38,6 @@ void CubeDrawing::Draw(RenderManager* renderManager)
     int colAttrib = renderManager->GetColorVtxAttrib();
     int shininessAttrib = renderManager->GetShininessAttrib();
     
-    dir = KeyboardManager::GetMoveDirection();
-    
     draw(colAttrib, shininessAttrib);
 }
 

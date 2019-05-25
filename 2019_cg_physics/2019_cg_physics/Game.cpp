@@ -42,7 +42,7 @@ void Game::Initialize()
     //GetManager<ObjectManager>()->AddGameObject(cube);
     
     auto triangle = PrimitiveObjects::CreateTriangleDummy();
-    GetManager<ObjectManager>()->AddGameObject(triangle);
+    //GetManager<ObjectManager>()->AddGameObject(triangle);
     
     // Adding GameObjects below.
     auto spfhere = PrimitiveObjects::CreateSphereDummy();

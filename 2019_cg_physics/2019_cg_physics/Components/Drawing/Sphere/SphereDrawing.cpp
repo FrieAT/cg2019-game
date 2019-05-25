@@ -90,13 +90,11 @@ void SphereDrawing::organize(GLint posAttrib, GLint normAttrib)
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     
     glEnableVertexAttribArray(posAttrib);
-    glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE,
-                          6 * sizeof(GLfloat), 0);
+    glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), 0);
     
     glEnableVertexAttribArray(normAttrib);
     
-    glVertexAttribPointer(normAttrib, 3, GL_FLOAT, GL_TRUE,
-                          6 * sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
+    glVertexAttribPointer(normAttrib, 3, GL_FLOAT, GL_TRUE, 6 * sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
     glBufferData(GL_ARRAY_BUFFER, sizeof(vtx), vtx, GL_STATIC_DRAW);
     
     glBindVertexArray(0);
