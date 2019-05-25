@@ -1,5 +1,5 @@
 #include "SphereDrawing.hpp"
-#include "RenderManager.hpp"
+#include "IShader.hpp"
 #include <GL/glew.h> // include GLEW and new version of GL on Windows
 #include <GLFW/glfw3.h> // GLFW helper library
 #include <glm/glm.hpp>
@@ -18,10 +18,9 @@ SphereDrawing::~SphereDrawing()
 
 void SphereDrawing::Init()
 {
-    auto renderManager = Game::GetEngine()->GetManager<RenderManager>();
-    
-    int posAttrib = renderManager->GetPositionAttrib();
-    int normAttrib = renderManager->GetNormalAttrib();
+    auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
+    int posAttrib = shader->GetAttrib(EShaderAttrib::Position);
+    int normAttrib = shader->GetAttrib(EShaderAttrib::Normal);
     
     organize(posAttrib,normAttrib);
 }
@@ -29,8 +28,9 @@ void SphereDrawing::Init()
 /* generate and organize buffers */
 void SphereDrawing::Draw(RenderManager* renderManager)
 {
-    int colAttrib = renderManager->GetColorVtxAttrib();
-    int shininessAttrib = renderManager->GetShininessAttrib();
+    auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
+    int colAttrib = shader->GetAttrib(EShaderAttrib::Color);
+    int shininessAttrib = shader->GetUniform(EShaderUniform::Shininess);
     
     ballCount = 0;
     time = glfwGetTime();
@@ -113,7 +113,7 @@ void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint shininessAttrib)
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 36 * 18 * 2);
     
-
+    glBindVertexArray(0);
 }
 void SphereDrawing::update(GLdouble time)
 {

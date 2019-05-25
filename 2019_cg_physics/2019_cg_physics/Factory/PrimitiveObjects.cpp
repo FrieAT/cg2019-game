@@ -6,6 +6,7 @@
 #include "PixelPosition.hpp"
 #include "SphereShader.hpp"
 #include "PrototypeView.hpp"
+#include "DefaultShader.hpp"
 
 GameObject * PrimitiveObjects::CreateStageDummy()
 {
@@ -21,6 +22,7 @@ GameObject * PrimitiveObjects::CreateTriangleDummy()
 {
     GameObject * g = new GameObject("Triangle", "Opaque");
     
+    g->SetComponent(new SphereShader());
     g->SetComponent(new CubeDrawing());
     g->SetComponent(new PixelPosition());
     //g->SetComponent(new DummyTriangleDrawing());

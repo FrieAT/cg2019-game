@@ -16,8 +16,6 @@ public:
     
     GLFWwindow * GetWindow();
     
-    GLuint getDefaultShaderProgram() { return _defaultShaderPrograms; }
-    
     WindowManager(const Game & engine);
     ~WindowManager() = default;
 private:
@@ -31,9 +29,7 @@ private:
     
     GLFWwindow * _window;
     
-    GLuint _defaultShaderPrograms;
-    
-   // static void errorCallback(int error, const char*logText);
+    static void errorCallback(int error, const char*logText);
 };
 
 #endif /* WindowManager_hpp */
