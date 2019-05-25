@@ -14,6 +14,9 @@
 		D858CABE227C22D100ABFE72 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */; };
 		D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CABF227C261100ABFE72 /* ObjectManager.cpp */; };
 		D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAC2227C264E00ABFE72 /* GameObject.cpp */; };
+		D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D879638F228E7D93002FDFD8 /* SphereShader.cpp */; };
+		D8BA0D0722870AC9008B4580 /* PixelPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8BA0D0522870AC9008B4580 /* PixelPosition.cpp */; };
+		D8CE66DA228EBDFA005C2478 /* PrototypeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8CE66D8228EBDFA005C2478 /* PrototypeView.cpp */; };
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
 		D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD4B227C2F7000D08539 /* SphereDrawing.cpp */; };
 		D8EBCD52227C320500D08539 /* DummyTriangleDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD50227C320500D08539 /* DummyTriangleDrawing.cpp */; };
@@ -22,7 +25,6 @@
 		D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D725226DA87600E39805 /* OpenGL.framework */; };
 		D8F6D728226DA88B00E39805 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D727226DA88B00E39805 /* libGLEW.2.1.0.dylib */; };
 		ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */; };
-		ED87FC28228205AE00056205 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED87FC26228205AE00056205 /* Camera.cpp */; };
 		EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDA36262227DFDF800F5055C /* StageDrawing.cpp */; };
 		EDFD6B21227C8BF900613D2F /* glfw in Frameworks */ = {isa = PBXBuildFile; fileRef = D858CABC227C22A100ABFE72 /* glfw */; };
 /* End PBXBuildFile section */
@@ -55,6 +57,16 @@
 		D858CAC3227C264E00ABFE72 /* GameObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
 		D858CAC7227C279200ABFE72 /* IComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IComponent.hpp; sourceTree = "<group>"; };
 		D858CAC8227C279200ABFE72 /* EComponentType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EComponentType.hpp; sourceTree = "<group>"; };
+		D879638D228E7C81002FDFD8 /* IShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IShader.hpp; sourceTree = "<group>"; };
+		D879638F228E7D93002FDFD8 /* SphereShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SphereShader.cpp; sourceTree = "<group>"; };
+		D8796390228E7D93002FDFD8 /* SphereShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SphereShader.hpp; sourceTree = "<group>"; };
+		D8796395228E808A002FDFD8 /* EShaderType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EShaderType.hpp; sourceTree = "<group>"; };
+		D8BA0D0522870AC9008B4580 /* PixelPosition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PixelPosition.cpp; sourceTree = "<group>"; };
+		D8BA0D0622870AC9008B4580 /* PixelPosition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PixelPosition.hpp; sourceTree = "<group>"; };
+		D8BA0D0922870ADE008B4580 /* IPosition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IPosition.hpp; sourceTree = "<group>"; };
+		D8CE66D6228EAECD005C2478 /* IView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IView.hpp; sourceTree = "<group>"; };
+		D8CE66D8228EBDFA005C2478 /* PrototypeView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PrototypeView.cpp; sourceTree = "<group>"; };
+		D8CE66D9228EBDFA005C2478 /* PrototypeView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PrototypeView.hpp; sourceTree = "<group>"; };
 		D8EBCD43227C287500D08539 /* AbstractManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractManager.cpp; sourceTree = "<group>"; };
 		D8EBCD44227C287500D08539 /* AbstractManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AbstractManager.hpp; sourceTree = "<group>"; };
 		D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IDrawing.hpp; sourceTree = "<group>"; };
@@ -72,8 +84,6 @@
 		D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 		ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardManager.cpp; sourceTree = "<group>"; };
 		ED01EBAA2284A6620088ED35 /* KeyboardManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardManager.hpp; sourceTree = "<group>"; };
-		ED87FC26228205AE00056205 /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
-		ED87FC27228205AE00056205 /* Camera.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		EDA36262227DFDF800F5055C /* StageDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StageDrawing.cpp; sourceTree = "<group>"; };
 		EDA36263227DFDF800F5055C /* StageDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StageDrawing.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +119,9 @@
 		D858CACB227C27B900ABFE72 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D8CE66D5228EAEB4005C2478 /* View */,
+				D879638C228E7C71002FDFD8 /* Shader */,
+				D8BA0D042287084E008B4580 /* Position */,
 				D858CACE227C27E300ABFE72 /* Drawing */,
 				D858CACD227C27DF00ABFE72 /* Movement */,
 				D858CAC8227C279200ABFE72 /* EComponentType.hpp */,
@@ -133,6 +146,61 @@
 				D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */,
 			);
 			path = Drawing;
+			sourceTree = "<group>";
+		};
+		D879638C228E7C71002FDFD8 /* Shader */ = {
+			isa = PBXGroup;
+			children = (
+				D879638E228E7D84002FDFD8 /* SphereShader */,
+				D879638D228E7C81002FDFD8 /* IShader.hpp */,
+				D8796395228E808A002FDFD8 /* EShaderType.hpp */,
+			);
+			path = Shader;
+			sourceTree = "<group>";
+		};
+		D879638E228E7D84002FDFD8 /* SphereShader */ = {
+			isa = PBXGroup;
+			children = (
+				D879638F228E7D93002FDFD8 /* SphereShader.cpp */,
+				D8796390228E7D93002FDFD8 /* SphereShader.hpp */,
+			);
+			path = SphereShader;
+			sourceTree = "<group>";
+		};
+		D8BA0D042287084E008B4580 /* Position */ = {
+			isa = PBXGroup;
+			children = (
+				D8BA0D0822870ACE008B4580 /* PixelPosition */,
+				D8BA0D0922870ADE008B4580 /* IPosition.hpp */,
+			);
+			path = Position;
+			sourceTree = "<group>";
+		};
+		D8BA0D0822870ACE008B4580 /* PixelPosition */ = {
+			isa = PBXGroup;
+			children = (
+				D8BA0D0522870AC9008B4580 /* PixelPosition.cpp */,
+				D8BA0D0622870AC9008B4580 /* PixelPosition.hpp */,
+			);
+			path = PixelPosition;
+			sourceTree = "<group>";
+		};
+		D8CE66D5228EAEB4005C2478 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D8CE66D7228EBDE5005C2478 /* PrototypeView */,
+				D8CE66D6228EAECD005C2478 /* IView.hpp */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D8CE66D7228EBDE5005C2478 /* PrototypeView */ = {
+			isa = PBXGroup;
+			children = (
+				D8CE66D8228EBDFA005C2478 /* PrototypeView.cpp */,
+				D8CE66D9228EBDFA005C2478 /* PrototypeView.hpp */,
+			);
+			path = PrototypeView;
 			sourceTree = "<group>";
 		};
 		D8EBCD40227C285000D08539 /* Window */ = {
@@ -209,7 +277,6 @@
 		D8F6D71C226DA85900E39805 /* 2019_cg_physics */ = {
 			isa = PBXGroup;
 			children = (
-				ED87FC252282058200056205 /* Camera */,
 				D8EBCD53227C75D800D08539 /* Factory */,
 				D858CACB227C27B900ABFE72 /* Components */,
 				D858CAC9227C279900ABFE72 /* Managers */,
@@ -243,15 +310,6 @@
 				ED01EBAA2284A6620088ED35 /* KeyboardManager.hpp */,
 			);
 			path = KeyBoard;
-			sourceTree = "<group>";
-		};
-		ED87FC252282058200056205 /* Camera */ = {
-			isa = PBXGroup;
-			children = (
-				ED87FC26228205AE00056205 /* Camera.cpp */,
-				ED87FC27228205AE00056205 /* Camera.hpp */,
-			);
-			path = Camera;
 			sourceTree = "<group>";
 		};
 		EDA3625D227DCC8000F5055C /* Stage */ = {
@@ -319,11 +377,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ED87FC28228205AE00056205 /* Camera.cpp in Sources */,
 				D8F6D71E226DA85900E39805 /* main.cpp in Sources */,
 				D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */,
 				D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */,
 				D8EBCD52227C320500D08539 /* DummyTriangleDrawing.cpp in Sources */,
+				D8CE66DA228EBDFA005C2478 /* PrototypeView.cpp in Sources */,
 				D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */,
 				D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */,
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
@@ -332,7 +390,9 @@
 				ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */,
 				EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */,
 				D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */,
+				D8BA0D0722870AC9008B4580 /* PixelPosition.cpp in Sources */,
 				D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */,
+				D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

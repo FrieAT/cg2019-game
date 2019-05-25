@@ -8,7 +8,18 @@ ObjectManager::ObjectManager(const Game &engine)
 
 void ObjectManager::Initialize()
 {
-    
+    auto it = m_Objects.begin();
+    while(it != m_Objects.end())
+    {
+        auto objects = (*it).second.begin();
+        while(objects != (*it).second.end()) {
+            (*objects)->InitComponents();
+            
+            objects++;
+        }
+        
+        it++;
+    }
 }
 
 void ObjectManager::Loop()

@@ -12,13 +12,14 @@
 class SphereDrawing : public IDrawing
 {
 public:
-    void Draw();
+    void Init();
+    void Draw(RenderManager* renderManager);
     void initializeColorValues();
     void initializeVertices();
     void initializeParameters();
     SphereDrawing();
     void organize(GLint posAttrib, GLint normAttrib);
-    void draw(GLdouble time, GLint colAttrib, GLint uniformAnim, GLint uniformMode, GLint shininessAttrib);
+    void draw(GLdouble time, GLint colAttrib, GLint shininessAttrib);
     void update(GLdouble time);
     bool checkFinished();
     void SetRadius(float radius);
@@ -30,7 +31,7 @@ public:
     float stageWidthHalf;
     float stageLengthHalf;
    
-    
+    ~SphereDrawing();
 
 
     

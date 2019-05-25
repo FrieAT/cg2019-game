@@ -1,5 +1,5 @@
 #include "SphereDrawing.hpp"
-#include "Camera.hpp"
+#include "RenderManager.hpp"
 #include <GL/glew.h> // include GLEW and new version of GL on Windows
 #include <GLFW/glfw3.h> // GLFW helper library
 #include <glm/glm.hpp>
@@ -9,14 +9,29 @@
 #include <stdlib.h>
 #include <time.h>
 #include "KeyboardManager.hpp"
+#include "IPosition.hpp"
+
+SphereDrawing::~SphereDrawing()
+{
+    deleteBufferAndArray();
+}
+
+void SphereDrawing::Init()
+{
+    auto renderManager = Game::GetEngine()->GetManager<RenderManager>();
+    
+    int posAttrib = renderManager->GetPositionAttrib();
+    int normAttrib = renderManager->GetNormalAttrib();
+    
+    organize(posAttrib,normAttrib);
+}
 
 /* generate and organize buffers */
-  Camera camera;
-void SphereDrawing::Draw()
+void SphereDrawing::Draw(RenderManager* renderManager)
 {
-
+    int colAttrib = renderManager->GetColorVtxAttrib();
+    int shininessAttrib = renderManager->GetShininessAttrib();
     
-    camera.initialize();
     ballCount = 0;
     /* start with two balls */
     //ballList.push_back(generateBall(camera.posAttrib,camera.normAttrib));
@@ -24,12 +39,12 @@ void SphereDrawing::Draw()
     /* draw the balls */
    //glBindVertexArray(0);
     time = glfwGetTime();
-    organize(camera.posAttrib,camera.normAttrib);
+    
     //generateBall(camera.posAttrib,camera.normAttrib);
     //for (int i = 0; i < ballList.size(); i++) {
         //SphereDrawing* current = &ballList[0];
        // current->
-    draw(time,camera.colAttrib,camera.uniformAnim, camera.uniformMode,camera.shininessAttrib);
+    draw(time,colAttrib,shininessAttrib);
 //
 //        if (current->checkFinished() == 1) {
 //            ballCount++;
@@ -88,18 +103,16 @@ void SphereDrawing::organize(GLint posAttrib, GLint normAttrib)
     glVertexAttribPointer(normAttrib, 3, GL_FLOAT, GL_TRUE,
                           6 * sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
     glBufferData(GL_ARRAY_BUFFER, sizeof(vtx), vtx, GL_STATIC_DRAW);
+    
+    glBindVertexArray(0);
 }
-void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint uniformAnim, GLint uniformMode, GLint shininessAttrib)
+void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint shininessAttrib)
 {
     update(time);
     /*binded*/
     glBindVertexArray(vao);
     //http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
-    glm::mat4 anim = glm::translate(glm::mat4(1.0f), glm::vec3(dx, dy, 0.0f));
-    /* define a transformation matrix for the animation */
-    glUniformMatrix4fv(uniformAnim, 1, GL_FALSE, glm::value_ptr(anim));
     //texture
-    glUniform1i(uniformMode, 0);
     glUniform1f(shininessAttrib, 300);
     glVertexAttrib3f(colAttrib, colorValues[0], colorValues[1], colorValues[2]); // set constant color attribute
     
@@ -125,6 +138,9 @@ void SphereDrawing::update(GLdouble time)
     
     anim = glm::translate(glm::mat4(1.0f), glm::vec3(dx,dy, 0.0f)); // anim matrix for the ball
     animPlane = glm::translate(glm::mat4(1.0f), glm::vec3(dx, 0.0f, 0.0f)); // anim matrix for the shadow
+    
+    auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
+    position->SetPosition(Vector3(dx,dy, 0.0f));
 }
 /* check if ball has reached the right border of the stage */
 bool SphereDrawing::checkFinished()

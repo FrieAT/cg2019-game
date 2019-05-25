@@ -17,11 +17,11 @@
 class StageDrawing : public IDrawing
 {
 public:
-    void Draw();
+    void Draw(RenderManager* renderManager);
   
     bool checkShaderProgramLinkStatus(GLuint programID);
     void organize(GLint posAttrib, GLint normAttrib);
-    void draw(GLint colAttrib, GLint uniformAnim, GLint uniformMode, GLint shininessAttrib);
+    void draw(GLint colAttrib, GLint shininessAttrib);
     void deleteBufferAndArray();
     const GLfloat STAGE_AREA_LENGTH_HALF = 2.0f;
     const GLfloat STAGE_AREA_WIDTH_HALF = 1.0f;

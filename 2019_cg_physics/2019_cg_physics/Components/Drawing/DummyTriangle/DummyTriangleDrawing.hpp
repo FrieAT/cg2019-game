@@ -11,7 +11,8 @@
 class DummyTriangleDrawing : public IDrawing
 {
 public:
-    void Draw();
+    void Init();
+    void Draw(RenderManager* renderManager);
   
 
     GLuint shaderProgram ;

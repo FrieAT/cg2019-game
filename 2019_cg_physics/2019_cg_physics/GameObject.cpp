@@ -1,8 +1,10 @@
 #include "GameObject.hpp"
 #include "IComponent.hpp"
+#include "Game.hpp"
 
 // GameObject constructor
 GameObject::GameObject(std::string strID, std::string strName)
+: _active(true)
 {
     this->m_strID = strID;
     this->m_strName = strName;
@@ -32,7 +34,18 @@ void GameObject::SetComponent(IComponent* pComponent)
     }
     m_Components[eComponentType] = pComponent;
     pComponent->SetAssignedGameObject(this);
-    pComponent->Init();
+    if(Game::GetEngine()->IsInitialized()) {
+        pComponent->Init();
+    }
+}
+
+void GameObject::InitComponents()
+{
+    auto i = m_Components.begin();
+    while(i != m_Components.end()) {
+        (*i).second->Init();
+        i++;
+    }
 }
 
 void GameObject::RemoveComponent(const EComponentType& eComponentType)

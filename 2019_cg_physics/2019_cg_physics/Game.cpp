@@ -10,6 +10,8 @@
 #include "PrimitiveObjects.hpp"
 #include "KeyboardManager.hpp"
 
+Game* Game::_engine = nullptr;
+
 Game::Game()
 : _shutdown(false)
 {
@@ -17,31 +19,45 @@ Game::Game()
 
 void Game::Initialize()
 {
-    // Adding Managers below.
-    AddManager<RenderManager>();
-    AddManager<WindowManager>();
-    AddManager<ObjectManager>();
-    AddManager<KeyboardManager>();
+    if(_engine != nullptr) {
+        throw std::exception();
+    }
+    _engine = this;
     
-    // Initialize Managers below.
-    this->initializeManagers();
+    // Adding Managers below.
+    AddManager<WindowManager>();
+    AddManager<KeyboardManager>();
+    AddManager<RenderManager>();
+    AddManager<ObjectManager>();
+    
+    // Adding GameObjects below.
+    auto camera = PrimitiveObjects::CreateCamera();
+    GetManager<ObjectManager>()->AddGameObject(camera);
+    /*
     auto stage = PrimitiveObjects::CreateStageDummy();
     GetManager<ObjectManager>()->AddGameObject(stage);
     // Adding GameObjects below.
-    auto cube = PrimitiveObjects::CreateCubeDummy();
-    GetManager<ObjectManager>()->AddGameObject(cube);
-    
+    //auto cube = PrimitiveObjects::CreateCubeDummy();
+    //GetManager<ObjectManager>()->AddGameObject(cube);
+    */
     auto triangle = PrimitiveObjects::CreateTriangleDummy();
     GetManager<ObjectManager>()->AddGameObject(triangle);
+    
     // Adding GameObjects below.
     auto spfhere = PrimitiveObjects::CreateSphereDummy();
     GetManager<ObjectManager>()->AddGameObject(spfhere);
+    /*
     auto spfhere1 = PrimitiveObjects::CreateSphereDummy();
      GetManager<ObjectManager>()->AddGameObject(spfhere1);
     auto spfhere2 = PrimitiveObjects::CreateSphereDummy();
     GetManager<ObjectManager>()->AddGameObject(spfhere2);
-    // Adding GameObjects below.
+    */
   
+    // Initialize Managers below.
+    this->initializeManagers();
+    
+    _initialized = true;
+    
     // Run the loop.
     while(!this->_shutdown) // TODO: Check for Keyboard Interrupt!
     {
