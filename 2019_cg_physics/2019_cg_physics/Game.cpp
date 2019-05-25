@@ -31,27 +31,28 @@ void Game::Initialize()
     AddManager<ObjectManager>();
     
     // Adding GameObjects below.
-    auto camera = PrimitiveObjects::CreateCamera();
-    GetManager<ObjectManager>()->AddGameObject(camera);
-    /*
+
+
     auto stage = PrimitiveObjects::CreateStageDummy();
     GetManager<ObjectManager>()->AddGameObject(stage);
     // Adding GameObjects below.
     //auto cube = PrimitiveObjects::CreateCubeDummy();
     //GetManager<ObjectManager>()->AddGameObject(cube);
-    */
+    
     auto triangle = PrimitiveObjects::CreateTriangleDummy();
     GetManager<ObjectManager>()->AddGameObject(triangle);
     
     // Adding GameObjects below.
     auto spfhere = PrimitiveObjects::CreateSphereDummy();
     GetManager<ObjectManager>()->AddGameObject(spfhere);
-    /*
+    
     auto spfhere1 = PrimitiveObjects::CreateSphereDummy();
      GetManager<ObjectManager>()->AddGameObject(spfhere1);
     auto spfhere2 = PrimitiveObjects::CreateSphereDummy();
     GetManager<ObjectManager>()->AddGameObject(spfhere2);
-    */
+    
+    auto camera = PrimitiveObjects::CreateCamera();
+    GetManager<ObjectManager>()->AddGameObject(camera);
   
     // Initialize Managers below.
     this->initializeManagers();
