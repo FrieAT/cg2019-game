@@ -33,7 +33,7 @@ private:
     
     GLuint _defaultShaderPrograms;
     
-    static void errorCallback(int error, const char*logText);
+   // static void errorCallback(int error, const char*logText);
 };
 
 #endif /* WindowManager_hpp */
