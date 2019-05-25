@@ -14,9 +14,8 @@
 #include "IPosition.hpp"
 
 PrototypeView::PrototypeView()
-: _projection(glm::perspective(glm::radians(60.0f), 4.0f / 3.0f, 0.1f, 10.0f))
 {
-    
+    _projection = glm::perspective(glm::radians(60.0f), 4.0f / 3.0f, 0.1f, 10.0f);
 }
 
 void PrototypeView::SetProjection(float fovy, float aspect, float zNear, float zFar)

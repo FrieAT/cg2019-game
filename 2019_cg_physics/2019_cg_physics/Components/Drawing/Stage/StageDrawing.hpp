@@ -26,17 +26,15 @@ public:
     void organize(GLint posAttrib, GLint normAttrib);
     void draw(GLint colAttrib, GLint shininessAttrib);
     void deleteBufferAndArray();
-    const GLfloat STAGE_AREA_LENGTH_HALF = 2.0f;
-    const GLfloat STAGE_AREA_WIDTH_HALF = 1.0f;
+ 
    
     
 private:
-   
-    
-    
+    const GLfloat STAGE_AREA_LENGTH_HALF = 2.5f;
+    const GLfloat STAGE_AREA_WIDTH_HALF = 1.0f;
     GLuint vao;
     GLuint vbo;
-   ;
+   
     GLfloat vtxStage[2 * (6 * 6 * 3 + 4 * 3 * 2)] = {
         -STAGE_AREA_LENGTH_HALF, -0.04f, -STAGE_AREA_WIDTH_HALF, 0.0f, -1.0f, 0.0f, /* bottom */
         STAGE_AREA_LENGTH_HALF, -0.04f, -STAGE_AREA_WIDTH_HALF, 0.0f, -1.0f, 0.0f,

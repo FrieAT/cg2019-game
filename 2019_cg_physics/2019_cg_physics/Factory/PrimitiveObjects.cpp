@@ -1,6 +1,6 @@
 #include "PrimitiveObjects.hpp"
 #include "ObjectManager.hpp"
-#include "DummyTriangleDrawing.hpp"
+#include "CubeDrawing.hpp"
 #include "SphereDrawing.hpp"
 #include "StageDrawing.hpp"
 #include "PixelPosition.hpp"
@@ -21,8 +21,9 @@ GameObject * PrimitiveObjects::CreateTriangleDummy()
 {
     GameObject * g = new GameObject("Triangle", "Opaque");
     
+    g->SetComponent(new CubeDrawing());
     g->SetComponent(new PixelPosition());
-    g->SetComponent(new DummyTriangleDrawing());
+    //g->SetComponent(new DummyTriangleDrawing());
     
     return g;
 }

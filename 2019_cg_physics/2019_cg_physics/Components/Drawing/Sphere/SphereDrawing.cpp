@@ -33,11 +33,6 @@ void SphereDrawing::Draw(RenderManager* renderManager)
     int shininessAttrib = renderManager->GetShininessAttrib();
     
     ballCount = 0;
-    /* start with two balls */
-    //ballList.push_back(generateBall(camera.posAttrib,camera.normAttrib));
-   // ballList.push_back(generateBall(camera.posAttrib,camera.normAttrib));
-    /* draw the balls */
-   //glBindVertexArray(0);
     time = glfwGetTime();
     
     //generateBall(camera.posAttrib,camera.normAttrib);
@@ -118,17 +113,7 @@ void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint shininessAttrib)
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 36 * 18 * 2);
     
-//    if (cx + dx + _radius >= -stageLengthHalf) // for efficiency; would be overlayed by black surface anyway
-//    {
-//        glUniformMatrix4fv(uniformAnim, 1, GL_FALSE, glm::value_ptr(animPlane));
-//
-//        glVertexAttrib3f(colAttrib, std::max(colorValues[0], BRIGHTNESS_FACTOR * dy / MAX_AMP),
-//                         std::max(colorValues[1], BRIGHTNESS_FACTOR * dy / MAX_AMP),
-//                         std::max(colorValues[2], BRIGHTNESS_FACTOR * dy / MAX_AMP));
-//        // one of the colorValues[i] is 1, the others 0 -> max(...) leaves the 1 unchanged and overwrites the others
-//
-//        glDrawArrays(GL_TRIANGLE_FAN, 36 * 18 * 2, 38);
-//    }
+
 }
 void SphereDrawing::update(GLdouble time)
 {

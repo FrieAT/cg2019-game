@@ -53,6 +53,11 @@ void Game::Initialize()
     
     auto camera = PrimitiveObjects::CreateCamera();
     GetManager<ObjectManager>()->AddGameObject(camera);
+    for(int i = 0; i < 10; i++) {
+        auto spfhere = PrimitiveObjects::CreateSphereDummy();
+        GetManager<ObjectManager>()->AddGameObject(spfhere);
+    }
+    // Adding GameObjects below.
   
     // Initialize Managers below.
     this->initializeManagers();
