@@ -17,6 +17,9 @@
 class StageDrawing : public IDrawing
 {
 public:
+    ~StageDrawing();
+    
+    void Init();
     void Draw(RenderManager* renderManager);
   
     bool checkShaderProgramLinkStatus(GLuint programID);

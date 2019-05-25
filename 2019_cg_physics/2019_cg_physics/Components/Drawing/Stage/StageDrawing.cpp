@@ -14,15 +14,25 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "RenderManager.hpp"
 
-void StageDrawing::Draw(RenderManager* renderManager)
-
+StageDrawing::~StageDrawing()
 {
+    deleteBufferAndArray();
+}
+
+void StageDrawing::Init()
+{
+    auto renderManager = Game::GetEngine()->GetManager<RenderManager>();
     int posAttrib = renderManager->GetPositionAttrib();
     int normAttrib = renderManager->GetNormalAttrib();
+    organize(posAttrib, normAttrib);
+}
+
+void StageDrawing::Draw(RenderManager* renderManager)
+{
     int colAttrib = renderManager->GetColorVtxAttrib();
     int shininessAttrib = renderManager->GetShininessAttrib();
     
-    organize(posAttrib, normAttrib);
+    
     draw(colAttrib, shininessAttrib);
        // glBindVertexArray(0);
    
