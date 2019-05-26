@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D804214F2299D6C800BE3E8D /* DefaultShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D804214D2299D6C800BE3E8D /* DefaultShader.cpp */; };
 		D82D408A226EE90200F5B73D /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82D4088226EE90200F5B73D /* Game.cpp */; };
 		D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82D408B226EE9B000F5B73D /* WindowManager.cpp */; };
 		D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAB72279C06F00ABFE72 /* Exception.cpp */; };
@@ -42,6 +43,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D804214B2299D13500BE3E8D /* EShaderUniform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EShaderUniform.hpp; sourceTree = "<group>"; };
+		D804214D2299D6C800BE3E8D /* DefaultShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DefaultShader.cpp; sourceTree = "<group>"; };
+		D804214E2299D6C800BE3E8D /* DefaultShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DefaultShader.hpp; sourceTree = "<group>"; };
 		D82D4088226EE90200F5B73D /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		D82D4089226EE90200F5B73D /* Game.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Game.hpp; sourceTree = "<group>"; };
 		D82D408B226EE9B000F5B73D /* WindowManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WindowManager.cpp; sourceTree = "<group>"; };
@@ -57,6 +61,7 @@
 		D858CAC3227C264E00ABFE72 /* GameObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
 		D858CAC7227C279200ABFE72 /* IComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IComponent.hpp; sourceTree = "<group>"; };
 		D858CAC8227C279200ABFE72 /* EComponentType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EComponentType.hpp; sourceTree = "<group>"; };
+		D87037E32299CEB900B51FD8 /* EShaderAttrib.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EShaderAttrib.hpp; sourceTree = "<group>"; };
 		D879638D228E7C81002FDFD8 /* IShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IShader.hpp; sourceTree = "<group>"; };
 		D879638F228E7D93002FDFD8 /* SphereShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SphereShader.cpp; sourceTree = "<group>"; };
 		D8796390228E7D93002FDFD8 /* SphereShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SphereShader.hpp; sourceTree = "<group>"; };
@@ -103,6 +108,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D804214C2299D6BD00BE3E8D /* DefaultShader */ = {
+			isa = PBXGroup;
+			children = (
+				D804214D2299D6C800BE3E8D /* DefaultShader.cpp */,
+				D804214E2299D6C800BE3E8D /* DefaultShader.hpp */,
+			);
+			path = DefaultShader;
+			sourceTree = "<group>";
+		};
 		D858CAC9227C279900ABFE72 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -151,9 +165,12 @@
 		D879638C228E7C71002FDFD8 /* Shader */ = {
 			isa = PBXGroup;
 			children = (
+				D804214C2299D6BD00BE3E8D /* DefaultShader */,
 				D879638E228E7D84002FDFD8 /* SphereShader */,
 				D879638D228E7C81002FDFD8 /* IShader.hpp */,
 				D8796395228E808A002FDFD8 /* EShaderType.hpp */,
+				D87037E32299CEB900B51FD8 /* EShaderAttrib.hpp */,
+				D804214B2299D13500BE3E8D /* EShaderUniform.hpp */,
 			);
 			path = Shader;
 			sourceTree = "<group>";
@@ -377,6 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D804214F2299D6C800BE3E8D /* DefaultShader.cpp in Sources */,
 				D8FC4136229991FB00614AE5 /* PrototypeView.cpp in Sources */,
 				D8F6D71E226DA85900E39805 /* main.cpp in Sources */,
 				D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */,

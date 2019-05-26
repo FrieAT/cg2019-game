@@ -43,14 +43,6 @@ void Game::Initialize()
     GetManager<ObjectManager>()->AddGameObject(triangle);
     
     // Adding GameObjects below.
-    auto spfhere = PrimitiveObjects::CreateSphereDummy();
-    GetManager<ObjectManager>()->AddGameObject(spfhere);
-    
-    auto spfhere1 = PrimitiveObjects::CreateSphereDummy();
-     GetManager<ObjectManager>()->AddGameObject(spfhere1);
-    auto spfhere2 = PrimitiveObjects::CreateSphereDummy();
-    GetManager<ObjectManager>()->AddGameObject(spfhere2);
-    
     auto camera = PrimitiveObjects::CreateCamera();
     GetManager<ObjectManager>()->AddGameObject(camera);
     for(int i = 0; i < 10; i++) {

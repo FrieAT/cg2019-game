@@ -97,6 +97,24 @@ void RenderManager::Initialize()
                 _shaderPrograms.insert(std::pair<const std::string, unsigned int>(shaderId, shaderProgram));
             }
             
+            //Update attribute ids
+            for(int i = 0; i < (int)EShaderAttrib::MaxItem; i++) {
+                const char* attribStr = IShader::AttribStr((EShaderAttrib)i);
+                int attribute = glGetAttribLocation(shaderProgram, attribStr);
+                if(attribute != -1) {
+                    shader->AddAttrib((EShaderAttrib)i, attribute);
+                }
+            }
+            
+            //Update uniform ids
+            for(int i = 0; i < (int)EShaderUniform::MaxItem; i++) {
+                const char* uniformStr = IShader::UniformStr((EShaderUniform)i);
+                int uniforme = glGetUniformLocation(shaderProgram, uniformStr);
+                if(uniforme != -1) {
+                    shader->AddUniform((EShaderUniform)i, uniforme);
+                }
+            }
+            
             shader->SetShaderProgram(shaderProgram);
         }
         it++;
@@ -135,51 +153,40 @@ void RenderManager::Loop()
                 GLuint shaderProgram;
                 if(shader != nullptr) {
                     shaderProgram = (GLuint)shader->GetShaderProgram();
-                }
-                else {
-                    shaderProgram = windowManager->getDefaultShaderProgram();
-                }
-                glUseProgram(shaderProgram);
-                
-                //Camera Uniforms
-                GLint uniformCam = getUniformId(shaderProgram, "cameraPosition");
-                if(uniformCam != -1) {
-                    auto cameraVecPosition = cameraPosition->GetPosition();
-                    glUniform3f(uniformCam, cameraVecPosition.x, cameraVecPosition.y, cameraVecPosition.z);
-                }
-                GLint uniformView = getUniformId(shaderProgram, "view");
-                if(uniformCam != -1) {
-                    auto cameraMat4View = cameraView->GetView();
-                    glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(cameraMat4View));
-                }
-                GLint uniformProj = getUniformId(shaderProgram, "proj");
-                if(uniformCam != -1) {
-                    auto cameraMat4Projection = cameraView->GetProjection();
-                    glUniformMatrix4fv(uniformProj, 1, GL_FALSE, glm::value_ptr(cameraMat4Projection));
-                }
-                
-                //Shader Attribs.
-                //TODO: Move to IView.
-                //TODO: Refactoring needed.
-                posAttrib = getAttribId(shaderProgram, "positionIn");
-                normAttrib = getAttribId(shaderProgram, "normalIn");
-                colAttrib = getAttribId(shaderProgram, "colorVtxIn");
-                shininessAttrib = getUniformId(shaderProgram, "shininess");
-                
-                auto drawing = dynamic_cast<IDrawing*>((*it)->GetComponent(EComponentType::Drawing));
-                auto position = dynamic_cast<IPosition*>((*it)->GetComponent(EComponentType::Position));
-                
-                if(position != nullptr && drawing != nullptr)
-                {
-                    glm::mat4 anim = glm::translate(Matrix4(1.0f), position->GetPosition());
-                    /* define a transformation matrix for the animation */
-                    GLint uniformAnim = getUniformId(shaderProgram, UniformAnim.c_str());
-                    if(uniformAnim != -1) {
-                        glUniformMatrix4fv(uniformAnim, 1, GL_FALSE, glm::value_ptr(anim));
+                    glUseProgram(shaderProgram);
+                    
+                    //Camera Uniforms
+                    GLint uniformCam = shader->GetUniform(EShaderUniform::CameraPosition);
+                    if(uniformCam != -1) {
+                        auto cameraVecPosition = cameraPosition->GetPosition();
+                        glUniform3f(uniformCam, cameraVecPosition.x, cameraVecPosition.y, cameraVecPosition.z);
+                    }
+                    GLint uniformView = shader->GetUniform(EShaderUniform::CameraView);
+                    if(uniformCam != -1) {
+                        auto cameraMat4View = cameraView->GetView();
+                        glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(cameraMat4View));
+                    }
+                    GLint uniformProj = shader->GetUniform(EShaderUniform::CameraProjection);
+                    if(uniformCam != -1) {
+                        auto cameraMat4Projection = cameraView->GetProjection();
+                        glUniformMatrix4fv(uniformProj, 1, GL_FALSE, glm::value_ptr(cameraMat4Projection));
                     }
                     
+                    auto drawing = dynamic_cast<IDrawing*>((*it)->GetComponent(EComponentType::Drawing));
+                    auto position = dynamic_cast<IPosition*>((*it)->GetComponent(EComponentType::Position));
                     
-                    drawing->Draw(this);
+                    if(position != nullptr && drawing != nullptr)
+                    {
+                        glm::mat4 anim = glm::translate(Matrix4(1.0f), position->GetPosition());
+                        /* define a transformation matrix for the animation */
+                        GLint uniformAnim = shader->GetUniform(EShaderUniform::Model);
+                        if(uniformAnim != -1) {
+                            glUniformMatrix4fv(uniformAnim, 1, GL_FALSE, glm::value_ptr(anim));
+                        }
+                        
+                        
+                        drawing->Draw(this);
+                    }
                 }
                 it++;
             }
@@ -204,6 +211,7 @@ GLint RenderManager::getAttribId(GLint shaderProgram, const char* attributeName)
 {
     GLint attribute = glGetAttribLocation(shaderProgram, attributeName);
     //TODO: exception handling if attribute -1
+    std::cout << "For Attribute " << attributeName << " given id is: " << attribute << std::endl;
     return attribute;
 }
 
