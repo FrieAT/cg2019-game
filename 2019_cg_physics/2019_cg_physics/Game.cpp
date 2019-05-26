@@ -58,7 +58,7 @@ void Game::Initialize()
     
 
     this->initializeManagers();
-    
+   
     _initialized = true;
     
     
@@ -71,7 +71,7 @@ void Game::Initialize()
         currentTime = glfwGetTime();
         _deltaTime = currentTime - lastTime;
         lastTime = currentTime;
-        
+   
         this->loopManagers();
         
         if(maxFPS >= _deltaTime) {

@@ -18,7 +18,7 @@ public:
     void Loop();
     void SetGravity(float gravity) { _gravity = gravity; }
     float GetGravity() { return _gravity; }
-    
+   
     PhysicsManager(const Game &engine);
 private:
     float _gravity = 8.34;
