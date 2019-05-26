@@ -12,7 +12,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "RenderManager.hpp"
+#include "IShader.hpp"
 
 StageDrawing::~StageDrawing()
 {
@@ -21,21 +21,21 @@ StageDrawing::~StageDrawing()
 
 void StageDrawing::Init()
 {
-    auto renderManager = Game::GetEngine()->GetManager<RenderManager>();
-    int posAttrib = renderManager->GetPositionAttrib();
-    int normAttrib = renderManager->GetNormalAttrib();
+    auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
+    int posAttrib = shader->GetAttrib(EShaderAttrib::Position);
+    int normAttrib = shader->GetAttrib(EShaderAttrib::Normal);
+    
     organize(posAttrib, normAttrib);
 }
 
 void StageDrawing::Draw(RenderManager* renderManager)
 {
-    int colAttrib = renderManager->GetColorVtxAttrib();
-    int shininessAttrib = renderManager->GetShininessAttrib();
-    
+    auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
+    int colAttrib = shader->GetAttrib(EShaderAttrib::Color);
+    int shininessAttrib = shader->GetUniform(EShaderUniform::Shininess);
     
     draw(colAttrib, shininessAttrib);
        // glBindVertexArray(0);
-   
 }
 void StageDrawing::organize(GLint posAttrib, GLint normAttrib)
 {

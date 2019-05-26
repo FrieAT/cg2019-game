@@ -6,6 +6,7 @@
 #include "PixelPosition.hpp"
 #include "SphereShader.hpp"
 #include "PrototypeView.hpp"
+#include "DefaultShader.hpp"
 #include "LinearMovement.hpp"
 #include "IPlayer.hpp"
 
@@ -19,17 +20,18 @@ GameObject * PrimitiveObjects::CreateStageDummy()
     
     return g;
 }
-GameObject * PrimitiveObjects::CreateTriangleDummy()
+GameObject * PrimitiveObjects::CreateCubeDummy()
 {
-    GameObject * g = new GameObject("Triangle", "Opaque");
+    GameObject * g = new GameObject("Cube", "Opaque");
     
+    g->SetComponent(new SphereShader());
     g->SetComponent(new CubeDrawing());
     g->SetComponent(new PixelPosition());
     auto movement = new LinearMovement();
-    movement->SetSpeed(0.23f);
+    movement->SetSpeed(1.0f);
     g->SetComponent(movement);
     g->SetComponent(new IPlayer());
-    //g->SetComponent(new DummyTriangleDrawing());
+ 
     
     return g;
 }

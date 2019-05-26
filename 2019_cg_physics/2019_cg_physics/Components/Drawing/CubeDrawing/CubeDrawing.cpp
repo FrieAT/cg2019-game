@@ -15,7 +15,7 @@
 #include "StageDrawing.hpp"
 #include "IPosition.hpp"
 #include "Game.hpp"
-#include "RenderManager.hpp"
+#include "IShader.hpp"
 
 StageDrawing stage;
 
@@ -26,18 +26,22 @@ CubeDrawing::~CubeDrawing()
 
 void CubeDrawing::Init()
 {
-    auto renderManager = Game::GetEngine()->GetManager<RenderManager>();
-    int posAttrib = renderManager->GetPositionAttrib();
-    //int normAttrib = renderManager->GetNormalAttrib();
+    auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
+    int posAttrib = shader->GetAttrib(EShaderAttrib::Position);
+    //int normAttrib = shader->GetAttrib(EShaderAttrib::Normal);
     
     organize(posAttrib);
 }
 
 void CubeDrawing::Draw(RenderManager* renderManager)
 {
-    int colAttrib = renderManager->GetColorVtxAttrib();
-    int shininessAttrib = renderManager->GetShininessAttrib();
+    auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
+    int colAttrib = shader->GetAttrib(EShaderAttrib::Color);
+    int shininessAttrib = shader->GetUniform(EShaderUniform::Shininess);
     
+    //dir = KeyboardManager::GetMoveDirection();
+    
+   // movement();
     draw(colAttrib, shininessAttrib);
 }
 
@@ -101,8 +105,8 @@ void CubeDrawing::draw(GLint colAttrib, GLint shininessAttrib)
 {
     glBindVertexArray(myVAO);
     
-    auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
-    position->SetPosition(Vector3(curTrans[0], curTrans[1], curTrans[2]));
+//    auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
+//    position->SetPosition(Vector3(curTrans[0], curTrans[1], curTrans[2]));
  
     glUniform1f(shininessAttrib,300);
     
@@ -117,3 +121,25 @@ void CubeDrawing::deleteBufferAndArray()
     glDeleteBuffers(1, &myVBO);
     glDeleteVertexArrays(1, &myVAO);
 }
+//void CubeDrawing::movement(){
+//    
+//    if (dir == 0) {
+//        if ((curTrans[0] + SPEED) <= (STAGE_AREA_LENGTH_HALF - SPEED))
+//            curTrans[0] = curTrans[0] + SPEED;
+//        
+//    } else if (dir == 1) {
+//        if ((curTrans[0] - SPEED) >= (-STAGE_AREA_LENGTH_HALF + SPEED))
+//            curTrans[0] = curTrans[0] - SPEED;
+//      
+//    } else if (dir == 2) {
+//        if ((curTrans[2] + SPEED) <= (STAGE_AREA_WIDTH_HALF_BOTTOM - SPEED))
+//            curTrans[2] = curTrans[2] + SPEED;
+//        
+//    
+//    } else if (dir == 3) {
+//        if ((curTrans[2] - SPEED) >= (-STAGE_AREA_WIDTH_HALF + SPEED))
+//            curTrans[2] = curTrans[2] - SPEED;
+//        
+//    
+//    }
+//}

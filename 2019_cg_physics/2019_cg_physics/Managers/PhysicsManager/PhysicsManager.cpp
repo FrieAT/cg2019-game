@@ -37,6 +37,7 @@ void PhysicsManager::Loop()
             Vector3 velocity = movement->GetVelocity() * movement->GetSpeed();
             
             //TODO: Multiply velocity with deltaTime. deltaTime is time since last frame.
+            velocity = velocity* Game::GetEngine()->GetDeltaTime();
             
             position->AddPosition(velocity);
         }
@@ -44,3 +45,4 @@ void PhysicsManager::Loop()
         it++;
     }
 }
+

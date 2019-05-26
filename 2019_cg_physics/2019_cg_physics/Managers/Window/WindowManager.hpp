@@ -16,8 +16,6 @@ public:
     
     GLFWwindow * GetWindow();
     
-    GLuint getDefaultShaderProgram() { return _defaultShaderPrograms; }
-    
     WindowManager(const Game & engine);
     ~WindowManager() = default;
 private:

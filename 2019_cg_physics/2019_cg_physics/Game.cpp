@@ -1,3 +1,6 @@
+
+#include <chrono>
+#include <thread>
 #include <GL/glew.h> // include GLEW and new version of GL on Windows
 #include <GLFW/glfw3.h> // GLFW helper library
 
@@ -10,7 +13,8 @@
 #include "PrimitiveObjects.hpp"
 #include "KeyboardManager.hpp"
 #include "PhysicsManager.hpp"
-
+#include "SphereDrawing.hpp"
+SphereDrawing sphereDrawing;
 Game* Game::_engine = nullptr;
 
 Game::Game()
@@ -31,45 +35,48 @@ void Game::Initialize()
     AddManager<RenderManager>();
     AddManager<ObjectManager>();
     AddManager<PhysicsManager>();
-    
     // Adding GameObjects below.
-
-
+    
+    
     auto stage = PrimitiveObjects::CreateStageDummy();
     GetManager<ObjectManager>()->AddGameObject(stage);
-    // Adding GameObjects below.
-    //auto cube = PrimitiveObjects::CreateCubeDummy();
-    //GetManager<ObjectManager>()->AddGameObject(cube);
+  
     
-    auto triangle = PrimitiveObjects::CreateTriangleDummy();
-    //GetManager<ObjectManager>()->AddGameObject(triangle);
+    auto triangle = PrimitiveObjects::CreateCubeDummy();
+    GetManager<ObjectManager>()->AddGameObject(triangle);
     
     // Adding GameObjects below.
-    auto spfhere = PrimitiveObjects::CreateSphereDummy();
-    GetManager<ObjectManager>()->AddGameObject(spfhere);
-    
-    auto spfhere1 = PrimitiveObjects::CreateSphereDummy();
-     GetManager<ObjectManager>()->AddGameObject(spfhere1);
-    auto spfhere2 = PrimitiveObjects::CreateSphereDummy();
-    GetManager<ObjectManager>()->AddGameObject(spfhere2);
-    
     auto camera = PrimitiveObjects::CreateCamera();
     GetManager<ObjectManager>()->AddGameObject(camera);
-    for(int i = 0; i < 10; i++) {
+    for(int i = 0; i < 3; i++) {
         auto spfhere = PrimitiveObjects::CreateSphereDummy();
         GetManager<ObjectManager>()->AddGameObject(spfhere);
+    
+    
     }
-    // Adding GameObjects below.
-  
-    // Initialize Managers below.
+
+    
+
     this->initializeManagers();
     
     _initialized = true;
     
+    
+    double lastTime = 0;
+    double currentTime;
+    double maxFPS = 1.0 / 50.0; // limiting FPS to 50 - 65 FPS!
     // Run the loop.
     while(!this->_shutdown) // TODO: Check for Keyboard Interrupt!
     {
+        currentTime = glfwGetTime();
+        _deltaTime = currentTime - lastTime;
+        lastTime = currentTime;
+        
         this->loopManagers();
+        
+        if(maxFPS >= _deltaTime) {
+            std::this_thread::sleep_for(std::chrono::milliseconds((long)((maxFPS - _deltaTime) * 1000.0)));
+        }
     }
 }
 
