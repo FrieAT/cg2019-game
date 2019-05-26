@@ -22,17 +22,8 @@ public:
         return const_cast<const IView*>(_currentCamera);
     }
     
-    //TODO: Move to IView
-    //TODO: Refactoring needed.
-    int GetPositionAttrib() { return posAttrib; }
-    int GetNormalAttrib() { return normAttrib; }
-    int GetColorVtxAttrib() { return colAttrib; }
-    int GetShininessAttrib() { return shininessAttrib; }
-    
     RenderManager(const Game &engine);
     ~RenderManager() = default;
-    
-    const std::string UniformAnim = "anim";
 private:
     GLint getUniformId(GLint shaderProgram, const char* uniformName);
     GLint getAttribId(GLint shaderProgram, const char* attributeName);
@@ -42,13 +33,6 @@ private:
     
     IView* _currentCamera;
     std::map<std::string, unsigned int> _shaderPrograms;
-    
-    //TODO: Move to IView
-    //TODO: Refactoring needed.
-    int posAttrib;
-    int normAttrib;
-    int colAttrib;
-    int shininessAttrib;
 };
 
 #endif /* RenderManager_hpp */

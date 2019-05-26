@@ -6,8 +6,12 @@
 #include "PixelPosition.hpp"
 #include "SphereShader.hpp"
 #include "PrototypeView.hpp"
+
 #include "LinearMovement.hpp"
 #include "IPlayer.hpp"
+
+#include "DefaultShader.hpp"
+
 
 GameObject * PrimitiveObjects::CreateStageDummy()
 {
@@ -23,6 +27,7 @@ GameObject * PrimitiveObjects::CreateTriangleDummy()
 {
     GameObject * g = new GameObject("Triangle", "Opaque");
     
+    g->SetComponent(new SphereShader());
     g->SetComponent(new CubeDrawing());
     g->SetComponent(new PixelPosition());
     auto movement = new LinearMovement();

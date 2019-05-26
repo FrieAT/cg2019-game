@@ -15,7 +15,7 @@
 #include "StageDrawing.hpp"
 #include "IPosition.hpp"
 #include "Game.hpp"
-#include "RenderManager.hpp"
+#include "IShader.hpp"
 
 StageDrawing stage;
 
@@ -26,17 +26,18 @@ CubeDrawing::~CubeDrawing()
 
 void CubeDrawing::Init()
 {
-    auto renderManager = Game::GetEngine()->GetManager<RenderManager>();
-    int posAttrib = renderManager->GetPositionAttrib();
-    //int normAttrib = renderManager->GetNormalAttrib();
+    auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
+    int posAttrib = shader->GetAttrib(EShaderAttrib::Position);
+    //int normAttrib = shader->GetAttrib(EShaderAttrib::Normal);
     
     organize(posAttrib);
 }
 
 void CubeDrawing::Draw(RenderManager* renderManager)
 {
-    int colAttrib = renderManager->GetColorVtxAttrib();
-    int shininessAttrib = renderManager->GetShininessAttrib();
+    auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
+    int colAttrib = shader->GetAttrib(EShaderAttrib::Color);
+    int shininessAttrib = shader->GetUniform(EShaderUniform::Shininess);
     
     draw(colAttrib, shininessAttrib);
 }
