@@ -1,3 +1,5 @@
+#include <chrono>
+#include <thread>
 #include <GL/glew.h> // include GLEW and new version of GL on Windows
 #include <GLFW/glfw3.h> // GLFW helper library
 
@@ -56,10 +58,22 @@ void Game::Initialize()
     
     _initialized = true;
     
+    
+    double lastTime = 0;
+    double currentTime;
+    double maxFPS = 1.0 / 50.0; // limiting FPS to 50 - 65 FPS!
     // Run the loop.
     while(!this->_shutdown) // TODO: Check for Keyboard Interrupt!
     {
+        currentTime = glfwGetTime();
+        _deltaTime = currentTime - lastTime;
+        lastTime = currentTime;
+        
         this->loopManagers();
+        
+        if(maxFPS >= _deltaTime) {
+            std::this_thread::sleep_for(std::chrono::milliseconds((long)((maxFPS - _deltaTime) * 1000.0)));
+        }
     }
 }
 
