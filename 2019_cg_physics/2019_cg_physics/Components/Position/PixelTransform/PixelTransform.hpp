@@ -6,8 +6,8 @@
 //  Copyright © 2019 Universität Salzburg. All rights reserved.
 //
 
-#ifndef PixelPosition_hpp
-#define PixelPosition_hpp
+#ifndef PixelTransform_hpp
+#define PixelTransform_hpp
 
 #include "IPosition.hpp"
 
@@ -32,4 +32,4 @@ private:
     Vector3 _rotation;
 };
 
-#endif /* PixelPosition_hpp */
+#endif /* PixelTransform_hpp */
