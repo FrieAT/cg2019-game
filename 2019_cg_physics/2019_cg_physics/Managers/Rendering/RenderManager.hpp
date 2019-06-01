@@ -30,6 +30,7 @@ private:
     GLuint getShaderIdByType(EShaderType shaderType);
     bool checkShaderCompileStatus(GLuint shaderID);
     bool checkShaderProgramLinkStatus(GLuint programID);
+    void updateTransformRecursive(GameObject* transform, Matrix4 parentTransform);
     
     IView* _currentCamera;
     std::map<std::string, unsigned int> _shaderPrograms;

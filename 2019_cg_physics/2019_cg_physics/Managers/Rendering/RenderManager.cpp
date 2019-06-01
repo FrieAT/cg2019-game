@@ -172,32 +172,7 @@ void RenderManager::Loop()
                         glUniformMatrix4fv(uniformProj, 1, GL_FALSE, glm::value_ptr(cameraMat4Projection));
                     }
                     
-                    auto drawing = dynamic_cast<IDrawing*>((*it)->GetComponent(EComponentType::Drawing));
-                    auto position = dynamic_cast<IPosition*>((*it)->GetComponent(EComponentType::Position));
-                    
-                    if(position != nullptr && drawing != nullptr)
-                    {
-                        Vector3 vecPosition = position->GetPosition();
-                        Vector3 vecRotation = position->GetRotation();
-                        Vector3 vecScale = position->GetScale();
-                        
-                        Matrix4 modelRotation = glm::rotate(Matrix4(1.0f), vecRotation.x, Vector3(1.0, 0.0, 0.0));
-                        modelRotation = glm::rotate(modelRotation, vecRotation.y, Vector3(0.0, 1.0, 0.0));
-                        modelRotation = glm::rotate(modelRotation, vecRotation.z, Vector3(0.0, 0.0, 1.0));
-                        Matrix4 modelTranslation = glm::translate(Matrix4(1.0f), vecPosition);
-                        Matrix4 modelScale = glm::scale(Matrix4(1.0f), vecScale);
-                        
-                        Matrix4 anim = modelScale * modelRotation * modelTranslation;
-                        
-                        /* define a transformation matrix for the animation */
-                        GLint uniformAnim = shader->GetUniform(EShaderUniform::Model);
-                        if(uniformAnim != -1) {
-                            glUniformMatrix4fv(uniformAnim, 1, GL_FALSE, glm::value_ptr(anim));
-                        }
-                        
-                        
-                        drawing->Draw(this);
-                    }
+                    updateTransformRecursive((*it), Matrix4(1.0));
                 }
                 it++;
             }
@@ -267,4 +242,44 @@ bool RenderManager::checkShaderProgramLinkStatus(GLuint programID)
         return false;
     }
     return true;
+}
+
+void RenderManager::updateTransformRecursive(GameObject* transform, Matrix4 parentTransform)
+{
+    auto shader = dynamic_cast<IShader*>(transform->GetComponent(EComponentType::Shader));
+    auto drawing = dynamic_cast<IDrawing*>(transform->GetComponent(EComponentType::Drawing));
+    auto position = dynamic_cast<IPosition*>(transform->GetComponent(EComponentType::Position));
+    
+    if(position != nullptr && drawing != nullptr)
+    {
+        Vector3 vecPosition = position->GetPosition();
+        Vector3 vecRotation = position->GetRotation();
+        Vector3 vecScale = position->GetScale();
+        
+        Matrix4 modelRotation = glm::rotate(Matrix4(1.0f), vecRotation.x, Vector3(1.0, 0.0, 0.0));
+        modelRotation = glm::rotate(modelRotation, vecRotation.y, Vector3(0.0, 1.0, 0.0));
+        modelRotation = glm::rotate(modelRotation, vecRotation.z, Vector3(0.0, 0.0, 1.0));
+        Matrix4 modelTranslation = glm::translate(Matrix4(1.0f), vecPosition);
+        Matrix4 modelScale = glm::scale(Matrix4(1.0f), vecScale);
+        
+        Matrix4 anim = modelScale * modelRotation * modelTranslation;
+        
+        /* define a transformation matrix for the animation */
+        GLint uniformAnim = shader->GetUniform(EShaderUniform::Model);
+        if(uniformAnim != -1) {
+            glUniformMatrix4fv(uniformAnim, 1, GL_FALSE, glm::value_ptr(anim));
+        }
+        
+        drawing->Draw(this);
+        
+        if(transform->HasChilds()) {
+            parentTransform = parentTransform * anim;
+            
+            auto it = transform->GetChildsIterator();
+            while(it != transform->GetChildsIteratorEnd()) {
+                updateTransformRecursive((*it), parentTransform);
+                it++;
+            }
+        }
+    }
 }
