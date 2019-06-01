@@ -16,7 +16,7 @@
 		D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CABF227C261100ABFE72 /* ObjectManager.cpp */; };
 		D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAC2227C264E00ABFE72 /* GameObject.cpp */; };
 		D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D879638F228E7D93002FDFD8 /* SphereShader.cpp */; };
-		D8BA0D0722870AC9008B4580 /* PixelPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8BA0D0522870AC9008B4580 /* PixelPosition.cpp */; };
+		D8BA0D0722870AC9008B4580 /* PixelTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8BA0D0522870AC9008B4580 /* PixelTransform.cpp */; };
 		D8D0CA1E229AC8C000B8DCC4 /* SteveDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D0CA1C229AC8C000B8DCC4 /* SteveDrawing.cpp */; };
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
 		D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD4B227C2F7000D08539 /* SphereDrawing.cpp */; };
@@ -67,8 +67,8 @@
 		D879638F228E7D93002FDFD8 /* SphereShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SphereShader.cpp; sourceTree = "<group>"; };
 		D8796390228E7D93002FDFD8 /* SphereShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SphereShader.hpp; sourceTree = "<group>"; };
 		D8796395228E808A002FDFD8 /* EShaderType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EShaderType.hpp; sourceTree = "<group>"; };
-		D8BA0D0522870AC9008B4580 /* PixelPosition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PixelPosition.cpp; sourceTree = "<group>"; };
-		D8BA0D0622870AC9008B4580 /* PixelPosition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PixelPosition.hpp; sourceTree = "<group>"; };
+		D8BA0D0522870AC9008B4580 /* PixelTransform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PixelTransform.cpp; sourceTree = "<group>"; };
+		D8BA0D0622870AC9008B4580 /* PixelTransform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PixelTransform.hpp; sourceTree = "<group>"; };
 		D8BA0D0922870ADE008B4580 /* IPosition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IPosition.hpp; sourceTree = "<group>"; };
 		D8CE66D6228EAECD005C2478 /* IView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IView.hpp; sourceTree = "<group>"; };
 		D8CE66D8228EBDFA005C2478 /* PrototypeView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PrototypeView.cpp; sourceTree = "<group>"; };
@@ -191,19 +191,19 @@
 		D8BA0D042287084E008B4580 /* Position */ = {
 			isa = PBXGroup;
 			children = (
-				D8BA0D0822870ACE008B4580 /* PixelPosition */,
+				D8BA0D0822870ACE008B4580 /* PixelTransform */,
 				D8BA0D0922870ADE008B4580 /* IPosition.hpp */,
 			);
 			path = Position;
 			sourceTree = "<group>";
 		};
-		D8BA0D0822870ACE008B4580 /* PixelPosition */ = {
+		D8BA0D0822870ACE008B4580 /* PixelTransform */ = {
 			isa = PBXGroup;
 			children = (
-				D8BA0D0522870AC9008B4580 /* PixelPosition.cpp */,
-				D8BA0D0622870AC9008B4580 /* PixelPosition.hpp */,
+				D8BA0D0522870AC9008B4580 /* PixelTransform.cpp */,
+				D8BA0D0622870AC9008B4580 /* PixelTransform.hpp */,
 			);
-			path = PixelPosition;
+			path = PixelTransform;
 			sourceTree = "<group>";
 		};
 		D8CE66D5228EAEB4005C2478 /* View */ = {
@@ -422,7 +422,7 @@
 				EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */,
 				ED4DB1A92288705B00AAA0D1 /* CubeDrawing.cpp in Sources */,
 				D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */,
-				D8BA0D0722870AC9008B4580 /* PixelPosition.cpp in Sources */,
+				D8BA0D0722870AC9008B4580 /* PixelTransform.cpp in Sources */,
 				D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */,
 				D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */,
 			);

@@ -177,7 +177,18 @@ void RenderManager::Loop()
                     
                     if(position != nullptr && drawing != nullptr)
                     {
-                        glm::mat4 anim = glm::translate(Matrix4(1.0f), position->GetPosition());
+                        Vector3 vecPosition = position->GetPosition();
+                        Vector3 vecRotation = position->GetRotation();
+                        Vector3 vecScale = position->GetScale();
+                        
+                        Matrix4 modelRotation = glm::rotate(Matrix4(1.0f), vecRotation.x, Vector3(1.0, 0.0, 0.0));
+                        modelRotation = glm::rotate(modelRotation, vecRotation.y, Vector3(0.0, 1.0, 0.0));
+                        modelRotation = glm::rotate(modelRotation, vecRotation.z, Vector3(0.0, 0.0, 1.0));
+                        Matrix4 modelTranslation = glm::translate(Matrix4(1.0f), vecPosition);
+                        Matrix4 modelScale = glm::scale(Matrix4(1.0f), vecScale);
+                        
+                        Matrix4 anim = modelScale * modelRotation * modelTranslation;
+                        
                         /* define a transformation matrix for the animation */
                         GLint uniformAnim = shader->GetUniform(EShaderUniform::Model);
                         if(uniformAnim != -1) {

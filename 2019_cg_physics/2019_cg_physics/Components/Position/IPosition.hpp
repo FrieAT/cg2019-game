@@ -25,6 +25,12 @@ public:
     virtual void SetPosition(Vector3 setPosition) = 0;
     virtual void AddPosition(Vector3 addPosition) = 0;
     
+    virtual Vector3 GetScale() = 0;
+    virtual void SetScale(Vector3 setScale) = 0;
+    
+    virtual Vector3 GetRotation() = 0;
+    virtual void SetRotation(Vector3 setRotation) = 0;
+    
     EComponentType GetComponentType() override
     {
         return EComponentType::Position;

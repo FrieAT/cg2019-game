@@ -3,7 +3,7 @@
 #include "CubeDrawing.hpp"
 #include "SphereDrawing.hpp"
 #include "StageDrawing.hpp"
-#include "PixelPosition.hpp"
+#include "PixelTransform.hpp"
 #include "SphereShader.hpp"
 #include "PrototypeView.hpp"
 #include "DefaultShader.hpp"
@@ -13,7 +13,7 @@ GameObject * PrimitiveObjects::CreateStageDummy()
     GameObject * g = new GameObject("Stage", "Opaque");
     
     g->SetComponent(new SphereShader());
-    g->SetComponent(new PixelPosition());
+    g->SetComponent(new PixelTransform());
     g->SetComponent(new StageDrawing());
     
     return g;
@@ -24,7 +24,7 @@ GameObject * PrimitiveObjects::CreateTriangleDummy()
     
     g->SetComponent(new SphereShader());
     g->SetComponent(new CubeDrawing());
-    g->SetComponent(new PixelPosition());
+    g->SetComponent(new PixelTransform());
     //g->SetComponent(new DummyTriangleDrawing());
     
     return g;
@@ -35,7 +35,7 @@ GameObject * PrimitiveObjects::CreateSphereDummy()
     
     g->SetComponent(new SphereShader());
     g->SetComponent(new SphereDrawing());
-    g->SetComponent(new PixelPosition());
+    g->SetComponent(new PixelTransform());
     
     return g;
 }
@@ -44,7 +44,7 @@ GameObject * PrimitiveObjects::CreateCamera()
 {
     GameObject * g = new GameObject("Camera", "Camera");
     
-    auto position = new PixelPosition();
+    auto position = new PixelTransform();
     position->SetPosition(Vector3(0.0f, 2.0f, 3.9f));
     g->SetComponent(position);
     
