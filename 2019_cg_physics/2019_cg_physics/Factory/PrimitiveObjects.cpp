@@ -20,11 +20,45 @@ GameObject * PrimitiveObjects::CreateStageDummy()
 }
 GameObject * PrimitiveObjects::CreateTriangleDummy()
 {
-    GameObject * g = new GameObject("Triangle", "Opaque");
+    std::string renderLayer = "Opaque";
+    PixelTransform * transform;
+    SphereShader * usedShader;
     
-    g->SetComponent(new SphereShader());
-    g->SetComponent(new CubeDrawing());
-    g->SetComponent(new PixelTransform());
+    GameObject * g = new GameObject("Steve", renderLayer);
+    usedShader = new SphereShader();
+    transform = new PixelTransform();
+    transform->SetPosition(Vector3(0.0, 5.5f, 0.0));
+    g->SetComponent(usedShader);
+    g->SetComponent(transform);
+    
+    GameObject * head = new GameObject("sHead", renderLayer);
+    transform = new PixelTransform();
+    transform->SetPosition(Vector3(0.0f, 3.5f, 0.0f));
+    head->SetComponent(transform);
+    head->SetComponent(new CubeDrawing());
+    head->SetComponent(usedShader);
+    
+    GameObject * body = new GameObject("sBody", renderLayer);
+    transform = new PixelTransform();
+    transform->SetScale(Vector3(1.0f, 1.5f, 0.5f));
+    transform->SetPosition(Vector3(0.0f, 2.25f, 0.0f));
+    body->SetComponent(transform);
+    body->SetComponent(usedShader);
+    body->SetComponent(new CubeDrawing());
+    
+    GameObject * leftLeg = new GameObject("sLeftLeg", renderLayer);
+    transform = new PixelTransform();
+    transform->SetScale(Vector3(0.5f, 1.5f, 0.5f));
+    transform->SetPosition(Vector3(0.0f, 0.75f, 0.0f));
+    leftLeg->SetComponent(transform);
+    leftLeg->SetComponent(usedShader);
+    leftLeg->SetComponent(new CubeDrawing());
+    
+    g->AddChild(head);
+    g->AddChild(body);
+    g->AddChild(leftLeg);
+    
+    
     //g->SetComponent(new DummyTriangleDrawing());
     
     return g;

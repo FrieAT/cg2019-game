@@ -17,7 +17,6 @@
 		D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAC2227C264E00ABFE72 /* GameObject.cpp */; };
 		D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D879638F228E7D93002FDFD8 /* SphereShader.cpp */; };
 		D8BA0D0722870AC9008B4580 /* PixelTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8BA0D0522870AC9008B4580 /* PixelTransform.cpp */; };
-		D8D0CA1E229AC8C000B8DCC4 /* SteveDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D0CA1C229AC8C000B8DCC4 /* SteveDrawing.cpp */; };
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
 		D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD4B227C2F7000D08539 /* SphereDrawing.cpp */; };
 		D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD54227C75ED00D08539 /* PrimitiveObjects.cpp */; };
@@ -73,8 +72,6 @@
 		D8CE66D6228EAECD005C2478 /* IView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IView.hpp; sourceTree = "<group>"; };
 		D8CE66D8228EBDFA005C2478 /* PrototypeView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PrototypeView.cpp; sourceTree = "<group>"; };
 		D8CE66D9228EBDFA005C2478 /* PrototypeView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PrototypeView.hpp; sourceTree = "<group>"; };
-		D8D0CA1C229AC8C000B8DCC4 /* SteveDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveDrawing.cpp; sourceTree = "<group>"; };
-		D8D0CA1D229AC8C000B8DCC4 /* SteveDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveDrawing.hpp; sourceTree = "<group>"; };
 		D8EBCD43227C287500D08539 /* AbstractManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractManager.cpp; sourceTree = "<group>"; };
 		D8EBCD44227C287500D08539 /* AbstractManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AbstractManager.hpp; sourceTree = "<group>"; };
 		D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IDrawing.hpp; sourceTree = "<group>"; };
@@ -157,7 +154,6 @@
 		D858CACE227C27E300ABFE72 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
-				D8D0CA1A229AC8A800B8DCC4 /* SteveDrawing */,
 				ED4DB1A62288703E00AAA0D1 /* CubeDrawing */,
 				EDA3625D227DCC8000F5055C /* Stage */,
 				D8EBCD49227C2EF500D08539 /* Sphere */,
@@ -222,15 +218,6 @@
 				D8CE66D9228EBDFA005C2478 /* PrototypeView.hpp */,
 			);
 			path = PrototypeView;
-			sourceTree = "<group>";
-		};
-		D8D0CA1A229AC8A800B8DCC4 /* SteveDrawing */ = {
-			isa = PBXGroup;
-			children = (
-				D8D0CA1C229AC8C000B8DCC4 /* SteveDrawing.cpp */,
-				D8D0CA1D229AC8C000B8DCC4 /* SteveDrawing.hpp */,
-			);
-			path = SteveDrawing;
 			sourceTree = "<group>";
 		};
 		D8EBCD40227C285000D08539 /* Window */ = {
@@ -413,7 +400,6 @@
 				D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */,
 				D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */,
 				D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */,
-				D8D0CA1E229AC8C000B8DCC4 /* SteveDrawing.cpp in Sources */,
 				D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */,
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
 				D82D408A226EE90200F5B73D /* Game.cpp in Sources */,

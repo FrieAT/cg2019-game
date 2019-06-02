@@ -172,7 +172,7 @@ void RenderManager::Loop()
                         glUniformMatrix4fv(uniformProj, 1, GL_FALSE, glm::value_ptr(cameraMat4Projection));
                     }
                     
-                    updateTransformRecursive((*it), Matrix4(1.0));
+                    updateTransformRecursive((*it), Matrix4(0.0));
                 }
                 it++;
             }
@@ -262,7 +262,9 @@ void RenderManager::updateTransformRecursive(GameObject* transform, Matrix4 pare
         Matrix4 modelTranslation = glm::translate(Matrix4(1.0f), vecPosition);
         Matrix4 modelScale = glm::scale(Matrix4(1.0f), vecScale);
         
-        Matrix4 anim = modelScale * modelRotation * modelTranslation;
+        Matrix4 anim = modelTranslation  * modelRotation * modelScale;
+        
+        anim += parentTransform;
         
         /* define a transformation matrix for the animation */
         GLint uniformAnim = shader->GetUniform(EShaderUniform::Model);
@@ -272,14 +274,15 @@ void RenderManager::updateTransformRecursive(GameObject* transform, Matrix4 pare
         
         drawing->Draw(this);
         
-        if(transform->HasChilds()) {
-            parentTransform = parentTransform * anim;
-            
-            auto it = transform->GetChildsIterator();
-            while(it != transform->GetChildsIteratorEnd()) {
-                updateTransformRecursive((*it), parentTransform);
-                it++;
-            }
+        parentTransform = anim;
+    }
+    
+    if(transform->HasChilds()) {
+        
+        auto it = transform->GetChildsIterator();
+        while(it != transform->GetChildsIteratorEnd()) {
+            updateTransformRecursive((*it), parentTransform);
+            it++;
         }
     }
 }
