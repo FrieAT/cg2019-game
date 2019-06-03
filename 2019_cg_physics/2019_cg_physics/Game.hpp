@@ -14,6 +14,7 @@ public:
     ~Game() = default;
     
     void Initialize();
+    float GetDeltaTime() { return _deltaTime; }
     void Shutdown();
     
     static Game* GetEngine()
@@ -22,8 +23,6 @@ public:
     }
     
     bool IsInitialized() { return _initialized; }
-    
-    double GetDeltaTime() { return _deltaTime; }
     
     template<typename T>
     void AddManager()
@@ -59,7 +58,7 @@ private:
     bool _shutdown = false;
     static Game* _engine;
     bool _initialized = false;
-    double _deltaTime = 0.0;
+     double _deltaTime = 0.0;
 };
 
 #endif /* Game_hpp */

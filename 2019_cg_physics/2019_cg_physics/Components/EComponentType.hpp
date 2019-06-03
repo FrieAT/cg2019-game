@@ -8,6 +8,7 @@ enum class EComponentType
     Drawing,
     View,
     Shader,
+    Player,
     Texture,
     // ... add here more Component-Types
     

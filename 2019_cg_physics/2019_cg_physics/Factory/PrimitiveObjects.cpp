@@ -7,6 +7,8 @@
 #include "SphereShader.hpp"
 #include "PrototypeView.hpp"
 #include "DefaultShader.hpp"
+#include "LinearMovement.hpp"
+#include "IPlayer.hpp"
 #include "SteveHeadTexture.hpp"
 
 GameObject * PrimitiveObjects::CreateStageDummy()
