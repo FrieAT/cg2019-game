@@ -34,6 +34,8 @@ GameObject * PrimitiveObjects::CreateSteve()
     transform->SetPosition(Vector3(0.0, 0.0, 0.0));
     g->SetComponent(usedShader);
     g->SetComponent(transform);
+    g->SetComponent(new LinearMovement());
+    g->SetComponent(new IPlayer());
     
     GameObject * head = new GameObject("sHead", renderLayer);
     transform = new PixelTransform();
@@ -72,6 +74,7 @@ GameObject * PrimitiveObjects::CreateSteve()
     transform = new PixelTransform();
     transform->SetScale(Vector3(0.5f, 1.5f, 0.5f));
     transform->SetPosition(Vector3(-0.75f, 2.25f, 0.0f));
+    transform->SetRotation(ERotation::Yaw, 45.0);
     leftArm->SetComponent(transform);
     leftArm->SetComponent(usedShader);
     leftArm->SetComponent(new CubeDrawing());
@@ -80,6 +83,7 @@ GameObject * PrimitiveObjects::CreateSteve()
     transform = new PixelTransform();
     transform->SetScale(Vector3(0.5f, 1.5f, 0.5f));
     transform->SetPosition(Vector3(0.75f, 2.25f, 0.0f));
+    transform->SetRotation(ERotation::Yaw, -45.0);
     rightArm->SetComponent(transform);
     rightArm->SetComponent(usedShader);
     rightArm->SetComponent(new CubeDrawing());

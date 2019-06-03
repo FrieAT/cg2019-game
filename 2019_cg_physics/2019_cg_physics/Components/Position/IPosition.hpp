@@ -32,6 +32,7 @@ public:
     
     virtual Matrix4 GetRotation() = 0;
     virtual void SetRotation(ERotation type, float degreeRotation) = 0;
+    virtual void AddRotation(ERotation type, float degreeRotation) = 0;
     
     EComponentType GetComponentType() override
     {

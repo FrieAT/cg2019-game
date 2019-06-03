@@ -26,6 +26,7 @@ public:
     
     Matrix4 GetRotation();
     void SetRotation(ERotation type, float degreeRotation);
+    void AddRotation(ERotation type, float degreeRotation);
 private:
     Vector3 _position;
     Vector3 _scale;

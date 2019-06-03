@@ -47,7 +47,7 @@ Matrix4 PixelTransform::GetRotation()
     return _rotation;
 }
 
-void PixelTransform::SetRotation(ERotation type, float degreeRotation)
+void PixelTransform::AddRotation(ERotation type, float degreeRotation)
 {
     Vector3 vecRotate;
     switch(type)
@@ -63,5 +63,11 @@ void PixelTransform::SetRotation(ERotation type, float degreeRotation)
             break;
     }
     _rotation = _rotation * glm::rotate(Matrix4(1.0f), glm::radians(degreeRotation), vecRotate);
+}
+
+void PixelTransform::SetRotation(ERotation type, float degreeRotation)
+{
+    _rotation = Matrix4(1.0f);
+    this->AddRotation(type, degreeRotation);
 }
 
