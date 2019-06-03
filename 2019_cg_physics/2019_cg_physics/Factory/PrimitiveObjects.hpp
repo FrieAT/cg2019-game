@@ -5,17 +5,17 @@
 
 #include "Game.hpp"
 #include "GameObject.hpp"
-
-typedef glm::dvec3 Vector3;
+#include "IPosition.hpp"
 
 class PrimitiveObjects
 {
 public:
-    static GameObject * CreateTriangleDummy();
+    static GameObject * CreateSteve();
 public:
     static GameObject * CreateSphereDummy();
 public:
     static GameObject * CreateStageDummy();
+    static GameObject * CreateCamera();
     static void GenerateBallsForLevel(Vector3 centerPosition, float laenge, float breite);
 };
 

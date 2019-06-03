@@ -8,7 +8,33 @@ ObjectManager::ObjectManager(const Game &engine)
 
 void ObjectManager::Initialize()
 {
-    
+    auto it = m_Objects.begin();
+    while(it != m_Objects.end())
+    {
+        auto objects = (*it).second.begin();
+        while(objects != (*it).second.end()) {
+            (*objects)->InitComponents();
+            
+            initializeRecursiveForChilds((*objects));
+            
+            objects++;
+        }
+        
+        it++;
+    }
+}
+
+void ObjectManager::initializeRecursiveForChilds(GameObject* transform)
+{
+    auto it = transform->GetChildsIterator();
+    while(it != transform->GetChildsIteratorEnd()) {
+        
+        (*it)->InitComponents();
+        
+        initializeRecursiveForChilds((*it));
+        
+        it++;
+    }
 }
 
 void ObjectManager::Loop()

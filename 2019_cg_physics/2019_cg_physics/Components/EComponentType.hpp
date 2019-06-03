@@ -7,6 +7,9 @@ enum class EComponentType
     Movement,
     Drawing,
     View,
+    Shader,
+    Player,
+    Texture,
     // ... add here more Component-Types
     
     MaxItem, // Do not delete or move this line, because it defines the amount of Components.

@@ -17,10 +17,14 @@
 class StageDrawing : public IDrawing
 {
 public:
-    void Draw();
+    ~StageDrawing();
+    
+    void Init();
+    void Draw(RenderManager* renderManager);
+  
     bool checkShaderProgramLinkStatus(GLuint programID);
     void organize(GLint posAttrib, GLint normAttrib);
-    void draw(GLint colAttrib, GLint uniformAnim, GLint uniformMode, GLint shininessAttrib);
+    void draw(GLint colAttrib, GLint shininessAttrib);
     void deleteBufferAndArray();
  
    

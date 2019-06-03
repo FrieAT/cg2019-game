@@ -46,37 +46,6 @@ void WindowManager::Initialize()
     // tell GL to only draw onto a pixel if the shape is closer to the viewer
     glEnable(GL_DEPTH_TEST); // enable depth-testing
     glDepthFunc(GL_LESS); // depth-testing interprets a smaller value as "closer"
-    
-    /*
-     TODO: Move to a extra component.
-     Load Shaders
-     */
-    
-//    const char* vertex_shader =
-//    "#version 400\n"
-//    "in vec3 vp;"
-//    "void main() {"
-//    "  gl_Position = vec4(vp, 1.0);"
-//    "}";
-//    
-//    const char* fragment_shader =
-//    "#version 400\n"
-//    "out vec4 frag_colour;"
-//    "void main() {"
-//    "  frag_colour = vec4(0.5, 0.0, 0.5, 1.0);"
-//    "}";
-//    
-//    GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-//    glShaderSource(vs, 1, &vertex_shader, NULL);
-//    glCompileShader(vs);
-//    GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-//    glShaderSource(fs, 1, &fragment_shader, NULL);
-//    glCompileShader(fs);
-//    
-//    this->_defaultShaderPrograms = glCreateProgram();
-//    glAttachShader(this->_defaultShaderPrograms, fs);
-//    glAttachShader(this->_defaultShaderPrograms, vs);
-//    glLinkProgram(this->_defaultShaderPrograms);
 }
 
 void WindowManager::errorCallback(int error, const char*logText)
@@ -92,8 +61,6 @@ void WindowManager::Loop()
     if(glfwWindowShouldClose(this->_window)) {
         // close GL context and any other GLFW resources
         glfwTerminate();
-    } else {
-        glUseProgram(this->_defaultShaderPrograms);
     }
 }
 

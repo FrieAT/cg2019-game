@@ -14,7 +14,15 @@ public:
     ~Game() = default;
     
     void Initialize();
+    float GetDeltaTime() { return _deltaTime; }
     void Shutdown();
+    
+    static Game* GetEngine()
+    {
+        return _engine;
+    }
+    
+    bool IsInitialized() { return _initialized; }
     
     template<typename T>
     void AddManager()
@@ -48,6 +56,9 @@ private:
     
     std::vector<AbstractManager *> _managers;
     bool _shutdown = false;
+    static Game* _engine;
+    bool _initialized = false;
+     double _deltaTime = 0.0;
 };
 
 #endif /* Game_hpp */

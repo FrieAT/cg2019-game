@@ -3,11 +3,13 @@
 
 #include "IComponent.hpp"
 
+class RenderManager;
+
 class IDrawing : public IComponent
 {
 public:
     
-    virtual void Draw() = 0;
+    virtual void Draw(RenderManager* renderManager) = 0;
     
     EComponentType GetComponentType() override
     {

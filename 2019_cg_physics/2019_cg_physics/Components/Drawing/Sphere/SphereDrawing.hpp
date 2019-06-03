@@ -12,25 +12,21 @@
 class SphereDrawing : public IDrawing
 {
 public:
-    void Draw();
+    void Init();
+    void Draw(RenderManager* renderManager);
     void initializeColorValues();
     void initializeVertices();
     void initializeParameters();
     SphereDrawing();
     void organize(GLint posAttrib, GLint normAttrib);
-    void draw(GLdouble time, GLint colAttrib, GLint uniformAnim, GLint uniformMode, GLint shininessAttrib);
+    void draw(GLdouble time, GLint colAttrib, GLint shininessAttrib);
     void update(GLdouble time);
     bool checkFinished();
-    void SetRadius(float radius);
-    void SetFacets(double facets);
     void deleteBufferAndArray();
-    float getCurrentCX();
-    float getCurrentCY();
-    float getCZ();
     float stageWidthHalf;
     float stageLengthHalf;
    
-    
+    ~SphereDrawing();
 
 
     
@@ -39,21 +35,17 @@ public:
     float getRadius();
     
 private:
-    float _radius; // Radius of the sphere.
-    double _facets; // Amount of faces used for sphere.
-    float cx; // the original x coordinate of the ball's center
-    float cy; // the original y coordinate of the ball's center
-    float cz; // the z coordinate of the ball's center
-    float dx; // the shift of the x coordinate
-    float dy; // the shift of the y coordinate
+    float _radius;
+    float cx;
+    float cy;
+    float cz;
+    float dx;
+    float dy;
     double birthTime;
     float speed;
-    float per; // the period of the sine curve
-    float amp; // the amplitude of the sine curve
-    float phase; // the phase of the sine curve
+    float per;
     
-    static constexpr float BRIGHTNESS = 0.5; // saturation of the color
-    static constexpr int ACCURACY = 36; // circles are drawn as regular 36-gon
+    static constexpr float BRIGHTNESS = 1.0; // saturation of the color
     static constexpr float PI = 3.14159265358979323846;
     static constexpr float MAX_RADIUS = 0.2;
     static constexpr float MIN_RADIUS = 0.1;
@@ -61,7 +53,6 @@ private:
     static constexpr float MAX_AMP = 3;
      static constexpr float MAX_AMPL = 10;
     static constexpr float BRIGHTNESS_FACTOR = 0.5; // constant to set the maximal brightness for shadows to avoid totally white shadows
-    static constexpr float MAX_PHASE = PI;
     static constexpr float MAX_PER = 2;
     static constexpr float MIN_PER = 0.5;
     
@@ -70,7 +61,7 @@ private:
     static constexpr float STAGE_AREA_LENGTH_HALF = 2.5;
     static constexpr float STAGE_AREA_WIDTH_HALF = 1.0;
     
-    float colorValues[3] = { 0 };
+    float colorValues[2]  = { 0 };
     float vtx[18*36*12+38*6] = {0};
   
     glm::mat4 anim;
@@ -88,7 +79,7 @@ private:
     GLint uniformAnim;
     GLint uniformMode;
     
-    int ballCount;
+  
    std::vector<SphereDrawing> ballList;
     GLdouble time ;
     

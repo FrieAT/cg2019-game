@@ -21,6 +21,7 @@ public:
     GameObject* PlayerObject;
     ObjectManager(const Game &engine);
 private:
+    void initializeRecursiveForChilds(GameObject* transform);
     ObjectManager(const ObjectManager&) = delete;
     void operator= (const ObjectManager&) = delete;
     std::map<std::string, std::vector<GameObject*>> m_Objects;

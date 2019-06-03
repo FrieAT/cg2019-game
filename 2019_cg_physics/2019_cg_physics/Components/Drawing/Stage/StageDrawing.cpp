@@ -12,16 +12,30 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include "Camera.hpp"
-Camera camera1;
-void StageDrawing::Draw()
+#include "IShader.hpp"
 
+StageDrawing::~StageDrawing()
 {
-    camera1.initialize();
-    organize(camera1.posAttrib, camera1.normAttrib);
-    draw(camera1.colAttrib, camera1.uniformAnim, camera1.uniformMode, camera1.shininessAttrib);
     deleteBufferAndArray();
-   
+}
+
+void StageDrawing::Init()
+{
+    auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
+    int posAttrib = shader->GetAttrib(EShaderAttrib::Position);
+    int normAttrib = shader->GetAttrib(EShaderAttrib::Normal);
+    
+    organize(posAttrib, normAttrib);
+}
+
+void StageDrawing::Draw(RenderManager* renderManager)
+{
+    auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
+    int colAttrib = shader->GetAttrib(EShaderAttrib::Color);
+    int shininessAttrib = shader->GetUniform(EShaderUniform::Shininess);
+    
+    draw(colAttrib, shininessAttrib);
+       // glBindVertexArray(0);
 }
 void StageDrawing::organize(GLint posAttrib, GLint normAttrib)
 {
@@ -42,13 +56,10 @@ void StageDrawing::organize(GLint posAttrib, GLint normAttrib)
     glBufferData(GL_ARRAY_BUFFER, sizeof(vtxStage), vtxStage, GL_STATIC_DRAW);
 }
 
-void StageDrawing::draw(GLint colAttrib, GLint uniformAnim, GLint uniformMode, GLint shininessAttrib)
+void StageDrawing::draw(GLint colAttrib, GLint shininessAttrib)
 {
     glBindVertexArray(vao);
     
-    glm::mat4 anim = glm::mat4(1.0f);
-    glUniformMatrix4fv(uniformAnim, 1, GL_FALSE, glm::value_ptr(anim));
-    glUniform1i(uniformMode, 0);
     glUniform1f(shininessAttrib, 80);
     glVertexAttrib3f(colAttrib, 0.65f, 0.65f, 0.65f); // set constant color attribute
     
