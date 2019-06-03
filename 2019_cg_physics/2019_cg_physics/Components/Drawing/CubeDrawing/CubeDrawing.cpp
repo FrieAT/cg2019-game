@@ -39,9 +39,9 @@ void CubeDrawing::Draw(RenderManager* renderManager)
     int colAttrib = shader->GetAttrib(EShaderAttrib::Color);
     int shininessAttrib = shader->GetUniform(EShaderUniform::Shininess);
     
-    dir = KeyboardManager::GetMoveDirection();
+    //dir = KeyboardManager::GetMoveDirection();
     
-    movement();
+   // movement();
     draw(colAttrib, shininessAttrib);
 }
 
@@ -49,42 +49,59 @@ void CubeDrawing::Draw(RenderManager* renderManager)
 void CubeDrawing::organize(GLint posAttrib)
 {
     GLfloat points[] = {
-        -0.2f,0.96f,-0.2f, /* bottom */
-        0.2f,0.96f,-0.2f,
-        -0.2f,0.96f, 0.2f,
-        0.2f,0.96f,-0.2f,
-        0.2f,0.96f, 0.2f,
-        -0.2f,0.96f, 0.2f,
-        -0.2f,0.25f,-0.2f, /* top */
-        -0.2f,0.25f, 0.2f,
-        0.2f,0.25f,-0.2f,
-        0.2f,0.25f,-0.2f,
-        -0.2f,0.25f, 0.2f,
-        0.2f,0.25f, 0.2f,
-        -0.2f,0.96f, 0.2f, /* font */
-        0.2f,0.96f, 0.2f,
-        -0.2f,0.25f, 0.2f,
-        0.2f,0.96f, 0.2f,
-        0.2f,0.25f, 0.2f,
-        -0.2f,0.25f, 0.2f,
-        -0.2f,0.96f,-0.2f, /* back */
-        -0.2f,0.25f,-0.2f,
-        0.2f,0.96f,-0.2f,
-        0.2f,0.96f,-0.2f,
-        -0.2f,0.25f,-0.2f,
-        0.2f,0.25f,-0.2f,
-        -0.2f,0.96f, 0.2f, /* left */
-        -0.2f,0.25f,-0.2f,
-        -0.2f,0.96f,-0.2f,
-        -0.2f,0.96f, 0.2f,
-        -0.2f,0.25f, 0.2f,
-        -0.2f,0.25f,-0.2f,
-        0.2f,0.96f, 0.2f, /* right */
-        0.2f,0.96f,-0.2f,
-        0.2f,0.25f,-0.2f,
-        0.2f,0.96f, 0.2f,
-        0.2f,0.25f,-0.2f,
-        0.2f,0.25f, 0.2f,
+        // bottom
+        0.5f, -0.5f, 0.5f,
+        -0.5f, -0.5f, 0.5f,
+        0.5f, -0.5f, -0.5f,
+        
+        -0.5f, -0.5f, -0.5f,
+        -0.5f, -0.5f, 0.5f,
+        0.5f, -0.5f, -0.5f,
+        
+        // top
+        0.5f, 0.5f, 0.5f,
+        -0.5f, 0.5f, 0.5f,
+        0.5f, 0.5f, -0.5f,
+        
+        -0.5f, 0.5f, -0.5f,
+        -0.5f, 0.5f, 0.5f,
+        0.5f, 0.5f, -0.5f,
+        
+        // front
+        -0.5f, -0.5f, 0.5f,
+        0.5f, -0.5f, 0.5f,
+        0.5f, 0.5f, 0.5f,
+        
+        -0.5f, -0.5f, 0.5f,
+        0.5f, 0.5f, 0.5f,
+        -0.5f, 0.5f, 0.5f,
+        
+        // left
+        -0.5f, -0.5f,  0.5f,
+        -0.5f, 0.5f,  0.5f,
+        -0.5f, -0.5f, -0.5f,
+        
+        -0.5f, -0.5f, -0.5f,
+        -0.5f, 0.5f,  0.5f,
+        -0.5f, 0.5f, -0.5f,
+        
+        // right
+        0.5f, -0.5f, 0.5f ,
+        0.5f, -0.5f, -0.5f,
+        0.5f, 0.5f, -0.5f,
+        
+        0.5f, -0.5f,  0.5f,
+        0.5f, 0.5f,  0.5f,
+        0.5f, 0.5f, -0.5f,
+        
+        // back
+        0.5f, -0.5f, -0.5f,
+        -0.5f, -0.5f, -0.5f,
+        -0.5f, 0.5f, -0.5f,
+        
+        0.5f, -0.5f, -0.5f,
+        -0.5f, 0.5f, -0.5f,
+        0.5f, 0.5f, -0.5f,
     };
     
     glGenVertexArrays(1, &myVAO);
@@ -105,8 +122,8 @@ void CubeDrawing::draw(GLint colAttrib, GLint shininessAttrib)
 {
     glBindVertexArray(myVAO);
     
-    auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
-    position->SetPosition(Vector3(curTrans[0], curTrans[1], curTrans[2]));
+//    auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
+//    position->SetPosition(Vector3(curTrans[0], curTrans[1], curTrans[2]));
  
     glUniform1f(shininessAttrib,300);
     
@@ -121,25 +138,25 @@ void CubeDrawing::deleteBufferAndArray()
     glDeleteBuffers(1, &myVBO);
     glDeleteVertexArrays(1, &myVAO);
 }
-void CubeDrawing::movement(){
-    
-    if (dir == 0) {
-        if ((curTrans[0] + SPEED) <= (STAGE_AREA_LENGTH_HALF - SPEED))
-            curTrans[0] = curTrans[0] + SPEED;
-        
-    } else if (dir == 1) {
-        if ((curTrans[0] - SPEED) >= (-STAGE_AREA_LENGTH_HALF + SPEED))
-            curTrans[0] = curTrans[0] - SPEED;
-      
-    } else if (dir == 2) {
-        if ((curTrans[2] + SPEED) <= (STAGE_AREA_WIDTH_HALF_BOTTOM - SPEED))
-            curTrans[2] = curTrans[2] + SPEED;
-        
-    
-    } else if (dir == 3) {
-        if ((curTrans[2] - SPEED) >= (-STAGE_AREA_WIDTH_HALF + SPEED))
-            curTrans[2] = curTrans[2] - SPEED;
-        
-    
-    }
-}
+//void CubeDrawing::movement(){
+//    
+//    if (dir == 0) {
+//        if ((curTrans[0] + SPEED) <= (STAGE_AREA_LENGTH_HALF - SPEED))
+//            curTrans[0] = curTrans[0] + SPEED;
+//        
+//    } else if (dir == 1) {
+//        if ((curTrans[0] - SPEED) >= (-STAGE_AREA_LENGTH_HALF + SPEED))
+//            curTrans[0] = curTrans[0] - SPEED;
+//      
+//    } else if (dir == 2) {
+//        if ((curTrans[2] + SPEED) <= (STAGE_AREA_WIDTH_HALF_BOTTOM - SPEED))
+//            curTrans[2] = curTrans[2] + SPEED;
+//        
+//    
+//    } else if (dir == 3) {
+//        if ((curTrans[2] - SPEED) >= (-STAGE_AREA_WIDTH_HALF + SPEED))
+//            curTrans[2] = curTrans[2] - SPEED;
+//        
+//    
+//    }
+//}

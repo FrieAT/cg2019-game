@@ -15,8 +15,23 @@ void ObjectManager::Initialize()
         while(objects != (*it).second.end()) {
             (*objects)->InitComponents();
             
+            initializeRecursiveForChilds((*objects));
+            
             objects++;
         }
+        
+        it++;
+    }
+}
+
+void ObjectManager::initializeRecursiveForChilds(GameObject* transform)
+{
+    auto it = transform->GetChildsIterator();
+    while(it != transform->GetChildsIteratorEnd()) {
+        
+        (*it)->InitComponents();
+        
+        initializeRecursiveForChilds((*it));
         
         it++;
     }

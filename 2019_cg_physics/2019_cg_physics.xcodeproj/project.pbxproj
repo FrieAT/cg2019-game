@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D804214F2299D6C800BE3E8D /* DefaultShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D804214D2299D6C800BE3E8D /* DefaultShader.cpp */; };
+		D811FC8D22A537CF00B30712 /* texture_steve.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = D8625D3722A5368400ECD7FF /* texture_steve.png */; };
 		D82D408A226EE90200F5B73D /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82D4088226EE90200F5B73D /* Game.cpp */; };
 		D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82D408B226EE9B000F5B73D /* WindowManager.cpp */; };
 		D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAB72279C06F00ABFE72 /* Exception.cpp */; };
@@ -15,8 +16,9 @@
 		D858CABE227C22D100ABFE72 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */; };
 		D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CABF227C261100ABFE72 /* ObjectManager.cpp */; };
 		D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAC2227C264E00ABFE72 /* GameObject.cpp */; };
+		D8625D3322A534B700ECD7FF /* SteveHeadTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8625D3122A534B700ECD7FF /* SteveHeadTexture.cpp */; };
 		D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D879638F228E7D93002FDFD8 /* SphereShader.cpp */; };
-		D8BA0D0722870AC9008B4580 /* PixelPosition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8BA0D0522870AC9008B4580 /* PixelPosition.cpp */; };
+		D8BA0D0722870AC9008B4580 /* PixelTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8BA0D0522870AC9008B4580 /* PixelTransform.cpp */; };
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
 		D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD4B227C2F7000D08539 /* SphereDrawing.cpp */; };
 		D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD54227C75ED00D08539 /* PrimitiveObjects.cpp */; };
@@ -24,6 +26,8 @@
 		D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D725226DA87600E39805 /* OpenGL.framework */; };
 		D8F6D728226DA88B00E39805 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D727226DA88B00E39805 /* libGLEW.2.1.0.dylib */; };
 		D8FC4136229991FB00614AE5 /* PrototypeView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8CE66D8228EBDFA005C2478 /* PrototypeView.cpp */; };
+		ED0028FE229AA0570049E17B /* PhysicsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED0028FC229AA0570049E17B /* PhysicsManager.cpp */; };
+		ED002903229AA1EA0049E17B /* LinearMovement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED002901229AA1EA0049E17B /* LinearMovement.cpp */; };
 		ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */; };
 		ED4DB1A92288705B00AAA0D1 /* CubeDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4DB1A72288705B00AAA0D1 /* CubeDrawing.cpp */; };
 		EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDA36262227DFDF800F5055C /* StageDrawing.cpp */; };
@@ -33,12 +37,13 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		D8F6D718226DA85900E39805 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			buildActionMask = 12;
+			dstPath = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 			dstSubfolderSpec = 0;
 			files = (
+				D811FC8D22A537CF00B30712 /* texture_steve.png in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -61,13 +66,20 @@
 		D858CAC3227C264E00ABFE72 /* GameObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
 		D858CAC7227C279200ABFE72 /* IComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IComponent.hpp; sourceTree = "<group>"; };
 		D858CAC8227C279200ABFE72 /* EComponentType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EComponentType.hpp; sourceTree = "<group>"; };
+		D8625D2C22A4064500ECD7FF /* ERotation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ERotation.hpp; sourceTree = "<group>"; };
+		D8625D2D22A5331A00ECD7FF /* ETextureType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ETextureType.hpp; sourceTree = "<group>"; };
+		D8625D2F22A533DC00ECD7FF /* ITexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ITexture.hpp; sourceTree = "<group>"; };
+		D8625D3122A534B700ECD7FF /* SteveHeadTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveHeadTexture.cpp; sourceTree = "<group>"; };
+		D8625D3222A534B700ECD7FF /* SteveHeadTexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveHeadTexture.hpp; sourceTree = "<group>"; };
+		D8625D3422A5359D00ECD7FF /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		D8625D3722A5368400ECD7FF /* texture_steve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_steve.png; sourceTree = "<group>"; };
 		D87037E32299CEB900B51FD8 /* EShaderAttrib.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EShaderAttrib.hpp; sourceTree = "<group>"; };
 		D879638D228E7C81002FDFD8 /* IShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IShader.hpp; sourceTree = "<group>"; };
 		D879638F228E7D93002FDFD8 /* SphereShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SphereShader.cpp; sourceTree = "<group>"; };
 		D8796390228E7D93002FDFD8 /* SphereShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SphereShader.hpp; sourceTree = "<group>"; };
 		D8796395228E808A002FDFD8 /* EShaderType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EShaderType.hpp; sourceTree = "<group>"; };
-		D8BA0D0522870AC9008B4580 /* PixelPosition.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PixelPosition.cpp; sourceTree = "<group>"; };
-		D8BA0D0622870AC9008B4580 /* PixelPosition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PixelPosition.hpp; sourceTree = "<group>"; };
+		D8BA0D0522870AC9008B4580 /* PixelTransform.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PixelTransform.cpp; sourceTree = "<group>"; };
+		D8BA0D0622870AC9008B4580 /* PixelTransform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PixelTransform.hpp; sourceTree = "<group>"; };
 		D8BA0D0922870ADE008B4580 /* IPosition.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IPosition.hpp; sourceTree = "<group>"; };
 		D8CE66D6228EAECD005C2478 /* IView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IView.hpp; sourceTree = "<group>"; };
 		D8CE66D8228EBDFA005C2478 /* PrototypeView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PrototypeView.cpp; sourceTree = "<group>"; };
@@ -85,6 +97,12 @@
 		D8F6D727226DA88B00E39805 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
 		D8F6D729226DA90600E39805 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
 		D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../../usr/local/Cellar/glfw/3.3/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
+		ED0028FC229AA0570049E17B /* PhysicsManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsManager.cpp; sourceTree = "<group>"; };
+		ED0028FD229AA0570049E17B /* PhysicsManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PhysicsManager.hpp; sourceTree = "<group>"; };
+		ED0028FF229AA17A0049E17B /* IMovement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = IMovement.hpp; path = 2019_cg_physics/Managers/PhysicsManager/IMovement.hpp; sourceTree = SOURCE_ROOT; };
+		ED002901229AA1EA0049E17B /* LinearMovement.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LinearMovement.cpp; sourceTree = "<group>"; };
+		ED002902229AA1EA0049E17B /* LinearMovement.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LinearMovement.hpp; sourceTree = "<group>"; };
+		ED002905229AA86D0049E17B /* IPlayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IPlayer.hpp; sourceTree = "<group>"; };
 		ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardManager.cpp; sourceTree = "<group>"; };
 		ED01EBAA2284A6620088ED35 /* KeyboardManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardManager.hpp; sourceTree = "<group>"; };
 		ED4DB1A72288705B00AAA0D1 /* CubeDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CubeDrawing.cpp; sourceTree = "<group>"; };
@@ -120,6 +138,7 @@
 		D858CAC9227C279900ABFE72 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				ED0028FB229AA00D0049E17B /* PhysicsManager */,
 				ED01EBA52284A5E50088ED35 /* KeyBoard */,
 				D8EBCD42227C285900D08539 /* Object */,
 				D8EBCD41227C285500D08539 /* Rendering */,
@@ -133,9 +152,11 @@
 		D858CACB227C27B900ABFE72 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				ED002904229AA8570049E17B /* Player */,
 				D8CE66D5228EAEB4005C2478 /* View */,
 				D879638C228E7C71002FDFD8 /* Shader */,
 				D8BA0D042287084E008B4580 /* Position */,
+				D8625D2E22A533BE00ECD7FF /* Texture */,
 				D858CACE227C27E300ABFE72 /* Drawing */,
 				D858CACD227C27DF00ABFE72 /* Movement */,
 				D858CAC8227C279200ABFE72 /* EComponentType.hpp */,
@@ -147,6 +168,8 @@
 		D858CACD227C27DF00ABFE72 /* Movement */ = {
 			isa = PBXGroup;
 			children = (
+				ED002900229AA1C50049E17B /* LinearMovement */,
+				ED0028FF229AA17A0049E17B /* IMovement.hpp */,
 			);
 			path = Movement;
 			sourceTree = "<group>";
@@ -160,6 +183,34 @@
 				D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */,
 			);
 			path = Drawing;
+			sourceTree = "<group>";
+		};
+		D8625D2E22A533BE00ECD7FF /* Texture */ = {
+			isa = PBXGroup;
+			children = (
+				D8625D3022A5349700ECD7FF /* SteveHead */,
+				D8625D2F22A533DC00ECD7FF /* ITexture.hpp */,
+				D8625D2D22A5331A00ECD7FF /* ETextureType.hpp */,
+				D8625D3422A5359D00ECD7FF /* stb_image.h */,
+			);
+			path = Texture;
+			sourceTree = "<group>";
+		};
+		D8625D3022A5349700ECD7FF /* SteveHead */ = {
+			isa = PBXGroup;
+			children = (
+				D8625D3122A534B700ECD7FF /* SteveHeadTexture.cpp */,
+				D8625D3222A534B700ECD7FF /* SteveHeadTexture.hpp */,
+			);
+			path = SteveHead;
+			sourceTree = "<group>";
+		};
+		D8625D3622A5368400ECD7FF /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D8625D3722A5368400ECD7FF /* texture_steve.png */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		D879638C228E7C71002FDFD8 /* Shader */ = {
@@ -187,19 +238,20 @@
 		D8BA0D042287084E008B4580 /* Position */ = {
 			isa = PBXGroup;
 			children = (
-				D8BA0D0822870ACE008B4580 /* PixelPosition */,
+				D8BA0D0822870ACE008B4580 /* PixelTransform */,
 				D8BA0D0922870ADE008B4580 /* IPosition.hpp */,
+				D8625D2C22A4064500ECD7FF /* ERotation.hpp */,
 			);
 			path = Position;
 			sourceTree = "<group>";
 		};
-		D8BA0D0822870ACE008B4580 /* PixelPosition */ = {
+		D8BA0D0822870ACE008B4580 /* PixelTransform */ = {
 			isa = PBXGroup;
 			children = (
-				D8BA0D0522870AC9008B4580 /* PixelPosition.cpp */,
-				D8BA0D0622870AC9008B4580 /* PixelPosition.hpp */,
+				D8BA0D0522870AC9008B4580 /* PixelTransform.cpp */,
+				D8BA0D0622870AC9008B4580 /* PixelTransform.hpp */,
 			);
-			path = PixelPosition;
+			path = PixelTransform;
 			sourceTree = "<group>";
 		};
 		D8CE66D5228EAEB4005C2478 /* View */ = {
@@ -285,6 +337,7 @@
 		D8F6D71C226DA85900E39805 /* 2019_cg_physics */ = {
 			isa = PBXGroup;
 			children = (
+				D8625D3622A5368400ECD7FF /* Assets */,
 				D8EBCD53227C75D800D08539 /* Factory */,
 				D858CACB227C27B900ABFE72 /* Components */,
 				D858CAC9227C279900ABFE72 /* Managers */,
@@ -309,6 +362,32 @@
 				D8F6D725226DA87600E39805 /* OpenGL.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED0028FB229AA00D0049E17B /* PhysicsManager */ = {
+			isa = PBXGroup;
+			children = (
+				ED0028FC229AA0570049E17B /* PhysicsManager.cpp */,
+				ED0028FD229AA0570049E17B /* PhysicsManager.hpp */,
+			);
+			path = PhysicsManager;
+			sourceTree = "<group>";
+		};
+		ED002900229AA1C50049E17B /* LinearMovement */ = {
+			isa = PBXGroup;
+			children = (
+				ED002901229AA1EA0049E17B /* LinearMovement.cpp */,
+				ED002902229AA1EA0049E17B /* LinearMovement.hpp */,
+			);
+			path = LinearMovement;
+			sourceTree = "<group>";
+		};
+		ED002904229AA8570049E17B /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				ED002905229AA86D0049E17B /* IPlayer.hpp */,
+			);
+			path = Player;
 			sourceTree = "<group>";
 		};
 		ED01EBA52284A5E50088ED35 /* KeyBoard */ = {
@@ -394,9 +473,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED002903229AA1EA0049E17B /* LinearMovement.cpp in Sources */,
 				D804214F2299D6C800BE3E8D /* DefaultShader.cpp in Sources */,
 				D8FC4136229991FB00614AE5 /* PrototypeView.cpp in Sources */,
 				D8F6D71E226DA85900E39805 /* main.cpp in Sources */,
+				ED0028FE229AA0570049E17B /* PhysicsManager.cpp in Sources */,
 				D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */,
 				D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */,
 				D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */,
@@ -408,7 +489,8 @@
 				EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */,
 				ED4DB1A92288705B00AAA0D1 /* CubeDrawing.cpp in Sources */,
 				D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */,
-				D8BA0D0722870AC9008B4580 /* PixelPosition.cpp in Sources */,
+				D8BA0D0722870AC9008B4580 /* PixelTransform.cpp in Sources */,
+				D8625D3322A534B700ECD7FF /* SteveHeadTexture.cpp in Sources */,
 				D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */,
 				D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */,
 			);
@@ -544,6 +626,7 @@
 					/usr/local/Cellar/glfw/3.3/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "$(PROJECT_DIR)/build";
 			};
 			name = Debug;
 		};
@@ -563,6 +646,7 @@
 					/usr/local/Cellar/glfw/3.3/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "$(PROJECT_DIR)/build";
 			};
 			name = Release;
 		};

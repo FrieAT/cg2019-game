@@ -1,3 +1,4 @@
+
 #include <chrono>
 #include <thread>
 #include <GL/glew.h> // include GLEW and new version of GL on Windows
@@ -11,7 +12,9 @@
 #include "KeyboardManager.hpp"
 #include "PrimitiveObjects.hpp"
 #include "KeyboardManager.hpp"
-
+#include "PhysicsManager.hpp"
+#include "SphereDrawing.hpp"
+SphereDrawing sphereDrawing;
 Game* Game::_engine = nullptr;
 
 Game::Game()
@@ -31,31 +34,31 @@ void Game::Initialize()
     AddManager<KeyboardManager>();
     AddManager<RenderManager>();
     AddManager<ObjectManager>();
-    
+    AddManager<PhysicsManager>();
     // Adding GameObjects below.
-
-
+    
+    
     auto stage = PrimitiveObjects::CreateStageDummy();
     GetManager<ObjectManager>()->AddGameObject(stage);
-    // Adding GameObjects below.
-    //auto cube = PrimitiveObjects::CreateCubeDummy();
-    //GetManager<ObjectManager>()->AddGameObject(cube);
+  
     
-    auto triangle = PrimitiveObjects::CreateTriangleDummy();
+    auto triangle = PrimitiveObjects::CreateSteve();
     GetManager<ObjectManager>()->AddGameObject(triangle);
     
     // Adding GameObjects below.
     auto camera = PrimitiveObjects::CreateCamera();
     GetManager<ObjectManager>()->AddGameObject(camera);
-    for(int i = 0; i < 10; i++) {
+    for(int i = 0; i < 3; i++) {
         auto spfhere = PrimitiveObjects::CreateSphereDummy();
         GetManager<ObjectManager>()->AddGameObject(spfhere);
-    }
-    // Adding GameObjects below.
-  
-    // Initialize Managers below.
-    this->initializeManagers();
     
+    
+    }
+
+    
+
+    this->initializeManagers();
+   
     _initialized = true;
     
     
@@ -68,7 +71,7 @@ void Game::Initialize()
         currentTime = glfwGetTime();
         _deltaTime = currentTime - lastTime;
         lastTime = currentTime;
-        
+   
         this->loopManagers();
         
         if(maxFPS >= _deltaTime) {
