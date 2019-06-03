@@ -49,7 +49,7 @@ void KeyboardManager::Loop()
         
         if(player != nullptr && movement != nullptr) {
             //_dir = GetMoveDirection();
-            std::cout << _dir<< "\n";
+           // std::cout << _dir<< "\n";
             Vector3 velocity = Vector3(0.0, 0.0, 0.0);
             if(_dir == 0) velocity = Vector3(1.0, 0.0, 0.0);
             else if(_dir == 1) velocity = Vector3(-1.0, 0.0, 0.0);
