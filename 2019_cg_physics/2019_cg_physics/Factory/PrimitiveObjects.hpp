@@ -11,7 +11,7 @@ typedef glm::fvec3 Vector3;
 class PrimitiveObjects
 {
 public:
-    static GameObject * CreateTriangleDummy();
+    static GameObject * CreateSteve();
 public:
     static GameObject * CreateSphereDummy();
 public:

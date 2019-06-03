@@ -6,12 +6,14 @@
 //  Copyright © 2019 Universität Salzburg. All rights reserved.
 //
 
+#include <glm/gtx/euler_angles.hpp>
+
 #include "PixelTransform.hpp"
 
 PixelTransform::PixelTransform()
-: _position(Vector3(0.0, 0.0, 0.0))
-, _scale(Vector3(1.0, 1.0, 1.0))
-, _rotation(Vector3(0.0, 0.0, 0.0))
+: _position(Vector3(0.0f, 0.0f, 0.0f))
+, _scale(Vector3(1.0f, 1.0f, 1.0f))
+, _rotation(Matrix4(1.0f))
 {
 }
 
@@ -40,13 +42,26 @@ void PixelTransform::SetScale(Vector3 setScale)
     _scale = setScale;
 }
 
-Vector3 PixelTransform::GetRotation()
+Matrix4 PixelTransform::GetRotation()
 {
     return _rotation;
 }
 
-void PixelTransform::SetRotation(Vector3 setRotation)
+void PixelTransform::SetRotation(ERotation type, float degreeRotation)
 {
-    _rotation = setRotation;
+    Vector3 vecRotate;
+    switch(type)
+    {
+        case ERotation::Yaw:
+            vecRotate = Vector4(1.0, 0.0, 0.0, 1.0f);
+            break;
+        case ERotation::Pitch:
+            vecRotate = Vector4(0.0, 1.0, 0.0, 1.0f);
+            break;
+        case ERotation::Roll:
+            vecRotate = Vector4(0.0, 0.0, 1.0, 1.0f);
+            break;
+    }
+    _rotation = _rotation * glm::rotate(Matrix4(1.0f), (degreeRotation), vecRotate);
 }
 

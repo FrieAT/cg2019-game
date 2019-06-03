@@ -18,7 +18,7 @@ GameObject * PrimitiveObjects::CreateStageDummy()
     
     return g;
 }
-GameObject * PrimitiveObjects::CreateTriangleDummy()
+GameObject * PrimitiveObjects::CreateSteve()
 {
     std::string renderLayer = "Opaque";
     PixelTransform * transform;
@@ -27,13 +27,15 @@ GameObject * PrimitiveObjects::CreateTriangleDummy()
     GameObject * g = new GameObject("Steve", renderLayer);
     usedShader = new SphereShader();
     transform = new PixelTransform();
-    transform->SetPosition(Vector3(0.0, 5.5f, 0.0));
+    transform->SetScale(Vector3(0.3, 0.3f, 0.3));
+    transform->SetPosition(Vector3(0.0, 0.0, 0.0));
     g->SetComponent(usedShader);
     g->SetComponent(transform);
     
     GameObject * head = new GameObject("sHead", renderLayer);
     transform = new PixelTransform();
     transform->SetPosition(Vector3(0.0f, 3.5f, 0.0f));
+    //transform->SetScale(Vector3(0.5f, 0.3f, 0.5f));
     head->SetComponent(transform);
     head->SetComponent(new CubeDrawing());
     head->SetComponent(usedShader);
@@ -49,17 +51,41 @@ GameObject * PrimitiveObjects::CreateTriangleDummy()
     GameObject * leftLeg = new GameObject("sLeftLeg", renderLayer);
     transform = new PixelTransform();
     transform->SetScale(Vector3(0.5f, 1.5f, 0.5f));
-    transform->SetPosition(Vector3(0.0f, 0.75f, 0.0f));
+    transform->SetPosition(Vector3(-0.25f, 0.75f, 0.0f));
     leftLeg->SetComponent(transform);
     leftLeg->SetComponent(usedShader);
     leftLeg->SetComponent(new CubeDrawing());
     
+    GameObject * rightLeg = new GameObject("sRightLeg", renderLayer);
+    transform = new PixelTransform();
+    transform->SetScale(Vector3(0.5f, 1.5f, 0.5f));
+    transform->SetPosition(Vector3(0.25f, 0.75f, 0.0f));
+    rightLeg->SetComponent(transform);
+    rightLeg->SetComponent(usedShader);
+    rightLeg->SetComponent(new CubeDrawing());
+    
+    GameObject * leftArm = new GameObject("sLeftArm", renderLayer);
+    transform = new PixelTransform();
+    transform->SetScale(Vector3(0.5f, 1.5f, 0.5f));
+    transform->SetPosition(Vector3(-0.75f, 2.25f, 0.0f));
+    leftArm->SetComponent(transform);
+    leftArm->SetComponent(usedShader);
+    leftArm->SetComponent(new CubeDrawing());
+    
+    GameObject * rightArm = new GameObject("sRightArm", renderLayer);
+    transform = new PixelTransform();
+    transform->SetScale(Vector3(0.5f, 1.5f, 0.5f));
+    transform->SetPosition(Vector3(0.75f, 2.25f, 0.0f));
+    rightArm->SetComponent(transform);
+    rightArm->SetComponent(usedShader);
+    rightArm->SetComponent(new CubeDrawing());
+    
     g->AddChild(head);
     g->AddChild(body);
     g->AddChild(leftLeg);
-    
-    
-    //g->SetComponent(new DummyTriangleDrawing());
+    g->AddChild(rightLeg);
+    g->AddChild(leftArm);
+    g->AddChild(rightArm);
     
     return g;
 }

@@ -24,12 +24,12 @@ public:
     Vector3 GetScale();
     void SetScale(Vector3 setScale);
     
-    Vector3 GetRotation();
-    void SetRotation(Vector3 setRotation);
+    Matrix4 GetRotation();
+    void SetRotation(ERotation type, float degreeRotation);
 private:
     Vector3 _position;
     Vector3 _scale;
-    Vector3 _rotation;
+    Matrix4 _rotation;
 };
 
 #endif /* PixelTransform_hpp */

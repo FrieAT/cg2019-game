@@ -12,8 +12,10 @@
 #include <glm/glm.hpp>
 
 #include "IComponent.hpp"
+#include "ERotation.hpp"
 
 typedef glm::fvec3 Vector3;
+typedef glm::fvec4 Vector4;
 typedef glm::fmat4 Matrix4;
 typedef glm::fmat3 Matrix3;
 
@@ -28,8 +30,8 @@ public:
     virtual Vector3 GetScale() = 0;
     virtual void SetScale(Vector3 setScale) = 0;
     
-    virtual Vector3 GetRotation() = 0;
-    virtual void SetRotation(Vector3 setRotation) = 0;
+    virtual Matrix4 GetRotation() = 0;
+    virtual void SetRotation(ERotation type, float degreeRotation) = 0;
     
     EComponentType GetComponentType() override
     {
