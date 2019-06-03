@@ -10,6 +10,7 @@
 #include <time.h>
 #include "KeyboardManager.hpp"
 #include "IPosition.hpp"
+#include "Game.hpp"
 
 SphereDrawing::~SphereDrawing()
 {
@@ -18,6 +19,8 @@ SphereDrawing::~SphereDrawing()
 
 void SphereDrawing::Init()
 {
+    _freeze = true;
+    
     auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
     int posAttrib = shader->GetAttrib(EShaderAttrib::Position);
     int normAttrib = shader->GetAttrib(EShaderAttrib::Normal);
@@ -86,11 +89,14 @@ void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint shininessAttrib)
 }
 void SphereDrawing::update(GLdouble time)
 {
-    dx = speed * (time -birthTime)/ per;
-    dy = MAX_AMP;
-    anim = glm::translate(glm::mat4(1.0f), glm::vec3(dx,dy, 0.0f)); // anim matrix for the ball
-    auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
-    position->SetPosition(Vector3(dx,dy, 0.0f));
+    //TODO: This code below may not be here. Should be moved to PhysicsManager.
+    if(!_freeze) {
+        dx = speed * (time -birthTime)/ per * Game::GetEngine()->GetDeltaTime();
+        dy = std::abs(amp * sinf(speed * (time - birthTime) + phase)) * Game::GetEngine()->GetDeltaTime();
+        //anim = glm::translate(glm::mat4(1.0f), glm::vec3(dx,dy, 0.0f)); // anim matrix for the ball
+        auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
+        position->AddPosition(Vector3(dx,-dy, 0.0f));
+    }
 }
 /* check if ball has reached the right border of the stage */
 bool SphereDrawing::checkFinished()
@@ -106,9 +112,11 @@ void SphereDrawing::deleteBufferAndArray()
 /* initialize the parameters of the ball with partially random values */
 void SphereDrawing::initializeParameters()
 {
-   birthTime = glfwGetTime();
+    birthTime = glfwGetTime();
     _radius = MIN_RADIUS + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_RADIUS - MIN_RADIUS)));
+    phase = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / 3.0));
     per = MIN_PER + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_PER - MIN_PER)));
+    amp = MIN_AMP + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_AMP - MIN_AMP)));
     speed = MIN_SPEED + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_SPEED - MIN_SPEED)));
     cx = -stageLengthHalf - 0.2 - _radius;
     cy = _radius;
@@ -137,20 +145,20 @@ void SphereDrawing::initializeVertices()
         for (float theta = 0; theta < 360; theta += space) {//10,20..360
             
             
-            vtx[n]   = cx + _radius * sin(theta * PI/180) * cos(phi * PI/180);
-            vtx[n+1] = cy + _radius * sin(theta * PI/180) * sin(phi * PI/180);
-            vtx[n+2] = cz + _radius * cos(theta * PI/180);
-            vtx[n + 3] =  _radius *sin(theta * PI / 180) * cos(phi * PI / 180);
-            vtx[n + 4] =  _radius * sin(theta * PI / 180) * sin(phi * PI / 180);
-            vtx[n + 5] = _radius *  cos(theta * PI / 180);
+            vtx[n]   = sin(theta * PI/180) * cos(phi * PI/180);
+            vtx[n+1] = sin(theta * PI/180) * sin(phi * PI/180);
+            vtx[n+2] = cos(theta * PI/180);
+            vtx[n + 3] =  sin(theta * PI / 180) * cos(phi * PI / 180);
+            vtx[n + 4] =  sin(theta * PI / 180) * sin(phi * PI / 180);
+            vtx[n + 5] = cos(theta * PI / 180);
             
             
-            vtx[n+6]   = cx + _radius * sin(theta * PI/180) * cos((phi + space) * PI/180);
-            vtx[n+7] = cy + _radius * sin(theta * PI/180) * sin((phi + space) * PI/180);
-            vtx[n+8] = cz + _radius * cos(theta * PI/180);
-            vtx[n+9] = _radius *sin(theta * PI/180) * cos((phi + space) * PI/180);
-            vtx[n+10] =  _radius * sin(theta * PI/180) * sin((phi + space) * PI/180);
-            vtx[n+11] =  _radius * cos(theta * PI/180);
+            vtx[n+6]   = sin(theta * PI/180) * cos((phi + space) * PI/180);
+            vtx[n+7] = sin(theta * PI/180) * sin((phi + space) * PI/180);
+            vtx[n+8] = cos(theta * PI/180);
+            vtx[n+9] = sin(theta * PI/180) * cos((phi + space) * PI/180);
+            vtx[n+10] =  sin(theta * PI/180) * sin((phi + space) * PI/180);
+            vtx[n+11] =  cos(theta * PI/180);
             n += 12;
         }
     }

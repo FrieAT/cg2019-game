@@ -124,13 +124,18 @@ GameObject * PrimitiveObjects::CreateCamera()
     return g;
 }
 
-void PrimitiveObjects::GenerateBallsForLevel(Vector3 centerPosition, float laenge, float breite)
+void PrimitiveObjects::GenerateBallsForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite)
 {
-    float ballSize = 5;
+    float ballSize = 0.3;
     float startingHeight = 4.0;
-    for(float y = centerPosition.y - laenge; y < centerPosition.y + laenge; y+=ballSize) {
-        for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=ballSize) {
+    for(float y = centerPosition.y - laenge; y < centerPosition.y + laenge; y+=ballSize*2.0f) {
+        for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=ballSize*2.0f) {
             GameObject* p = CreateSphereDummy();
+            IPosition * transform = new PixelTransform();
+            transform->SetPosition(Vector3(x, 3.5f, y));
+            transform->SetScale(Vector3(ballSize));
+            p->SetComponent(transform);
+            manager->AddGameObject(p);
             /*
             auto position = dynamic_cast<IPosition*>(p->GetComponent(EComponentType::Position));
             position->SetPosition(Vector3(x, y, startingHeight));

@@ -82,6 +82,9 @@ private:
   
    std::vector<SphereDrawing> ballList;
     GLdouble time ;
+    bool _freeze;
+    float amp;
+    float phase;
     
 };
 #endif /* SphereDrawing_hpp */

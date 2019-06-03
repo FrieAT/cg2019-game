@@ -48,12 +48,8 @@ void Game::Initialize()
     // Adding GameObjects below.
     auto camera = PrimitiveObjects::CreateCamera();
     GetManager<ObjectManager>()->AddGameObject(camera);
-    for(int i = 0; i < 3; i++) {
-        auto spfhere = PrimitiveObjects::CreateSphereDummy();
-        GetManager<ObjectManager>()->AddGameObject(spfhere);
     
-    
-    }
+    PrimitiveObjects::GenerateBallsForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
 
     
 

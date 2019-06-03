@@ -6,6 +6,7 @@
 #include "Game.hpp"
 #include "GameObject.hpp"
 #include "IPosition.hpp"
+#include "ObjectManager.hpp"
 
 class PrimitiveObjects
 {
@@ -16,7 +17,7 @@ public:
 public:
     static GameObject * CreateStageDummy();
     static GameObject * CreateCamera();
-    static void GenerateBallsForLevel(Vector3 centerPosition, float laenge, float breite);
+    static void GenerateBallsForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
 };
 
 #endif /* PrimitiveObjects_hpp */
