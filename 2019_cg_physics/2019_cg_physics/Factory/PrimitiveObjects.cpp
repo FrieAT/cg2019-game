@@ -7,6 +7,7 @@
 #include "SphereShader.hpp"
 #include "PrototypeView.hpp"
 #include "DefaultShader.hpp"
+#include "SteveHeadTexture.hpp"
 
 GameObject * PrimitiveObjects::CreateStageDummy()
 {
@@ -38,6 +39,7 @@ GameObject * PrimitiveObjects::CreateSteve()
     //transform->SetScale(Vector3(0.5f, 0.3f, 0.5f));
     head->SetComponent(transform);
     head->SetComponent(new CubeDrawing());
+    head->SetComponent(new SteveHeadTexture());
     head->SetComponent(usedShader);
     
     GameObject * body = new GameObject("sBody", renderLayer);

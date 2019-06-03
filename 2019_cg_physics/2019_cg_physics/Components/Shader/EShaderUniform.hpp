@@ -16,6 +16,7 @@ enum class EShaderUniform
     CameraProjection,
     Model,
     Shininess,
+    EnableTexture,
     
     MaxItem,
 };

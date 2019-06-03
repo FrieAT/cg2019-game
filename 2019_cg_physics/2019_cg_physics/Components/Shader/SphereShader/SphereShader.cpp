@@ -41,6 +41,7 @@ SphereShader::SphereShader()
        uniform vec3 cameraPosition;
        uniform float shininess;
        uniform sampler2D textureData;
+       uniform int enableTexture;
        
        vec3 lightPosition = vec3(0.0f, 4.0f, 0.0f);
        vec3 lightIntensities = vec3(1.0f, 1.0f, 1.0f); // the color of the light
@@ -70,7 +71,12 @@ SphereShader::SphereShader()
            float diffuseCoefficient = max(0.0, dot(normal, surfaceToLight));
            
            //calculate diffuse component
-           vec3 diffuse = diffuseCoefficient * lightIntensities * colorVtxOut;
+           vec3 color = colorVtxOut;
+           if(enableTexture == 1) {
+               //color = vec3(texture(textureData, textureCoordOut));
+               color = vec3(1.0, 0.0, 0.0);
+           }
+           vec3 diffuse = diffuseCoefficient * lightIntensities * color;
            
            //calculate ambient component
            vec3 ambient = ambientCoefficient * lightIntensities * colorVtxOut;

@@ -87,6 +87,8 @@ public:
                 return "normalIn";
             case EShaderAttrib::Color:
                 return "colorVtxIn";
+            case EShaderAttrib::TextureCoords:
+                return "textureCoordIn";
             default:
                 throw std::exception();
         }
@@ -105,6 +107,8 @@ public:
                 return "shininess";
             case EShaderUniform::Model:
                 return "anim";
+            case EShaderUniform::EnableTexture:
+                return "enableTexture";
             default:
                 throw std::exception();
         }

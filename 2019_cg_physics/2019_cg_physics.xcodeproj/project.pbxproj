@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D804214F2299D6C800BE3E8D /* DefaultShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D804214D2299D6C800BE3E8D /* DefaultShader.cpp */; };
+		D811FC8D22A537CF00B30712 /* texture_steve.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = D8625D3722A5368400ECD7FF /* texture_steve.png */; };
 		D82D408A226EE90200F5B73D /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82D4088226EE90200F5B73D /* Game.cpp */; };
 		D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82D408B226EE9B000F5B73D /* WindowManager.cpp */; };
 		D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAB72279C06F00ABFE72 /* Exception.cpp */; };
@@ -15,6 +16,7 @@
 		D858CABE227C22D100ABFE72 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */; };
 		D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CABF227C261100ABFE72 /* ObjectManager.cpp */; };
 		D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAC2227C264E00ABFE72 /* GameObject.cpp */; };
+		D8625D3322A534B700ECD7FF /* SteveHeadTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8625D3122A534B700ECD7FF /* SteveHeadTexture.cpp */; };
 		D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D879638F228E7D93002FDFD8 /* SphereShader.cpp */; };
 		D8BA0D0722870AC9008B4580 /* PixelTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8BA0D0522870AC9008B4580 /* PixelTransform.cpp */; };
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
@@ -33,12 +35,13 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		D8F6D718226DA85900E39805 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
+			buildActionMask = 12;
+			dstPath = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 			dstSubfolderSpec = 0;
 			files = (
+				D811FC8D22A537CF00B30712 /* texture_steve.png in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -62,6 +65,12 @@
 		D858CAC7227C279200ABFE72 /* IComponent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = IComponent.hpp; sourceTree = "<group>"; };
 		D858CAC8227C279200ABFE72 /* EComponentType.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = EComponentType.hpp; sourceTree = "<group>"; };
 		D8625D2C22A4064500ECD7FF /* ERotation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ERotation.hpp; sourceTree = "<group>"; };
+		D8625D2D22A5331A00ECD7FF /* ETextureType.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ETextureType.hpp; sourceTree = "<group>"; };
+		D8625D2F22A533DC00ECD7FF /* ITexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ITexture.hpp; sourceTree = "<group>"; };
+		D8625D3122A534B700ECD7FF /* SteveHeadTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveHeadTexture.cpp; sourceTree = "<group>"; };
+		D8625D3222A534B700ECD7FF /* SteveHeadTexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveHeadTexture.hpp; sourceTree = "<group>"; };
+		D8625D3422A5359D00ECD7FF /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		D8625D3722A5368400ECD7FF /* texture_steve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_steve.png; sourceTree = "<group>"; };
 		D87037E32299CEB900B51FD8 /* EShaderAttrib.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EShaderAttrib.hpp; sourceTree = "<group>"; };
 		D879638D228E7C81002FDFD8 /* IShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IShader.hpp; sourceTree = "<group>"; };
 		D879638F228E7D93002FDFD8 /* SphereShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SphereShader.cpp; sourceTree = "<group>"; };
@@ -137,6 +146,7 @@
 				D8CE66D5228EAEB4005C2478 /* View */,
 				D879638C228E7C71002FDFD8 /* Shader */,
 				D8BA0D042287084E008B4580 /* Position */,
+				D8625D2E22A533BE00ECD7FF /* Texture */,
 				D858CACE227C27E300ABFE72 /* Drawing */,
 				D858CACD227C27DF00ABFE72 /* Movement */,
 				D858CAC8227C279200ABFE72 /* EComponentType.hpp */,
@@ -161,6 +171,34 @@
 				D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */,
 			);
 			path = Drawing;
+			sourceTree = "<group>";
+		};
+		D8625D2E22A533BE00ECD7FF /* Texture */ = {
+			isa = PBXGroup;
+			children = (
+				D8625D3022A5349700ECD7FF /* SteveHead */,
+				D8625D2F22A533DC00ECD7FF /* ITexture.hpp */,
+				D8625D2D22A5331A00ECD7FF /* ETextureType.hpp */,
+				D8625D3422A5359D00ECD7FF /* stb_image.h */,
+			);
+			path = Texture;
+			sourceTree = "<group>";
+		};
+		D8625D3022A5349700ECD7FF /* SteveHead */ = {
+			isa = PBXGroup;
+			children = (
+				D8625D3122A534B700ECD7FF /* SteveHeadTexture.cpp */,
+				D8625D3222A534B700ECD7FF /* SteveHeadTexture.hpp */,
+			);
+			path = SteveHead;
+			sourceTree = "<group>";
+		};
+		D8625D3622A5368400ECD7FF /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				D8625D3722A5368400ECD7FF /* texture_steve.png */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		D879638C228E7C71002FDFD8 /* Shader */ = {
@@ -287,6 +325,7 @@
 		D8F6D71C226DA85900E39805 /* 2019_cg_physics */ = {
 			isa = PBXGroup;
 			children = (
+				D8625D3622A5368400ECD7FF /* Assets */,
 				D8EBCD53227C75D800D08539 /* Factory */,
 				D858CACB227C27B900ABFE72 /* Components */,
 				D858CAC9227C279900ABFE72 /* Managers */,
@@ -411,6 +450,7 @@
 				ED4DB1A92288705B00AAA0D1 /* CubeDrawing.cpp in Sources */,
 				D82D408D226EE9B000F5B73D /* WindowManager.cpp in Sources */,
 				D8BA0D0722870AC9008B4580 /* PixelTransform.cpp in Sources */,
+				D8625D3322A534B700ECD7FF /* SteveHeadTexture.cpp in Sources */,
 				D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */,
 				D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */,
 			);
@@ -546,6 +586,7 @@
 					/usr/local/Cellar/glfw/3.3/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "$(PROJECT_DIR)/build";
 			};
 			name = Debug;
 		};
@@ -565,6 +606,7 @@
 					/usr/local/Cellar/glfw/3.3/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SYMROOT = "$(PROJECT_DIR)/build";
 			};
 			name = Release;
 		};

@@ -14,6 +14,7 @@ enum class EShaderAttrib
     Position,
     Normal,
     Color,
+    TextureCoords,
     
     MaxItem,
 };

@@ -10,6 +10,7 @@
 #include "IDrawing.hpp"
 #include "IPosition.hpp"
 #include "IShader.hpp"
+#include "ITexture.hpp"
 
 RenderManager::RenderManager(const Game &engine)
 : AbstractManager(engine)
@@ -251,6 +252,7 @@ void RenderManager::updateTransformRecursive(GameObject* transform, Matrix4 pare
     auto shader = dynamic_cast<IShader*>(transform->GetComponent(EComponentType::Shader));
     auto drawing = dynamic_cast<IDrawing*>(transform->GetComponent(EComponentType::Drawing));
     auto position = dynamic_cast<IPosition*>(transform->GetComponent(EComponentType::Position));
+    auto texture = dynamic_cast<ITexture*>(transform->GetComponent(EComponentType::Texture));
     
     if(position != nullptr) {
     
@@ -267,6 +269,16 @@ void RenderManager::updateTransformRecursive(GameObject* transform, Matrix4 pare
         }
         
         parentTransform = anim;
+        
+        GLint enableTexture = shader->GetUniform(EShaderUniform::EnableTexture);
+        if(enableTexture != -1) {
+            glUniform1i(enableTexture, 0);
+        }
+        
+        if(texture != nullptr)
+        {
+            texture->Texture();
+        }
         
         if(drawing != nullptr)
         {
