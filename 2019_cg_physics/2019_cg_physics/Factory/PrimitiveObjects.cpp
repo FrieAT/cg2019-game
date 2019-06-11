@@ -10,6 +10,9 @@
 #include "LinearMovement.hpp"
 #include "IPlayer.hpp"
 #include "SteveHeadTexture.hpp"
+#include "SteveBodyTexture.hpp"
+#include "SteveLegTexture.hpp"
+#include "SteveArmTexture.hpp"
 
 GameObject * PrimitiveObjects::CreateStageDummy()
 {
@@ -26,6 +29,7 @@ GameObject * PrimitiveObjects::CreateSteve()
     std::string renderLayer = "Opaque";
     PixelTransform * transform;
     SphereShader * usedShader;
+    IDrawing * drawing;
     
     GameObject * g = new GameObject("Steve", renderLayer);
     usedShader = new SphereShader();
@@ -42,8 +46,9 @@ GameObject * PrimitiveObjects::CreateSteve()
     transform->SetPosition(Vector3(0.0f, 3.5f, 0.0f));
     //transform->SetScale(Vector3(0.5f, 0.3f, 0.5f));
     head->SetComponent(transform);
-    head->SetComponent(new CubeDrawing());
-    head->SetComponent(new SteveHeadTexture());
+    drawing = new CubeDrawing();
+    drawing->SetTexture(new SteveHeadTexture());
+    head->SetComponent(drawing);
     head->SetComponent(usedShader);
     
     GameObject * body = new GameObject("sBody", renderLayer);
@@ -52,7 +57,9 @@ GameObject * PrimitiveObjects::CreateSteve()
     transform->SetPosition(Vector3(0.0f, 2.25f, 0.0f));
     body->SetComponent(transform);
     body->SetComponent(usedShader);
-    body->SetComponent(new CubeDrawing());
+    drawing = new CubeDrawing();
+    drawing->SetTexture(new SteveBodyTexture());
+    body->SetComponent(drawing);
     
     GameObject * leftLeg = new GameObject("sLeftLeg", renderLayer);
     transform = new PixelTransform();
@@ -60,7 +67,9 @@ GameObject * PrimitiveObjects::CreateSteve()
     transform->SetPosition(Vector3(-0.25f, 0.75f, 0.0f));
     leftLeg->SetComponent(transform);
     leftLeg->SetComponent(usedShader);
-    leftLeg->SetComponent(new CubeDrawing());
+    drawing = new CubeDrawing();
+    drawing->SetTexture(new SteveLegTexture());
+    leftLeg->SetComponent(drawing);
     
     GameObject * rightLeg = new GameObject("sRightLeg", renderLayer);
     transform = new PixelTransform();
@@ -68,7 +77,9 @@ GameObject * PrimitiveObjects::CreateSteve()
     transform->SetPosition(Vector3(0.25f, 0.75f, 0.0f));
     rightLeg->SetComponent(transform);
     rightLeg->SetComponent(usedShader);
-    rightLeg->SetComponent(new CubeDrawing());
+    drawing = new CubeDrawing();
+    drawing->SetTexture(new SteveLegTexture());
+    rightLeg->SetComponent(drawing);
     
     GameObject * leftArm = new GameObject("sLeftArm", renderLayer);
     transform = new PixelTransform();
@@ -77,7 +88,9 @@ GameObject * PrimitiveObjects::CreateSteve()
     transform->SetRotation(ERotation::Yaw, 45.0);
     leftArm->SetComponent(transform);
     leftArm->SetComponent(usedShader);
-    leftArm->SetComponent(new CubeDrawing());
+    drawing = new CubeDrawing();
+    drawing->SetTexture(new SteveArmTexture());
+    leftArm->SetComponent(drawing);
     
     GameObject * rightArm = new GameObject("sRightArm", renderLayer);
     transform = new PixelTransform();
@@ -86,7 +99,9 @@ GameObject * PrimitiveObjects::CreateSteve()
     transform->SetRotation(ERotation::Yaw, -45.0);
     rightArm->SetComponent(transform);
     rightArm->SetComponent(usedShader);
-    rightArm->SetComponent(new CubeDrawing());
+    drawing = new CubeDrawing();
+    drawing->SetTexture(new SteveArmTexture());
+    rightArm->SetComponent(drawing);
     
     g->AddChild(head);
     g->AddChild(body);

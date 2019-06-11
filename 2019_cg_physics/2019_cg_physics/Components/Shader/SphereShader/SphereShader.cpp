@@ -26,8 +26,7 @@ SphereShader::SphereShader()
          out vec3 colorVtxOut;
          
          void main() {
-             textureCoordOut = vec2(textureCoordIn.x,
-                                    1.0 - textureCoordIn.y);
+             textureCoordOut = vec2(textureCoordIn.x, -textureCoordIn.y);
              normalOut = normalIn;
              positionOut = positionIn;
              colorVtxOut = colorVtxIn;
@@ -70,16 +69,14 @@ SphereShader::SphereShader()
            //calculate the cosine of the angle of incidence
            float diffuseCoefficient = max(0.0, dot(normal, surfaceToLight));
            
+           // texture(textureData, textureCoordOut);
+           vec3 modelColor = colorVtxOut + vec3(texture(textureData, textureCoordOut.xy));
+           
            //calculate diffuse component
-           vec3 color = colorVtxOut;
-           if(enableTexture == 1) {
-               //color = vec3(texture(textureData, textureCoordOut));
-               color = vec3(1.0, 0.0, 0.0);
-           }
-           vec3 diffuse = diffuseCoefficient * lightIntensities * color;
+           vec3 diffuse = diffuseCoefficient * lightIntensities * modelColor;
            
            //calculate ambient component
-           vec3 ambient = ambientCoefficient * lightIntensities * colorVtxOut;
+           vec3 ambient = ambientCoefficient * lightIntensities * modelColor;
            
            //calculate specular component
            float specularCoefficient = 0.0;
