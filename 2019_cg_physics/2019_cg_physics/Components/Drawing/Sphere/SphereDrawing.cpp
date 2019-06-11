@@ -21,8 +21,9 @@ void SphereDrawing::Init()
     auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
     int posAttrib = shader->GetAttrib(EShaderAttrib::Position);
     int normAttrib = shader->GetAttrib(EShaderAttrib::Normal);
+    int uvAttrib = shader->GetAttrib(EShaderAttrib::TextureCoords);
     
-    organize(posAttrib,normAttrib);
+    organize(posAttrib,normAttrib,uvAttrib);
 }
 
 
@@ -49,7 +50,7 @@ SphereDrawing::SphereDrawing()
     initializeColorValues();
 }
 
-void SphereDrawing::organize(GLint posAttrib, GLint normAttrib)
+void SphereDrawing::organize(GLint posAttrib, GLint normAttrib, GLint uvAttrib)
 {
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -57,15 +58,32 @@ void SphereDrawing::organize(GLint posAttrib, GLint normAttrib)
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     
+    int bufferSize = 0, positionSize = 0, textureSize = 0;
+    
+    positionSize = sizeof(vtx);
+    bufferSize += positionSize;
+    
+    auto texture = GetTexture();
+    if(texture != nullptr) {
+        textureSize = 2 * texture->GetVerticesCount() * sizeof(GLfloat);
+        bufferSize += textureSize;
+    }
+    
+    glBufferData(GL_ARRAY_BUFFER, bufferSize, 0, GL_STATIC_DRAW);
+    
+    glBufferSubData(GL_ARRAY_BUFFER, 0, positionSize, vtx);
     glEnableVertexAttribArray(posAttrib);
-    glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE,
-                          6 * sizeof(GLfloat), 0);
-    
+    glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), 0);
     glEnableVertexAttribArray(normAttrib);
+    glVertexAttribPointer(normAttrib, 3, GL_FLOAT, GL_TRUE, 6 * sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
     
-    glVertexAttribPointer(normAttrib, 3, GL_FLOAT, GL_TRUE,
-                          6 * sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vtx), vtx, GL_STATIC_DRAW);
+    if(texture != nullptr) {
+        texture->Init();
+        
+        glBufferSubData(GL_ARRAY_BUFFER, positionSize, textureSize, texture->GetUVCoordinates());
+        glEnableVertexAttribArray(uvAttrib);
+        glVertexAttribPointer(uvAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void*)positionSize);
+    }
     
     glBindVertexArray(0);
 }
@@ -74,15 +92,32 @@ void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint shininessAttrib)
 {
     update(time);
     /*binded*/
-    glBindVertexArray(vao);
+    
     //http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
     //texture
     glUniform1f(shininessAttrib, 300);
+    
+    auto texture = GetTexture();
+    if(texture != nullptr) {
+        //glUniform1i(enableTextureUniform, 1);
+        
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture->GetTextureHandle());
+    }
+    glBindVertexArray(vao);
+    if(texture != nullptr) {
+        glVertexAttrib3f(colAttrib, 0.0f, 0.0f, 0.0f);
+    } else {
+        glVertexAttrib3f(colAttrib, 1.0f, 1.0f, 1.0f);
+    }
+    
     glVertexAttrib2f(colAttrib, colorValues[0], colorValues[1]); // set constant color attribute
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 36 * 18 * 2);
     
+    
     glBindVertexArray(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 void SphereDrawing::update(GLdouble time)
 {
@@ -157,9 +192,9 @@ void SphereDrawing::initializeVertices()
 
     
 }
-SphereDrawing SphereDrawing:: generateBall(GLint posAttrib, GLint normAttrib)
+SphereDrawing SphereDrawing:: generateBall(GLint posAttrib, GLint normAttrib, GLint uvAttrib)
 {
     SphereDrawing ball;
-    ball.organize(posAttrib, normAttrib);
+    ball.organize(posAttrib, normAttrib,uvAttrib);
     return ball;
 }

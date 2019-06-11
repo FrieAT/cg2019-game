@@ -116,7 +116,7 @@ void CubeDrawing::organize(GLint posAttrib, GLint uvAttrib)
     
     int bufferSize = 0, positionSize = 0, textureSize = 0;
     
-    positionSize = 3 * 36 * sizeof(GLfloat);
+    positionSize = sizeof(points);
     bufferSize += positionSize;
     
     auto texture = GetTexture();

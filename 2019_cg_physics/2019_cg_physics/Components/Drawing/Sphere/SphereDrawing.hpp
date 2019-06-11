@@ -18,7 +18,7 @@ public:
     void initializeVertices();
     void initializeParameters();
     SphereDrawing();
-    void organize(GLint posAttrib, GLint normAttrib);
+    void organize(GLint posAttrib, GLint normAttrib, GLint uvAttrib);
     void draw(GLdouble time, GLint colAttrib, GLint shininessAttrib);
     void update(GLdouble time);
     bool checkFinished();
@@ -30,7 +30,7 @@ public:
 
 
     
-    SphereDrawing generateBall(GLint posAttrib, GLint normAttrib);
+    SphereDrawing generateBall(GLint posAttrib, GLint normAttrib, GLint uvAttrib);
    
     float getRadius();
     
