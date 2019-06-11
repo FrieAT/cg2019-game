@@ -8,6 +8,8 @@
 #include "IPosition.hpp"
 #include "ObjectManager.hpp"
 
+#include <GL/glew.h>
+
 class PrimitiveObjects
 {
 public:
@@ -15,9 +17,14 @@ public:
 public:
     static GameObject * CreateSphereDummy();
 public:
+    static GameObject * CreateGeometrie();
+public:
     static GameObject * CreateStageDummy();
     static GameObject * CreateCamera();
     static void GenerateBallsForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
+    static void GenerateGeometrieForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
+
+    
 };
 
 #endif /* PrimitiveObjects_hpp */

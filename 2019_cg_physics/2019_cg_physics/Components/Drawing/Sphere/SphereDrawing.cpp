@@ -90,14 +90,40 @@ void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint shininessAttrib)
 void SphereDrawing::update(GLdouble time)
 {
     //TODO: This code below may not be here. Should be moved to PhysicsManager.
-    if(!_freeze) {
-        dx = speed * (time -birthTime)/ per * Game::GetEngine()->GetDeltaTime();
-        dy = std::abs(amp * sinf(speed * (time - birthTime) + phase)) * Game::GetEngine()->GetDeltaTime();
+    if(!_freeze ) {
+        //dy =-speed * (time -birthTime) ;
+        //dy =2.0f;
+        dx = speed * (time -birthTime)/ per;
+        //* Game::GetEngine()->GetDeltaTime();
+        //dy = std::abs(amp * sinf(speed * (time - birthTime) + phase));
+        dy = std::abs(amp * cosf(speed * (time - birthTime) + phase));
+        //* Game::GetEngine()->GetDeltaTime();
         //anim = glm::translate(glm::mat4(1.0f), glm::vec3(dx,dy, 0.0f)); // anim matrix for the ball
         auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
-        position->AddPosition(Vector3(dx,-dy, 0.0f));
+        position->SetPosition(Vector3(position ->GetPosition().x,dy, 0.0f));
     }
+    
 }
+
+float SphereDrawing::getCurrentCX()
+{
+    // return cx + dx;
+    return dx;
+}
+//void SphereDrawing::update(GLdouble time)
+//{
+//    dy = -speed * (time - birthTime);
+//    dx = getCurrentCX();
+//
+//    if(dy <=-0.3f){
+//
+//        dx = speed * (time - birthTime) / per;
+//        dy =std::abs(amp *sinf(speed * (time - birthTime)+ phase));
+//    }
+//    auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
+//    position->SetPosition(Vector3(position ->GetPosition().x,dy, 0.0f));
+//
+//}
 /* check if ball has reached the right border of the stage */
 bool SphereDrawing::checkFinished()
 {

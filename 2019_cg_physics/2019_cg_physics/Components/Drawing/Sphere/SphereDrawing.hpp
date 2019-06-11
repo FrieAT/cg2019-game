@@ -26,6 +26,8 @@ public:
     float stageWidthHalf;
     float stageLengthHalf;
    
+    float getCurrentCX();
+   
     ~SphereDrawing();
 
 
