@@ -22,10 +22,6 @@
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
 		D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD4B227C2F7000D08539 /* SphereDrawing.cpp */; };
 		D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD54227C75ED00D08539 /* PrimitiveObjects.cpp */; };
-		D8EFAA5B22AFA26100980BE1 /* SteveAbstractTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EFAA5922AFA26100980BE1 /* SteveAbstractTexture.cpp */; };
-		D8EFAA5F22AFA3BF00980BE1 /* SteveBodyTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EFAA5D22AFA3BF00980BE1 /* SteveBodyTexture.cpp */; };
-		D8EFAA6422AFB01900980BE1 /* SteveLegTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EFAA6222AFB01900980BE1 /* SteveLegTexture.cpp */; };
-		D8EFAA6822AFB02900980BE1 /* SteveArmTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EFAA6622AFB02900980BE1 /* SteveArmTexture.cpp */; };
 		D8F6D71E226DA85900E39805 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8F6D71D226DA85900E39805 /* main.cpp */; };
 		D8F6D726226DA87600E39805 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D725226DA87600E39805 /* OpenGL.framework */; };
 		D8F6D728226DA88B00E39805 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D727226DA88B00E39805 /* libGLEW.2.1.0.dylib */; };
@@ -33,6 +29,7 @@
 		ED0028FE229AA0570049E17B /* PhysicsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED0028FC229AA0570049E17B /* PhysicsManager.cpp */; };
 		ED002903229AA1EA0049E17B /* LinearMovement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED002901229AA1EA0049E17B /* LinearMovement.cpp */; };
 		ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */; };
+		ED1BEF1522A6F1AD00B4C540 /* Geometrie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED1BEF1322A6F1AD00B4C540 /* Geometrie.cpp */; };
 		ED4DB1A92288705B00AAA0D1 /* CubeDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4DB1A72288705B00AAA0D1 /* CubeDrawing.cpp */; };
 		EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDA36262227DFDF800F5055C /* StageDrawing.cpp */; };
 		EDFD6B21227C8BF900613D2F /* glfw in Frameworks */ = {isa = PBXBuildFile; fileRef = D858CABC227C22A100ABFE72 /* glfw */; };
@@ -95,14 +92,6 @@
 		D8EBCD4C227C2F7000D08539 /* SphereDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SphereDrawing.hpp; sourceTree = "<group>"; };
 		D8EBCD54227C75ED00D08539 /* PrimitiveObjects.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PrimitiveObjects.cpp; sourceTree = "<group>"; };
 		D8EBCD55227C75ED00D08539 /* PrimitiveObjects.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PrimitiveObjects.hpp; sourceTree = "<group>"; };
-		D8EFAA5922AFA26100980BE1 /* SteveAbstractTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveAbstractTexture.cpp; sourceTree = "<group>"; };
-		D8EFAA5A22AFA26100980BE1 /* SteveAbstractTexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveAbstractTexture.hpp; sourceTree = "<group>"; };
-		D8EFAA5D22AFA3BF00980BE1 /* SteveBodyTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveBodyTexture.cpp; sourceTree = "<group>"; };
-		D8EFAA5E22AFA3BF00980BE1 /* SteveBodyTexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveBodyTexture.hpp; sourceTree = "<group>"; };
-		D8EFAA6222AFB01900980BE1 /* SteveLegTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveLegTexture.cpp; sourceTree = "<group>"; };
-		D8EFAA6322AFB01900980BE1 /* SteveLegTexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveLegTexture.hpp; sourceTree = "<group>"; };
-		D8EFAA6622AFB02900980BE1 /* SteveArmTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveArmTexture.cpp; sourceTree = "<group>"; };
-		D8EFAA6722AFB02900980BE1 /* SteveArmTexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveArmTexture.hpp; sourceTree = "<group>"; };
 		D8F6D71A226DA85900E39805 /* 2019_cg_physics */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 2019_cg_physics; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8F6D71D226DA85900E39805 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D8F6D725226DA87600E39805 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
@@ -117,6 +106,8 @@
 		ED002905229AA86D0049E17B /* IPlayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IPlayer.hpp; sourceTree = "<group>"; };
 		ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardManager.cpp; sourceTree = "<group>"; };
 		ED01EBAA2284A6620088ED35 /* KeyboardManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardManager.hpp; sourceTree = "<group>"; };
+		ED1BEF1322A6F1AD00B4C540 /* Geometrie.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Geometrie.cpp; sourceTree = "<group>"; };
+		ED1BEF1422A6F1AD00B4C540 /* Geometrie.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Geometrie.hpp; sourceTree = "<group>"; };
 		ED4DB1A72288705B00AAA0D1 /* CubeDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CubeDrawing.cpp; sourceTree = "<group>"; };
 		ED4DB1A82288705B00AAA0D1 /* CubeDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CubeDrawing.hpp; sourceTree = "<group>"; };
 		EDA36262227DFDF800F5055C /* StageDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StageDrawing.cpp; sourceTree = "<group>"; };
@@ -168,6 +159,7 @@
 				D8CE66D5228EAEB4005C2478 /* View */,
 				D879638C228E7C71002FDFD8 /* Shader */,
 				D8BA0D042287084E008B4580 /* Position */,
+				D8625D2E22A533BE00ECD7FF /* Texture */,
 				D858CACE227C27E300ABFE72 /* Drawing */,
 				D858CACD227C27DF00ABFE72 /* Movement */,
 				D858CAC8227C279200ABFE72 /* EComponentType.hpp */,
@@ -188,7 +180,7 @@
 		D858CACE227C27E300ABFE72 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
-				D8625D2E22A533BE00ECD7FF /* Texture */,
+				ED1BEF1222A6F14D00B4C540 /* Geometrie */,
 				ED4DB1A62288703E00AAA0D1 /* CubeDrawing */,
 				EDA3625D227DCC8000F5055C /* Stage */,
 				D8EBCD49227C2EF500D08539 /* Sphere */,
@@ -200,7 +192,7 @@
 		D8625D2E22A533BE00ECD7FF /* Texture */ = {
 			isa = PBXGroup;
 			children = (
-				D8EFAA5822AFA24D00980BE1 /* SteveAbstractTexture */,
+				D8625D3022A5349700ECD7FF /* SteveHead */,
 				D8625D2F22A533DC00ECD7FF /* ITexture.hpp */,
 				D8625D2D22A5331A00ECD7FF /* ETextureType.hpp */,
 				D8625D3422A5359D00ECD7FF /* stb_image.h */,
@@ -329,46 +321,6 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		D8EFAA5822AFA24D00980BE1 /* SteveAbstractTexture */ = {
-			isa = PBXGroup;
-			children = (
-				D8EFAA6522AFB01D00980BE1 /* SteveArm */,
-				D8EFAA6022AFB00600980BE1 /* SteveLeg */,
-				D8EFAA5C22AFA3AD00980BE1 /* SteveBody */,
-				D8625D3022A5349700ECD7FF /* SteveHead */,
-				D8EFAA5922AFA26100980BE1 /* SteveAbstractTexture.cpp */,
-				D8EFAA5A22AFA26100980BE1 /* SteveAbstractTexture.hpp */,
-			);
-			path = SteveAbstractTexture;
-			sourceTree = "<group>";
-		};
-		D8EFAA5C22AFA3AD00980BE1 /* SteveBody */ = {
-			isa = PBXGroup;
-			children = (
-				D8EFAA5D22AFA3BF00980BE1 /* SteveBodyTexture.cpp */,
-				D8EFAA5E22AFA3BF00980BE1 /* SteveBodyTexture.hpp */,
-			);
-			path = SteveBody;
-			sourceTree = "<group>";
-		};
-		D8EFAA6022AFB00600980BE1 /* SteveLeg */ = {
-			isa = PBXGroup;
-			children = (
-				D8EFAA6222AFB01900980BE1 /* SteveLegTexture.cpp */,
-				D8EFAA6322AFB01900980BE1 /* SteveLegTexture.hpp */,
-			);
-			path = SteveLeg;
-			sourceTree = "<group>";
-		};
-		D8EFAA6522AFB01D00980BE1 /* SteveArm */ = {
-			isa = PBXGroup;
-			children = (
-				D8EFAA6622AFB02900980BE1 /* SteveArmTexture.cpp */,
-				D8EFAA6722AFB02900980BE1 /* SteveArmTexture.hpp */,
-			);
-			path = SteveArm;
-			sourceTree = "<group>";
-		};
 		D8F6D711226DA85900E39805 = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +403,15 @@
 			path = KeyBoard;
 			sourceTree = "<group>";
 		};
+		ED1BEF1222A6F14D00B4C540 /* Geometrie */ = {
+			isa = PBXGroup;
+			children = (
+				ED1BEF1322A6F1AD00B4C540 /* Geometrie.cpp */,
+				ED1BEF1422A6F1AD00B4C540 /* Geometrie.hpp */,
+			);
+			path = Geometrie;
+			sourceTree = "<group>";
+		};
 		ED4DB1A62288703E00AAA0D1 /* CubeDrawing */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,18 +489,15 @@
 				ED002903229AA1EA0049E17B /* LinearMovement.cpp in Sources */,
 				D804214F2299D6C800BE3E8D /* DefaultShader.cpp in Sources */,
 				D8FC4136229991FB00614AE5 /* PrototypeView.cpp in Sources */,
-				D8EFAA5F22AFA3BF00980BE1 /* SteveBodyTexture.cpp in Sources */,
-				D8EFAA6822AFB02900980BE1 /* SteveArmTexture.cpp in Sources */,
 				D8F6D71E226DA85900E39805 /* main.cpp in Sources */,
-				D8EFAA6422AFB01900980BE1 /* SteveLegTexture.cpp in Sources */,
 				ED0028FE229AA0570049E17B /* PhysicsManager.cpp in Sources */,
 				D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */,
 				D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */,
-				D8EFAA5B22AFA26100980BE1 /* SteveAbstractTexture.cpp in Sources */,
 				D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */,
 				D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */,
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
 				D82D408A226EE90200F5B73D /* Game.cpp in Sources */,
+				ED1BEF1522A6F1AD00B4C540 /* Geometrie.cpp in Sources */,
 				D858CABB227C1FB200ABFE72 /* RenderManager.cpp in Sources */,
 				ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */,
 				EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */,
