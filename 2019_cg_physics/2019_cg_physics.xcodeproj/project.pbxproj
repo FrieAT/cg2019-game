@@ -29,6 +29,7 @@
 		ED0028FE229AA0570049E17B /* PhysicsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED0028FC229AA0570049E17B /* PhysicsManager.cpp */; };
 		ED002903229AA1EA0049E17B /* LinearMovement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED002901229AA1EA0049E17B /* LinearMovement.cpp */; };
 		ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */; };
+		ED1BEF1522A6F1AD00B4C540 /* Geometrie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED1BEF1322A6F1AD00B4C540 /* Geometrie.cpp */; };
 		ED4DB1A92288705B00AAA0D1 /* CubeDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4DB1A72288705B00AAA0D1 /* CubeDrawing.cpp */; };
 		EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDA36262227DFDF800F5055C /* StageDrawing.cpp */; };
 		EDFD6B21227C8BF900613D2F /* glfw in Frameworks */ = {isa = PBXBuildFile; fileRef = D858CABC227C22A100ABFE72 /* glfw */; };
@@ -105,6 +106,8 @@
 		ED002905229AA86D0049E17B /* IPlayer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IPlayer.hpp; sourceTree = "<group>"; };
 		ED01EBA92284A6620088ED35 /* KeyboardManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardManager.cpp; sourceTree = "<group>"; };
 		ED01EBAA2284A6620088ED35 /* KeyboardManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardManager.hpp; sourceTree = "<group>"; };
+		ED1BEF1322A6F1AD00B4C540 /* Geometrie.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Geometrie.cpp; sourceTree = "<group>"; };
+		ED1BEF1422A6F1AD00B4C540 /* Geometrie.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Geometrie.hpp; sourceTree = "<group>"; };
 		ED4DB1A72288705B00AAA0D1 /* CubeDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = CubeDrawing.cpp; sourceTree = "<group>"; };
 		ED4DB1A82288705B00AAA0D1 /* CubeDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CubeDrawing.hpp; sourceTree = "<group>"; };
 		EDA36262227DFDF800F5055C /* StageDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StageDrawing.cpp; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 		D858CACE227C27E300ABFE72 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				ED1BEF1222A6F14D00B4C540 /* Geometrie */,
 				ED4DB1A62288703E00AAA0D1 /* CubeDrawing */,
 				EDA3625D227DCC8000F5055C /* Stage */,
 				D8EBCD49227C2EF500D08539 /* Sphere */,
@@ -399,6 +403,15 @@
 			path = KeyBoard;
 			sourceTree = "<group>";
 		};
+		ED1BEF1222A6F14D00B4C540 /* Geometrie */ = {
+			isa = PBXGroup;
+			children = (
+				ED1BEF1322A6F1AD00B4C540 /* Geometrie.cpp */,
+				ED1BEF1422A6F1AD00B4C540 /* Geometrie.hpp */,
+			);
+			path = Geometrie;
+			sourceTree = "<group>";
+		};
 		ED4DB1A62288703E00AAA0D1 /* CubeDrawing */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,6 +497,7 @@
 				D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */,
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
 				D82D408A226EE90200F5B73D /* Game.cpp in Sources */,
+				ED1BEF1522A6F1AD00B4C540 /* Geometrie.cpp in Sources */,
 				D858CABB227C1FB200ABFE72 /* RenderManager.cpp in Sources */,
 				ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */,
 				EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */,

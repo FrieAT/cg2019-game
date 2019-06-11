@@ -252,7 +252,6 @@ void RenderManager::updateTransformRecursive(GameObject* transform, Matrix4 pare
     auto shader = dynamic_cast<IShader*>(transform->GetComponent(EComponentType::Shader));
     auto drawing = dynamic_cast<IDrawing*>(transform->GetComponent(EComponentType::Drawing));
     auto position = dynamic_cast<IPosition*>(transform->GetComponent(EComponentType::Position));
-    auto texture = dynamic_cast<ITexture*>(transform->GetComponent(EComponentType::Texture));
     
     if(position != nullptr) {
     
@@ -262,23 +261,13 @@ void RenderManager::updateTransformRecursive(GameObject* transform, Matrix4 pare
         Matrix4 modelRotation = position->GetRotation();
         Matrix4 modelScale = glm::scale(Matrix4(1.0f), vecScale);
         Matrix4 modelTranslation = glm::translate(Matrix4(1.0f), vecPosition);
-        Matrix4 anim = parentTransform * (modelTranslation * modelScale * modelRotation);
+        Matrix4 anim = parentTransform * (modelTranslation * modelRotation * modelScale);
    
         if(transform->HasChilds()) {
             parentTransform = Matrix4(1.0f);
         }
         
         parentTransform = anim;
-        
-        GLint enableTexture = shader->GetUniform(EShaderUniform::EnableTexture);
-        if(enableTexture != -1) {
-            glUniform1i(enableTexture, 0);
-        }
-        
-        if(texture != nullptr)
-        {
-            texture->Texture();
-        }
         
         if(drawing != nullptr)
         {

@@ -5,8 +5,10 @@
 
 #include "Game.hpp"
 #include "GameObject.hpp"
+#include "IPosition.hpp"
+#include "ObjectManager.hpp"
 
-typedef glm::fvec3 Vector3;
+#include <GL/glew.h>
 
 class PrimitiveObjects
 {
@@ -15,9 +17,14 @@ public:
 public:
     static GameObject * CreateSphereDummy();
 public:
+    static GameObject * CreateGeometrie();
+public:
     static GameObject * CreateStageDummy();
     static GameObject * CreateCamera();
-    static void GenerateBallsForLevel(Vector3 centerPosition, float laenge, float breite);
+    static void GenerateBallsForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
+    static void GenerateGeometrieForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
+
+    
 };
 
 #endif /* PrimitiveObjects_hpp */

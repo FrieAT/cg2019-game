@@ -9,17 +9,14 @@
 #ifndef ITexture_h
 #define ITexture_h
 
-#include "IComponent.hpp"
-
-class ITexture : public IComponent
+class ITexture
 {
 public:
+    virtual void Init() = 0;
     virtual void Texture() = 0;
-    
-    EComponentType GetComponentType() override
-    {
-        return EComponentType::Texture;
-    }
+    virtual unsigned int GetTextureHandle() = 0;
+    virtual float* GetUVCoordinates() = 0;
+    virtual unsigned int GetVerticesCount() = 0;
 private:
     
 };

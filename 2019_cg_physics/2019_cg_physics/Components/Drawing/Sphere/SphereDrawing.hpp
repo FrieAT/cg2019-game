@@ -18,7 +18,7 @@ public:
     void initializeVertices();
     void initializeParameters();
     SphereDrawing();
-    void organize(GLint posAttrib, GLint normAttrib);
+    void organize(GLint posAttrib, GLint normAttrib, GLint uvAttrib);
     void draw(GLdouble time, GLint colAttrib, GLint shininessAttrib);
     void update(GLdouble time);
     bool checkFinished();
@@ -26,11 +26,13 @@ public:
     float stageWidthHalf;
     float stageLengthHalf;
    
+    float getCurrentCX();
+   
     ~SphereDrawing();
 
 
     
-    SphereDrawing generateBall(GLint posAttrib, GLint normAttrib);
+    SphereDrawing generateBall(GLint posAttrib, GLint normAttrib, GLint uvAttrib);
    
     float getRadius();
     
@@ -49,10 +51,12 @@ private:
     static constexpr float PI = 3.14159265358979323846;
     static constexpr float MAX_RADIUS = 0.2;
     static constexpr float MIN_RADIUS = 0.1;
+    static constexpr float MIN_AMP = 2.5;
+    static constexpr float MAX_AMP = 3;
+     static constexpr float MAX_AMPL = 10;
     static constexpr float BRIGHTNESS_FACTOR = 0.5; // constant to set the maximal brightness for shadows to avoid totally white shadows
     static constexpr float MAX_PER = 2;
     static constexpr float MIN_PER = 0.5;
-    static constexpr float MAX_AMP = 3;
     
     static constexpr float MAX_SPEED = 1.2;
     static constexpr float MIN_SPEED = 0.5;
@@ -80,6 +84,9 @@ private:
   
    std::vector<SphereDrawing> ballList;
     GLdouble time ;
+    bool _freeze;
+    float amp;
+    float phase;
     
 };
 #endif /* SphereDrawing_hpp */

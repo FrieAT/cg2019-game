@@ -10,6 +10,7 @@
 #include <time.h>
 #include "KeyboardManager.hpp"
 #include "IPosition.hpp"
+#include "Game.hpp"
 
 SphereDrawing::~SphereDrawing()
 {
@@ -18,11 +19,14 @@ SphereDrawing::~SphereDrawing()
 
 void SphereDrawing::Init()
 {
+    _freeze = true;
+    
     auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
     int posAttrib = shader->GetAttrib(EShaderAttrib::Position);
     int normAttrib = shader->GetAttrib(EShaderAttrib::Normal);
+    int uvAttrib = shader->GetAttrib(EShaderAttrib::TextureCoords);
     
-    organize(posAttrib,normAttrib);
+    organize(posAttrib,normAttrib,uvAttrib);
 }
 
 
@@ -49,7 +53,7 @@ SphereDrawing::SphereDrawing()
     initializeColorValues();
 }
 
-void SphereDrawing::organize(GLint posAttrib, GLint normAttrib)
+void SphereDrawing::organize(GLint posAttrib, GLint normAttrib, GLint uvAttrib)
 {
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -57,15 +61,32 @@ void SphereDrawing::organize(GLint posAttrib, GLint normAttrib)
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
     
+    int bufferSize = 0, positionSize = 0, textureSize = 0;
+    
+    positionSize = sizeof(vtx);
+    bufferSize += positionSize;
+    
+    auto texture = GetTexture();
+    if(texture != nullptr) {
+        textureSize = 2 * texture->GetVerticesCount() * sizeof(GLfloat);
+        bufferSize += textureSize;
+    }
+    
+    glBufferData(GL_ARRAY_BUFFER, bufferSize, 0, GL_STATIC_DRAW);
+    
+    glBufferSubData(GL_ARRAY_BUFFER, 0, positionSize, vtx);
     glEnableVertexAttribArray(posAttrib);
-    glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE,
-                          6 * sizeof(GLfloat), 0);
-    
+    glVertexAttribPointer(posAttrib, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(GLfloat), 0);
     glEnableVertexAttribArray(normAttrib);
+    glVertexAttribPointer(normAttrib, 3, GL_FLOAT, GL_TRUE, 6 * sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
     
-    glVertexAttribPointer(normAttrib, 3, GL_FLOAT, GL_TRUE,
-                          6 * sizeof(GLfloat), (const GLvoid*)(3 * sizeof(GLfloat)));
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vtx), vtx, GL_STATIC_DRAW);
+    if(texture != nullptr) {
+        texture->Init();
+        
+        glBufferSubData(GL_ARRAY_BUFFER, positionSize, textureSize, texture->GetUVCoordinates());
+        glEnableVertexAttribArray(uvAttrib);
+        glVertexAttribPointer(uvAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void*)positionSize);
+    }
     
     glBindVertexArray(0);
 }
@@ -74,24 +95,70 @@ void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint shininessAttrib)
 {
     update(time);
     /*binded*/
-    glBindVertexArray(vao);
+    
     //http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
     //texture
     glUniform1f(shininessAttrib, 300);
+    
+    auto texture = GetTexture();
+    if(texture != nullptr) {
+        //glUniform1i(enableTextureUniform, 1);
+        
+        glActiveTexture(GL_TEXTURE0);
+        glBindTexture(GL_TEXTURE_2D, texture->GetTextureHandle());
+    }
+    glBindVertexArray(vao);
+    if(texture != nullptr) {
+        glVertexAttrib3f(colAttrib, 0.0f, 0.0f, 0.0f);
+    } else {
+        glVertexAttrib3f(colAttrib, 1.0f, 1.0f, 1.0f);
+    }
+    
     glVertexAttrib2f(colAttrib, colorValues[0], colorValues[1]); // set constant color attribute
     
     glDrawArrays(GL_TRIANGLE_STRIP, 0, 36 * 18 * 2);
     
+    
     glBindVertexArray(0);
+    glBindTexture(GL_TEXTURE_2D, 0);
 }
 void SphereDrawing::update(GLdouble time)
 {
-    dx = speed * (time -birthTime)/ per;
-    dy = MAX_AMP;
-    anim = glm::translate(glm::mat4(1.0f), glm::vec3(dx,dy, 0.0f)); // anim matrix for the ball
-    auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
-    position->SetPosition(Vector3(dx,dy, 0.0f));
+    //TODO: This code below may not be here. Should be moved to PhysicsManager.
+    if(!_freeze ) {
+        //dy =-speed * (time -birthTime) ;
+        //dy =2.0f;
+        dx = speed * (time -birthTime)/ per;
+        //* Game::GetEngine()->GetDeltaTime();
+        //dy = std::abs(amp * sinf(speed * (time - birthTime) + phase));
+        dy = std::abs(amp * cosf(speed * (time - birthTime) + phase));
+        //* Game::GetEngine()->GetDeltaTime();
+        //anim = glm::translate(glm::mat4(1.0f), glm::vec3(dx,dy, 0.0f)); // anim matrix for the ball
+        auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
+        position->SetPosition(Vector3(position ->GetPosition().x,dy, 0.0f));
+    }
+    
 }
+
+float SphereDrawing::getCurrentCX()
+{
+    // return cx + dx;
+    return dx;
+}
+//void SphereDrawing::update(GLdouble time)
+//{
+//    dy = -speed * (time - birthTime);
+//    dx = getCurrentCX();
+//
+//    if(dy <=-0.3f){
+//
+//        dx = speed * (time - birthTime) / per;
+//        dy =std::abs(amp *sinf(speed * (time - birthTime)+ phase));
+//    }
+//    auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
+//    position->SetPosition(Vector3(position ->GetPosition().x,dy, 0.0f));
+//
+//}
 /* check if ball has reached the right border of the stage */
 bool SphereDrawing::checkFinished()
 {
@@ -106,9 +173,11 @@ void SphereDrawing::deleteBufferAndArray()
 /* initialize the parameters of the ball with partially random values */
 void SphereDrawing::initializeParameters()
 {
-   birthTime = glfwGetTime();
+    birthTime = glfwGetTime();
     _radius = MIN_RADIUS + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_RADIUS - MIN_RADIUS)));
+    phase = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / 3.0));
     per = MIN_PER + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_PER - MIN_PER)));
+    amp = MIN_AMP + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_AMP - MIN_AMP)));
     speed = MIN_SPEED + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_SPEED - MIN_SPEED)));
     cx = -stageLengthHalf - 0.2 - _radius;
     cy = _radius;
@@ -137,29 +206,29 @@ void SphereDrawing::initializeVertices()
         for (float theta = 0; theta < 360; theta += space) {//10,20..360
             
             
-            vtx[n]   = cx + _radius * sin(theta * PI/180) * cos(phi * PI/180);
-            vtx[n+1] = cy + _radius * sin(theta * PI/180) * sin(phi * PI/180);
-            vtx[n+2] = cz + _radius * cos(theta * PI/180);
-            vtx[n + 3] =  _radius *sin(theta * PI / 180) * cos(phi * PI / 180);
-            vtx[n + 4] =  _radius * sin(theta * PI / 180) * sin(phi * PI / 180);
-            vtx[n + 5] = _radius *  cos(theta * PI / 180);
+            vtx[n]   = sin(theta * PI/180) * cos(phi * PI/180);
+            vtx[n+1] = sin(theta * PI/180) * sin(phi * PI/180);
+            vtx[n+2] = cos(theta * PI/180);
+            vtx[n + 3] =  sin(theta * PI / 180) * cos(phi * PI / 180);
+            vtx[n + 4] =  sin(theta * PI / 180) * sin(phi * PI / 180);
+            vtx[n + 5] = cos(theta * PI / 180);
             
             
-            vtx[n+6]   = cx + _radius * sin(theta * PI/180) * cos((phi + space) * PI/180);
-            vtx[n+7] = cy + _radius * sin(theta * PI/180) * sin((phi + space) * PI/180);
-            vtx[n+8] = cz + _radius * cos(theta * PI/180);
-            vtx[n+9] = _radius *sin(theta * PI/180) * cos((phi + space) * PI/180);
-            vtx[n+10] =  _radius * sin(theta * PI/180) * sin((phi + space) * PI/180);
-            vtx[n+11] =  _radius * cos(theta * PI/180);
+            vtx[n+6]   = sin(theta * PI/180) * cos((phi + space) * PI/180);
+            vtx[n+7] = sin(theta * PI/180) * sin((phi + space) * PI/180);
+            vtx[n+8] = cos(theta * PI/180);
+            vtx[n+9] = sin(theta * PI/180) * cos((phi + space) * PI/180);
+            vtx[n+10] =  sin(theta * PI/180) * sin((phi + space) * PI/180);
+            vtx[n+11] =  cos(theta * PI/180);
             n += 12;
         }
     }
 
     
 }
-SphereDrawing SphereDrawing:: generateBall(GLint posAttrib, GLint normAttrib)
+SphereDrawing SphereDrawing:: generateBall(GLint posAttrib, GLint normAttrib, GLint uvAttrib)
 {
     SphereDrawing ball;
-    ball.organize(posAttrib, normAttrib);
+    ball.organize(posAttrib, normAttrib,uvAttrib);
     return ball;
 }

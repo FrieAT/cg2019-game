@@ -1,14 +1,15 @@
 //
-//  CubeDrawing.hpp
+//  Geometrie.hpp
 //  2019_cg_physics
 //
-//  Created by Mariya Davidouskaya on 12.05.19.
+//  Created by Mariya Davidouskaya on 04.06.19.
 //  Copyright © 2019 Universität Salzburg. All rights reserved.
 //
 
-#ifndef CubeDrawing_hpp
-#define CubeDrawing_hpp
+#ifndef Geometrie_hpp
+#define Geometrie_hpp
 
+#include <stdio.h>
 #include <stdio.h>
 
 #include "IDrawing.hpp"
@@ -21,18 +22,18 @@
 #include <stdio.h>
 
 
-class CubeDrawing : public IDrawing
+class Geometrie : public IDrawing
 {
 public:
-    CubeDrawing() = default;
-    ~CubeDrawing();
+    Geometrie() = default;
+    ~Geometrie();
     void Init();
     void Draw(RenderManager* renderManager);
     //void movement();
-    void organize(GLint posAttrib, GLint uvAttrib);
-    void draw(GLint colAttrib, GLint shininessAttrib, GLint enableTextureUniform);
+    void organize(GLint posAttrib);
+    void draw(RenderManager* renderManager);
     void deleteBufferAndArray();
-  
+      void draw(GLint colAttrib, GLint shininessAttrib);
 private:
     float colorValues[3] = { 0 };
     const GLfloat SPEED=0.5;
@@ -45,8 +46,7 @@ private:
     const GLfloat STAGE_AREA_LENGTH_HALF = 2.5f;
     const GLfloat STAGE_AREA_WIDTH_HALF = 1.0f;
     const GLfloat STAGE_AREA_WIDTH_HALF_BOTTOM = 2.0f;
-   // int dir;
-
+    // int dir;
+    
 };
-
-#endif /* CubeDrawing_hpp */
+#endif /* Geometrie_hpp */

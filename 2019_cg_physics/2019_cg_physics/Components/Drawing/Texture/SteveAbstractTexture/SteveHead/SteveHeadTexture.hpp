@@ -9,17 +9,12 @@
 #ifndef SteveHeadTexture_hpp
 #define SteveHeadTexture_hpp
 
-#include "ITexture.hpp"
+#include "SteveAbstractTexture.hpp"
 
-class SteveHeadTexture : public ITexture
+class SteveHeadTexture : public SteveAbstractTexture
 {
 public:
-    void Init();
-    void Texture();
-    ~SteveHeadTexture();
-private:
-    unsigned int _texture;
-    unsigned int _texture_vbo;
+    SteveHeadTexture();
 };
 
 #endif /* SteveHeadTexture_hpp */
