@@ -261,7 +261,7 @@ void RenderManager::updateTransformRecursive(GameObject* transform, Matrix4 pare
         Matrix4 modelRotation = position->GetRotation();
         Matrix4 modelScale = glm::scale(Matrix4(1.0f), vecScale);
         Matrix4 modelTranslation = glm::translate(Matrix4(1.0f), vecPosition);
-        Matrix4 anim = parentTransform * (modelTranslation * modelScale * modelRotation);
+        Matrix4 anim = parentTransform * (modelTranslation * modelRotation * modelScale);
    
         if(transform->HasChilds()) {
             parentTransform = Matrix4(1.0f);
