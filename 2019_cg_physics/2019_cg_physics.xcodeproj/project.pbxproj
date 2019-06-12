@@ -32,6 +32,7 @@
 		ED1BEF1522A6F1AD00B4C540 /* Geometrie.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED1BEF1322A6F1AD00B4C540 /* Geometrie.cpp */; };
 		ED4DB1A92288705B00AAA0D1 /* CubeDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ED4DB1A72288705B00AAA0D1 /* CubeDrawing.cpp */; };
 		EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDA36262227DFDF800F5055C /* StageDrawing.cpp */; };
+		EDAE929B22B0298100AF6474 /* LineDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EDAE929922B0298100AF6474 /* LineDrawing.cpp */; };
 		EDFD6B21227C8BF900613D2F /* glfw in Frameworks */ = {isa = PBXBuildFile; fileRef = D858CABC227C22A100ABFE72 /* glfw */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +113,8 @@
 		ED4DB1A82288705B00AAA0D1 /* CubeDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CubeDrawing.hpp; sourceTree = "<group>"; };
 		EDA36262227DFDF800F5055C /* StageDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = StageDrawing.cpp; sourceTree = "<group>"; };
 		EDA36263227DFDF800F5055C /* StageDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = StageDrawing.hpp; sourceTree = "<group>"; };
+		EDAE929922B0298100AF6474 /* LineDrawing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = LineDrawing.cpp; sourceTree = "<group>"; };
+		EDAE929A22B0298100AF6474 /* LineDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = LineDrawing.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +183,7 @@
 		D858CACE227C27E300ABFE72 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				EDAE929822B0293600AF6474 /* LineDrawing */,
 				ED1BEF1222A6F14D00B4C540 /* Geometrie */,
 				ED4DB1A62288703E00AAA0D1 /* CubeDrawing */,
 				EDA3625D227DCC8000F5055C /* Stage */,
@@ -430,6 +434,15 @@
 			path = Stage;
 			sourceTree = "<group>";
 		};
+		EDAE929822B0293600AF6474 /* LineDrawing */ = {
+			isa = PBXGroup;
+			children = (
+				EDAE929922B0298100AF6474 /* LineDrawing.cpp */,
+				EDAE929A22B0298100AF6474 /* LineDrawing.hpp */,
+			);
+			path = LineDrawing;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -498,6 +511,7 @@
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
 				D82D408A226EE90200F5B73D /* Game.cpp in Sources */,
 				ED1BEF1522A6F1AD00B4C540 /* Geometrie.cpp in Sources */,
+				EDAE929B22B0298100AF6474 /* LineDrawing.cpp in Sources */,
 				D858CABB227C1FB200ABFE72 /* RenderManager.cpp in Sources */,
 				ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */,
 				EDA36264227DFDF800F5055C /* StageDrawing.cpp in Sources */,

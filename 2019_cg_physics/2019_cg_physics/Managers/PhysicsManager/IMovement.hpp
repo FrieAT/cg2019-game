@@ -19,6 +19,7 @@ public:
     virtual void AddVelocity(Vector3 addVelocity) = 0;
     virtual void SetVelocity(Vector3 velocity) = 0;
     virtual Vector3 GetVelocity() = 0;
+   
     virtual void SetFriction(float friction) = 0;
     virtual float GetFriction() = 0;
     virtual void SetSpeed(float speed) = 0;

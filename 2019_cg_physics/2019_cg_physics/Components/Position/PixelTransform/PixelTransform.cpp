@@ -26,7 +26,14 @@ void PixelTransform::SetPosition(Vector3 setPosition)
 {
     _position = setPosition;
 }
+int PixelTransform::GetHilf()
+{
+    return _hilf;
+}
 
+void PixelTransform::SetHilf(int setHilf)
+{_hilf=setHilf;
+}
 void PixelTransform::AddPosition(Vector3 addPosition)
 {
     _position += addPosition;

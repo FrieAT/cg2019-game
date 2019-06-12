@@ -2,6 +2,7 @@
 #include "ObjectManager.hpp"
 #include "CubeDrawing.hpp"
 #include "Geometrie.hpp"
+#include "LineDrawing.hpp"
 #include "SphereDrawing.hpp"
 #include "StageDrawing.hpp"
 #include "PixelTransform.hpp"
@@ -37,6 +38,17 @@ GameObject * PrimitiveObjects::CreateGeometrie()
     g->SetComponent(new SphereShader());
     g->SetComponent(new PixelTransform());
     g->SetComponent(new Geometrie());
+    
+    return g;
+}
+
+GameObject * PrimitiveObjects::CreateLine()
+{
+    GameObject * g = new GameObject("Line", "Opaque");
+    
+    g->SetComponent(new SphereShader());
+    g->SetComponent(new PixelTransform());
+    g->SetComponent(new LineDrawing());
     
     return g;
 }

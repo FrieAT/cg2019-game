@@ -197,3 +197,9 @@ SphereDrawing SphereDrawing:: generateBall(GLint posAttrib, GLint normAttrib)
     ball.organize(posAttrib, normAttrib);
     return ball;
 }
+void SphereDrawing::setLine(int var){
+    line =var;
+}
+int SphereDrawing::getLine(){
+    return line;
+}

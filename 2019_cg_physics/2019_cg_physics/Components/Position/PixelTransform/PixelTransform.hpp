@@ -19,6 +19,8 @@ public:
     
     Vector3 GetPosition();
     void SetPosition(Vector3 setPosition);
+    int GetHilf();
+    void SetHilf(int setHilf);
     void AddPosition(Vector3 addPosition);
     
     Vector3 GetScale();
@@ -31,6 +33,7 @@ private:
     Vector3 _position;
     Vector3 _scale;
     Matrix4 _rotation;
+    int _hilf;
 };
 
 #endif /* PixelTransform_hpp */

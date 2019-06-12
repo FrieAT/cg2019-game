@@ -25,6 +25,8 @@ public:
     
     virtual Vector3 GetPosition() = 0;
     virtual void SetPosition(Vector3 setPosition) = 0;
+    virtual int GetHilf() = 0;
+    virtual void SetHilf(int setHilf) = 0;
     virtual void AddPosition(Vector3 addPosition) = 0;
     
     virtual Vector3 GetScale() = 0;

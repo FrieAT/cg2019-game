@@ -27,16 +27,18 @@ public:
     float stageLengthHalf;
    
     float getCurrentCX();
-   
+  
     ~SphereDrawing();
-
-
+  
+    int getLine();
+    void setLine(int var);
     
     SphereDrawing generateBall(GLint posAttrib, GLint normAttrib);
    
     float getRadius();
     
 private:
+    int line ;
     float _radius;
     float cx;
     float cy;
@@ -46,6 +48,7 @@ private:
     double birthTime;
     float speed;
     float per;
+   
     
     static constexpr float BRIGHTNESS = 1.0; // saturation of the color
     static constexpr float PI = 3.14159265358979323846;

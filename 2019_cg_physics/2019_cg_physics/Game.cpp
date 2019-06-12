@@ -15,6 +15,7 @@
 #include "PhysicsManager.hpp"
 #include "SphereDrawing.hpp"
 SphereDrawing sphereDrawing;
+
 Game* Game::_engine = nullptr;
 
 Game::Game()
@@ -40,6 +41,13 @@ void Game::Initialize()
     
     auto stage = PrimitiveObjects::CreateStageDummy();
     GetManager<ObjectManager>()->AddGameObject(stage);
+   // if( sphereDrawing.getLine() ==4){
+        //std::cout << sphereDrawing.getLine()<< "\n";
+             // std::cout << GetManager<KeyboardManager>()->_dir<< "\n";
+    auto line = PrimitiveObjects::CreateLine();
+   
+    GetManager<ObjectManager>()->AddGameObject(line);
+    //}
 //    for(int i = 0; i <5;i++){
 //    auto geometrie = PrimitiveObjects::CreateGeometrie();
 //    GetManager<ObjectManager>()->AddGameObject(geometrie);

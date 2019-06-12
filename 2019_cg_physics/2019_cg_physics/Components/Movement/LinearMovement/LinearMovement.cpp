@@ -11,6 +11,7 @@
 LinearMovement::LinearMovement()
 : _move(Vector3(0.0, 0.0, 0.0))
 , _speed(1.0f)
+
 {
     
 }

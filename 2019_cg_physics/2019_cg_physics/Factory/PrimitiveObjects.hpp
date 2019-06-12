@@ -19,6 +19,8 @@ public:
 public:
     static GameObject * CreateGeometrie();
 public:
+    static GameObject * CreateLine();
+public:
     static GameObject * CreateStageDummy();
     static GameObject * CreateCamera();
     static void GenerateBallsForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);

@@ -18,7 +18,8 @@
 #include "IPlayer.hpp"
 #include "IMovement.hpp"
 #include "ObjectManager.hpp"
-
+#include "SphereDrawing.hpp"
+SphereDrawing sphere;
 int KeyboardManager::_dir = -1;
 
 KeyboardManager::KeyboardManager(const Game & engine)
@@ -34,7 +35,9 @@ void KeyboardManager::Initialize()
     auto window = windowManager->GetWindow();
     
     glfwSetKeyCallback(window, KeyboardManager::keyCallbackM);
+   
 }
+
 
 void KeyboardManager::Loop()
 {
@@ -55,8 +58,12 @@ void KeyboardManager::Loop()
             else if(_dir == 1) velocity = Vector3(-1.0, 0.0, 0.0);
             else if(_dir == 2) velocity = Vector3(0.0, 0.0, 1.0);
             else if(_dir == 3) velocity = Vector3(0.0, 0.0, -1.0);
+            else if(_dir == 4)hilf = 4;
             
             movement->SetVelocity(velocity);
+            
+          
+            // std::cout << movement->GetHilf()<< "\n";
         }
         
         it++;
@@ -78,7 +85,15 @@ void KeyboardManager:: keyCallbackM(GLFWwindow* myWindow, int key, int scanCode,
         _dir = 2;
     } else if ((key == GLFW_KEY_UP) && (action == GLFW_PRESS || GLFW_REPEAT== action)){
         _dir = 3;
-    } else {
+    } else if ((key == GLFW_KEY_N) && (action == GLFW_PRESS || GLFW_REPEAT== action)){
+        _dir = 4;
+    }
+    else {
         _dir = -1;
     }
+    
 }
+int KeyboardManager::getHilf(){
+    return hilf;
+}
+
