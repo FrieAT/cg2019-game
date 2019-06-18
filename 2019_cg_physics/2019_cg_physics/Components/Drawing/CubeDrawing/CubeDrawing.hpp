@@ -29,7 +29,7 @@ public:
     void Init();
     void Draw(RenderManager* renderManager);
     //void movement();
-    void organize(GLint posAttrib, GLint uvAttrib);
+    void organize(GLint posAttrib, GLint uvAttrib, GLint normAttrib);
     void draw(GLint colAttrib, GLint shininessAttrib, GLint enableTextureUniform);
     void deleteBufferAndArray();
   
