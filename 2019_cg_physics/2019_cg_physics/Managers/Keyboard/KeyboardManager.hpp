@@ -20,17 +20,15 @@ public:
     void Initialize() override;
     
     void Loop() override;
- 
-    KeyboardManager();
+    
     KeyboardManager(const Game & engine);
     ~KeyboardManager() = default;
     
     static int GetMoveDirection() { return _dir; }
-       int getHilf();
+    
     static void keyCallbackM(GLFWwindow* myWindow, int key, int scanCode, int action, int mod); // TODO.
-//private:
+private:
     static int _dir;
-    int hilf= 0 ;
 };
 
 #endif /* KeyboardManager_hpp */
