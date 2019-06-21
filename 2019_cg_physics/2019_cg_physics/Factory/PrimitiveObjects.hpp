@@ -21,9 +21,10 @@ public:
 public:
     static GameObject * CreateStageDummy();
     static GameObject * CreateCamera();
+    static GameObject * CreateGrass();
     static void GenerateBallsForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
     static void GenerateGeometrieForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
-
+    static void GenerateLandschaft(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
     
 };
 

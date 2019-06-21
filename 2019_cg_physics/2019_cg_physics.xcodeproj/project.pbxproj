@@ -21,6 +21,7 @@
 		D858CABE227C22D100ABFE72 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */; };
 		D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CABF227C261100ABFE72 /* ObjectManager.cpp */; };
 		D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAC2227C264E00ABFE72 /* GameObject.cpp */; };
+		D8735D9122BD30F50026AB06 /* GrassBlockTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8735D8F22BD30F50026AB06 /* GrassBlockTexture.cpp */; };
 		D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D879638F228E7D93002FDFD8 /* SphereShader.cpp */; };
 		D8BA0D0722870AC9008B4580 /* PixelTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8BA0D0522870AC9008B4580 /* PixelTransform.cpp */; };
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
@@ -87,6 +88,8 @@
 		D8625D2C22A4064500ECD7FF /* ERotation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ERotation.hpp; sourceTree = "<group>"; };
 		D8625D3722A5368400ECD7FF /* texture_steve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_steve.png; sourceTree = "<group>"; };
 		D87037E32299CEB900B51FD8 /* EShaderAttrib.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EShaderAttrib.hpp; sourceTree = "<group>"; };
+		D8735D8F22BD30F50026AB06 /* GrassBlockTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GrassBlockTexture.cpp; sourceTree = "<group>"; };
+		D8735D9022BD30F50026AB06 /* GrassBlockTexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GrassBlockTexture.hpp; sourceTree = "<group>"; };
 		D879638D228E7C81002FDFD8 /* IShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IShader.hpp; sourceTree = "<group>"; };
 		D879638F228E7D93002FDFD8 /* SphereShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SphereShader.cpp; sourceTree = "<group>"; };
 		D8796390228E7D93002FDFD8 /* SphereShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SphereShader.hpp; sourceTree = "<group>"; };
@@ -164,6 +167,7 @@
 		D83353FD22B0D9C000C69B8A /* SteveAbstractTexture */ = {
 			isa = PBXGroup;
 			children = (
+				D8735D8E22BD30DB0026AB06 /* GrassBlock */,
 				D83353FE22B0D9C000C69B8A /* SteveAbstractTexture.hpp */,
 				D83353FF22B0D9C000C69B8A /* SteveBody */,
 				D833540222B0D9C000C69B8A /* SteveLeg */,
@@ -267,6 +271,15 @@
 				D8625D3722A5368400ECD7FF /* texture_steve.png */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		D8735D8E22BD30DB0026AB06 /* GrassBlock */ = {
+			isa = PBXGroup;
+			children = (
+				D8735D8F22BD30F50026AB06 /* GrassBlockTexture.cpp */,
+				D8735D9022BD30F50026AB06 /* GrassBlockTexture.hpp */,
+			);
+			path = GrassBlock;
 			sourceTree = "<group>";
 		};
 		D879638C228E7C71002FDFD8 /* Shader */ = {
@@ -552,6 +565,7 @@
 				D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */,
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
 				D82D408A226EE90200F5B73D /* Game.cpp in Sources */,
+				D8735D9122BD30F50026AB06 /* GrassBlockTexture.cpp in Sources */,
 				ED1BEF1522A6F1AD00B4C540 /* Geometrie.cpp in Sources */,
 				D858CABB227C1FB200ABFE72 /* RenderManager.cpp in Sources */,
 				D833541122B0D9C000C69B8A /* SteveHeadTexture.cpp in Sources */,

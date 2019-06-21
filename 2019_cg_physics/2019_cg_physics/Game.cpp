@@ -55,6 +55,8 @@ void Game::Initialize()
     PrimitiveObjects::GenerateBallsForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
  PrimitiveObjects::GenerateGeometrieForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
     
+    
+    PrimitiveObjects::GenerateLandschaft(GetManager<ObjectManager>(), Vector3(0.0f, 0.0f, -10.0f), 5.0f, 3.2f);
 
     this->initializeManagers();
    
