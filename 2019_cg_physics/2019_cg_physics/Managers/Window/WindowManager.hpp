@@ -16,6 +16,9 @@ public:
     
     GLFWwindow * GetWindow();
     
+    int GetWindowWidth() { return windowWidth; }
+    int GetWindowHeight() { return windowHeight; }
+    
     WindowManager(const Game & engine);
     ~WindowManager() = default;
 private:

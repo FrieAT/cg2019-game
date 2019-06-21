@@ -14,10 +14,12 @@
 #include "IComponent.hpp"
 #include "ERotation.hpp"
 
+typedef glm::fvec2 Vector2;
+typedef glm::fmat2 Matrix2;
 typedef glm::fvec3 Vector3;
+typedef glm::fmat3 Matrix3;
 typedef glm::fvec4 Vector4;
 typedef glm::fmat4 Matrix4;
-typedef glm::fmat3 Matrix3;
 
 class IPosition : public IComponent
 {

@@ -10,6 +10,7 @@
 #define KeyboardManager_hpp
 
 #include "AbstractManager.hpp"
+#include "IPosition.hpp"
 
 class GLFWwindow;
 
@@ -25,10 +26,14 @@ public:
     ~KeyboardManager() = default;
     
     static int GetMoveDirection() { return _dir; }
+    Vector2 GetMouseOrientation();
+    Vector3 GetDirection();
     
     static void keyCallbackM(GLFWwindow* myWindow, int key, int scanCode, int action, int mod); // TODO.
 private:
     static int _dir;
+    Vector2 _orientation;
+    float _mouseSpeedOrientation;
 };
 
 #endif /* KeyboardManager_hpp */

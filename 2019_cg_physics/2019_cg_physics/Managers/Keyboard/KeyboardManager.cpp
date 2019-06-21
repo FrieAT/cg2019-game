@@ -23,6 +23,8 @@ int KeyboardManager::_dir = -1;
 
 KeyboardManager::KeyboardManager(const Game & engine)
 : AbstractManager(engine)
+, _mouseSpeedOrientation(0.005f)
+, _orientation(Vector2(0.0f))
 {
     KeyboardManager::_dir = -1;
 }
@@ -39,6 +41,14 @@ void KeyboardManager::Initialize()
 void KeyboardManager::Loop()
 {
     auto objectManager = Game::GetEngine()->GetManager<ObjectManager>();
+    auto windowManager = Game::GetEngine()->GetManager<WindowManager>();
+    
+    // Source: http://www.opengl-tutorial.org/beginners-tutorials/tutorial-6-keyboard-and-mouse/
+    double xpos, ypos;
+    double halfWidth = windowManager->GetWindowWidth() / 2.0, halfHeight = windowManager->GetWindowHeight() / 2.0;
+    glfwGetCursorPos(windowManager->GetWindow(), &xpos, &ypos);
+    glfwSetCursorPos(windowManager->GetWindow(), halfWidth, halfHeight);
+    _orientation += Vector2(halfWidth - xpos, halfHeight - ypos) * Game::GetEngine()->GetDeltaTime() * _mouseSpeedOrientation;
     
     auto objects = objectManager->GetObjectsByName("Opaque");
     auto it = objects.begin();
@@ -81,4 +91,15 @@ void KeyboardManager:: keyCallbackM(GLFWwindow* myWindow, int key, int scanCode,
     } else {
         _dir = -1;
     }
+}
+
+Vector2 KeyboardManager::GetMouseOrientation()
+{
+    return _orientation;
+}
+
+Vector3 KeyboardManager::GetDirection()
+{
+    // Source: http://www.opengl-tutorial.org/beginners-tutorials/tutorial-6-keyboard-and-mouse/
+    return Vector3(cos(_orientation.y) * sin(_orientation.x), sin(_orientation.y), cos(_orientation.y) * cos(_orientation.x));
 }
