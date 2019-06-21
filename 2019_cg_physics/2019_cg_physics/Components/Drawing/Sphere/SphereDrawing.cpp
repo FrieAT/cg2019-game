@@ -19,8 +19,6 @@ SphereDrawing::~SphereDrawing()
 
 void SphereDrawing::Init()
 {
-    _freeze = true;
-    
     auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
     int posAttrib = shader->GetAttrib(EShaderAttrib::Position);
     int normAttrib = shader->GetAttrib(EShaderAttrib::Normal);
@@ -126,6 +124,8 @@ void SphereDrawing::update(GLdouble time)
 {
     //TODO: This code below may not be here. Should be moved to PhysicsManager.
     if(!_freeze ) {
+        auto positionComponent = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
+        Vector3 currentPos = positionComponent->GetPosition();
         //dy =-speed * (time -birthTime) ;
         //dy =2.0f;
         dx = speed * (time -birthTime)/ per;
@@ -134,8 +134,10 @@ void SphereDrawing::update(GLdouble time)
         dy = std::abs(amp * cosf(speed * (time - birthTime) + phase));
         //* Game::GetEngine()->GetDeltaTime();
         //anim = glm::translate(glm::mat4(1.0f), glm::vec3(dx,dy, 0.0f)); // anim matrix for the ball
-        auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
-        position->SetPosition(Vector3(position ->GetPosition().x,dy, 0.0f));
+        
+        currentPos = Vector3(currentPos.x,dy, 0.0f);
+        
+        positionComponent->SetPosition(currentPos);
     }
     
 }

@@ -33,6 +33,7 @@ public:
 
     
     SphereDrawing generateBall(GLint posAttrib, GLint normAttrib, GLint uvAttrib);
+    void SetFreeze(bool freeze) { _freeze = freeze; }
    
     float getRadius();
     
@@ -84,7 +85,7 @@ private:
   
    std::vector<SphereDrawing> ballList;
     GLdouble time ;
-    bool _freeze;
+    bool _freeze = true;
     float amp;
     float phase;
     
