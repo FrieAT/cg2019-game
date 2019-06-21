@@ -35,8 +35,8 @@ Matrix4 PrototypeView::GetView()
     if(position == nullptr) {
         cameraPosition = Vector3(0.0, 0.0, 0.0);
     } else {
-        cameraPosition = position->GetPosition();
+        cameraPosition = position->GetAbsolutePosition();
     }
     
-    return glm::lookAt(cameraPosition, _lookAt, Vector3(0.0f, 1.0f, 0.0f));
+    return glm::lookAt(cameraPosition, cameraPosition + _lookAt, Vector3(0.0f, 1.0f, 0.0f));
 }

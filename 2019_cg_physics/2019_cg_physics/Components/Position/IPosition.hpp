@@ -24,6 +24,16 @@ class IPosition : public IComponent
 public:
     
     virtual Vector3 GetPosition() = 0;
+    virtual Vector3 GetAbsolutePosition() {
+        Vector3 position = GetPosition();
+        if(GetAssignedGameObject()->HasParent()) {
+            auto parentPosition = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetParent()->GetComponent(EComponentType::Position));
+            if(parentPosition != nullptr) {
+                position = position + parentPosition->GetAbsolutePosition();
+            }
+        }
+        return position;
+    }
     virtual void SetPosition(Vector3 setPosition) = 0;
     virtual void AddPosition(Vector3 addPosition) = 0;
     
