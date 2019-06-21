@@ -25,7 +25,9 @@ public:
     bool IsActive() { return _active; }
     void InitComponents();
     bool HasChilds() { return (_childs.size() > 0); }
-    void AddChild(GameObject* child) { _childs.push_back(child); }
+    void AddChild(GameObject* child) { _childs.push_back(child); child->_parent = this; }
+    bool HasParent() { return (_parent != nullptr); }
+    GameObject* GetParent() { return _parent; }
     std::vector<GameObject*>::iterator GetChildsIterator() { return _childs.begin(); }
     std::vector<GameObject*>::iterator GetChildsIteratorEnd() { return _childs.end(); }
 private:
@@ -34,4 +36,5 @@ private:
     bool _active;
     std::map<EComponentType, IComponent*> m_Components;
     std::vector<GameObject*> _childs;
+    GameObject* _parent;
 };

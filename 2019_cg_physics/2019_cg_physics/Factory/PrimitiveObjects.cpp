@@ -147,12 +147,12 @@ GameObject * PrimitiveObjects::CreateCamera()
     GameObject * g = new GameObject("Camera", "Camera");
     
     auto position = new PixelTransform();
-    position->SetPosition(Vector3(0.0f, 2.0f, 3.9f));
+    position->SetPosition(Vector3(0.0f, 1.0f, 1.0f));
     g->SetComponent(position);
     
     auto view = new PrototypeView();
     view->SetProjection(glm::radians(60.0f), 4.0f / 3.0f, 0.1f, 10.0f);
-    view->LookAt(Vector3(0.0f, 1.0f, 0.0f));
+    view->LookAt(Vector3(0.0f, 1.0f, -5.0f));
     g->SetComponent(view);
     
     return g;
