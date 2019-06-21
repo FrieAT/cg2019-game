@@ -21,6 +21,7 @@ public:
     void organize(GLint posAttrib, GLint normAttrib, GLint uvAttrib);
     void draw(GLdouble time, GLint colAttrib, GLint shininessAttrib);
     void update(GLdouble time);
+    void update_fall(GLdouble time);
     bool checkFinished();
     void deleteBufferAndArray();
     float stageWidthHalf;
@@ -52,15 +53,15 @@ private:
     static constexpr float PI = 3.14159265358979323846;
     static constexpr float MAX_RADIUS = 0.2;
     static constexpr float MIN_RADIUS = 0.1;
-    static constexpr float MIN_AMP = 2.5;
-    static constexpr float MAX_AMP = 3;
+    static constexpr float MIN_AMP = 0.2f;
+    static constexpr float MAX_AMP = 1.5f;
      static constexpr float MAX_AMPL = 10;
     static constexpr float BRIGHTNESS_FACTOR = 0.5; // constant to set the maximal brightness for shadows to avoid totally white shadows
-    static constexpr float MAX_PER = 2;
-    static constexpr float MIN_PER = 0.5;
+    static constexpr float MAX_PER = 5.0f;
+    static constexpr float MIN_PER = 3.0f;
     
-    static constexpr float MAX_SPEED = 1.2;
-    static constexpr float MIN_SPEED = 0.5;
+    static constexpr float MAX_SPEED = 1.5f;
+    static constexpr float MIN_SPEED = 0.8f;
     static constexpr float STAGE_AREA_LENGTH_HALF = 2.5;
     static constexpr float STAGE_AREA_WIDTH_HALF = 1.0;
     

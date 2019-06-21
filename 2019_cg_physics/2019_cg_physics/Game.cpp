@@ -62,7 +62,7 @@ void Game::Initialize()
     transform->SetScale(Vector3(0.3f));
     sphere->SetComponent(transform);
     
-    PrimitiveObjects::GenerateBallsForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
+ PrimitiveObjects::GenerateBallsForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
  PrimitiveObjects::GenerateGeometrieForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
     
 
