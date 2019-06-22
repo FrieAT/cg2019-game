@@ -58,7 +58,7 @@ void Game::Initialize()
     auto drawing = dynamic_cast<SphereDrawing*>(sphere->GetComponent(EComponentType::Drawing));
     drawing->SetFreeze(false);
     IPosition * transform = new PixelTransform();
-    transform->SetPosition(Vector3(0.0f, 3.0f, 0.0f));
+    transform->SetPosition(Vector3(0.0f, 3.0f,0.0f));
     transform->SetScale(Vector3(0.3f));
     sphere->SetComponent(transform);
     

@@ -156,12 +156,12 @@ void SphereDrawing::update_fall(GLdouble time)
         if(dy <=0.28f){
             if(dx>=0.0f){
      
-            dx =speed*(time -birthTime)/per -1.7f ;
+            dx =speed*(time -birthTime)/per +currentPos.x -1.7f ;
 
             dy = std::abs(amp * sinf(speed * (time - birthTime))) +0.2f;
             }
             else{
-            dx =-speed*(time -birthTime)/per +1.7f  ;
+            dx =-speed*(time -birthTime)/per +currentPos.x+1.7f  ;
             
             dy = std::abs(amp * sinf(speed * (time - birthTime))) +0.2f;
             }
