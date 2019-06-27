@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6662116E22C3E1DB0075D860 /* GameOverBlockTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6662116C22C3E1DB0075D860 /* GameOverBlockTexture.cpp */; };
+		6664B56322C017A3002D857E /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6664B56222C017A2002D857E /* GLUT.framework */; };
 		D804214F2299D6C800BE3E8D /* DefaultShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D804214D2299D6C800BE3E8D /* DefaultShader.cpp */; };
 		D811FC8D22A537CF00B30712 /* texture_steve.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = D8625D3722A5368400ECD7FF /* texture_steve.png */; };
 		D82D408A226EE90200F5B73D /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D82D4088226EE90200F5B73D /* Game.cpp */; };
@@ -21,6 +23,7 @@
 		D858CABE227C22D100ABFE72 /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */; };
 		D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CABF227C261100ABFE72 /* ObjectManager.cpp */; };
 		D858CAC4227C264E00ABFE72 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D858CAC2227C264E00ABFE72 /* GameObject.cpp */; };
+		D8735D9122BD30F50026AB06 /* GrassBlockTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8735D8F22BD30F50026AB06 /* GrassBlockTexture.cpp */; };
 		D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D879638F228E7D93002FDFD8 /* SphereShader.cpp */; };
 		D8BA0D0722870AC9008B4580 /* PixelTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8BA0D0522870AC9008B4580 /* PixelTransform.cpp */; };
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
@@ -53,6 +56,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6662116C22C3E1DB0075D860 /* GameOverBlockTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverBlockTexture.cpp; sourceTree = "<group>"; };
+		6662116D22C3E1DB0075D860 /* GameOverBlockTexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameOverBlockTexture.hpp; sourceTree = "<group>"; };
+		6664B56222C017A2002D857E /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
 		D804214B2299D13500BE3E8D /* EShaderUniform.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EShaderUniform.hpp; sourceTree = "<group>"; };
 		D804214D2299D6C800BE3E8D /* DefaultShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DefaultShader.cpp; sourceTree = "<group>"; };
 		D804214E2299D6C800BE3E8D /* DefaultShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = DefaultShader.hpp; sourceTree = "<group>"; };
@@ -87,6 +93,8 @@
 		D8625D2C22A4064500ECD7FF /* ERotation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ERotation.hpp; sourceTree = "<group>"; };
 		D8625D3722A5368400ECD7FF /* texture_steve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture_steve.png; sourceTree = "<group>"; };
 		D87037E32299CEB900B51FD8 /* EShaderAttrib.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EShaderAttrib.hpp; sourceTree = "<group>"; };
+		D8735D8F22BD30F50026AB06 /* GrassBlockTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GrassBlockTexture.cpp; sourceTree = "<group>"; };
+		D8735D9022BD30F50026AB06 /* GrassBlockTexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GrassBlockTexture.hpp; sourceTree = "<group>"; };
 		D879638D228E7C81002FDFD8 /* IShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IShader.hpp; sourceTree = "<group>"; };
 		D879638F228E7D93002FDFD8 /* SphereShader.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SphereShader.cpp; sourceTree = "<group>"; };
 		D8796390228E7D93002FDFD8 /* SphereShader.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SphereShader.hpp; sourceTree = "<group>"; };
@@ -131,6 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6664B56322C017A3002D857E /* GLUT.framework in Frameworks */,
 				EDFD6B21227C8BF900613D2F /* glfw in Frameworks */,
 				D858CABE227C22D100ABFE72 /* libglfw.3.3.dylib in Frameworks */,
 				D8F6D728226DA88B00E39805 /* libGLEW.2.1.0.dylib in Frameworks */,
@@ -141,6 +150,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6662116822C3E1050075D860 /* GameOverBlock */ = {
+			isa = PBXGroup;
+			children = (
+				6662116C22C3E1DB0075D860 /* GameOverBlockTexture.cpp */,
+				6662116D22C3E1DB0075D860 /* GameOverBlockTexture.hpp */,
+			);
+			path = GameOverBlock;
+			sourceTree = "<group>";
+		};
 		D804214C2299D6BD00BE3E8D /* DefaultShader */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +182,8 @@
 		D83353FD22B0D9C000C69B8A /* SteveAbstractTexture */ = {
 			isa = PBXGroup;
 			children = (
+				6662116822C3E1050075D860 /* GameOverBlock */,
+				D8735D8E22BD30DB0026AB06 /* GrassBlock */,
 				D83353FE22B0D9C000C69B8A /* SteveAbstractTexture.hpp */,
 				D83353FF22B0D9C000C69B8A /* SteveBody */,
 				D833540222B0D9C000C69B8A /* SteveLeg */,
@@ -267,6 +287,15 @@
 				D8625D3722A5368400ECD7FF /* texture_steve.png */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		D8735D8E22BD30DB0026AB06 /* GrassBlock */ = {
+			isa = PBXGroup;
+			children = (
+				D8735D8F22BD30F50026AB06 /* GrassBlockTexture.cpp */,
+				D8735D9022BD30F50026AB06 /* GrassBlockTexture.hpp */,
+			);
+			path = GrassBlock;
 			sourceTree = "<group>";
 		};
 		D879638C228E7C71002FDFD8 /* Shader */ = {
@@ -411,6 +440,7 @@
 		D8F6D724226DA87600E39805 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6664B56222C017A2002D857E /* GLUT.framework */,
 				D858CABC227C22A100ABFE72 /* glfw */,
 				D8F6D72B226DAF0D00E39805 /* libglfw.3.3.dylib */,
 				D8F6D729226DA90600E39805 /* libglfw.3.2.dylib */,
@@ -541,6 +571,7 @@
 				ED002903229AA1EA0049E17B /* LinearMovement.cpp in Sources */,
 				D804214F2299D6C800BE3E8D /* DefaultShader.cpp in Sources */,
 				D8FC4136229991FB00614AE5 /* PrototypeView.cpp in Sources */,
+				6662116E22C3E1DB0075D860 /* GameOverBlockTexture.cpp in Sources */,
 				D833540F22B0D9C000C69B8A /* SteveBodyTexture.cpp in Sources */,
 				D8F6D71E226DA85900E39805 /* main.cpp in Sources */,
 				D833541022B0D9C000C69B8A /* SteveLegTexture.cpp in Sources */,
@@ -552,6 +583,7 @@
 				D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */,
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
 				D82D408A226EE90200F5B73D /* Game.cpp in Sources */,
+				D8735D9122BD30F50026AB06 /* GrassBlockTexture.cpp in Sources */,
 				ED1BEF1522A6F1AD00B4C540 /* Geometrie.cpp in Sources */,
 				D858CABB227C1FB200ABFE72 /* RenderManager.cpp in Sources */,
 				D833541122B0D9C000C69B8A /* SteveHeadTexture.cpp in Sources */,

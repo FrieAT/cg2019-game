@@ -21,6 +21,8 @@
 #include <glm/gtc/type_ptr.hpp>
 #include <sstream>
 //#include "SphereDrawing.hpp"
+#include "GrassBlockTexture.hpp"
+#include "GameOverBlockTexture.hpp"
 
      GLdouble times = glfwGetTime();
 GameObject * PrimitiveObjects::CreateStageDummy()
@@ -44,6 +46,43 @@ GameObject * PrimitiveObjects::CreateGeometrie()
     
     return g;
 }
+
+GameObject * PrimitiveObjects::CreateGrass()
+{
+    PixelTransform * transform;
+    IDrawing * drawing;
+    
+    GameObject * g = new GameObject("Grass", "Opaque");
+    transform = new PixelTransform();
+    transform->SetScale(Vector3(0.5f, 0.5f, 0.5f));
+    transform->SetPosition(Vector3(0.0, 0.5, -1.0));
+    g->SetComponent(new SphereShader());
+    g->SetComponent(transform);
+    drawing = new CubeDrawing();
+    drawing->SetTexture(new GrassBlockTexture());
+    g->SetComponent(drawing);
+    
+    return g;
+}
+
+GameObject * PrimitiveObjects::CreateGameOverBlock()
+{
+    PixelTransform * transform;
+    IDrawing * drawing;
+    
+    GameObject * go = new GameObject("GameOver", "Opaque");
+    transform = new PixelTransform();
+    transform->SetScale(Vector3(0.5f, 0.5f, 0.5f));
+    transform->SetPosition(Vector3(0.0, 0.5, -1.0));
+    go->SetComponent(new SphereShader());
+    go->SetComponent(transform);
+    drawing = new CubeDrawing();
+    drawing->SetTexture(new GameOverBlockTexture());
+    go->SetComponent(drawing);
+    
+    return go;
+}
+
 GameObject * PrimitiveObjects::CreateSteve()
 {
     std::string renderLayer = "Opaque";
@@ -212,6 +251,61 @@ void PrimitiveObjects::GenerateGeometrieForLevel(ObjectManager * manager, Vector
         }
     }
 }
+
+void PrimitiveObjects::GenerateLandschaft(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite)
+{
+    float cubeSize = 0.5;
+    for(float y = -4.0f ; y < centerPosition.z; y+=cubeSize*2.0f) {
+        for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=cubeSize*2.0f) {
+            if(rand() % 100 < 0) {
+                continue;
+            }
+            int created = 0;
+            for(int i = 0; i < 2; i++) {
+                if(rand() % 100 > i * 45) {
+                    continue;
+                }
+                
+                
+                
+                GameObject* p = CreateGrass();
+                IPosition * transform = dynamic_cast<IPosition*>(p->GetComponent(EComponentType::Position));
+                transform->SetPosition(Vector3(x, 0.25f + 0.5f * created, y));
+                manager->AddGameObject(p);
+                created++;
+            }
+        }
+        
+        // Game Over Object in Planar
+        GameObject* go = CreateGameOverBlock();
+        IPosition * transforme= dynamic_cast<IPosition*>(go->GetComponent(EComponentType::Position));
+        transforme->SetPosition(Vector3(0.0f, 0.25f + 0.5f, 0.0f));
+        manager->AddGameObject(go);
+    }
+}
+
+//void PrimitiveObjects::GenerateLandschaft(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite)
+//{
+//    float cubeSize = 0.5;
+//    for(float y = centerPosition.y - laenge; y < centerPosition.y + laenge; y+=cubeSize*2.0f) {
+//        for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=cubeSize*2.0f) {
+//            if(rand() % 100 < 20) {
+//                continue;
+//            }
+//            int created = 0;
+//            for(int i = 0; i < 2; i++) {
+//                if(rand() % 100 > i * 15) {
+//                    continue;
+//                }
+//                GameObject* p = CreateGrass();
+//                IPosition * transform = dynamic_cast<IPosition*>(p->GetComponent(EComponentType::Position));
+//                transform->SetPosition(Vector3(x, 0.25f + 0.5f * created, y));
+//                manager->AddGameObject(p);
+//                created++;
+//            }
+//        }
+//    }
+//}
 
 
 void PrimitiveObjects::GenerateFenceAroundField(ObjectManager * manager)
