@@ -254,14 +254,14 @@ void PrimitiveObjects::GenerateGeometrieForLevel(ObjectManager * manager, Vector
 void PrimitiveObjects::GenerateLandschaft(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite)
 {
     float cubeSize = 0.5;
-    for(float y = centerPosition.y - laenge; y < centerPosition.y + laenge; y+=cubeSize*2.0f) {
+    for(float y = -4.0f ; y < centerPosition.z; y+=cubeSize*2.0f) {
         for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=cubeSize*2.0f) {
-            if(rand() % 100 < 20) {
+            if(rand() % 100 < 0) {
                 continue;
             }
             int created = 0;
             for(int i = 0; i < 2; i++) {
-                if(rand() % 100 > i * 15) {
+                if(rand() % 100 > i * 45) {
                     continue;
                 }
                 
@@ -282,3 +282,26 @@ void PrimitiveObjects::GenerateLandschaft(ObjectManager * manager, Vector3 cente
         manager->AddGameObject(go);
     }
 }
+
+//void PrimitiveObjects::GenerateLandschaft(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite)
+//{
+//    float cubeSize = 0.5;
+//    for(float y = centerPosition.y - laenge; y < centerPosition.y + laenge; y+=cubeSize*2.0f) {
+//        for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=cubeSize*2.0f) {
+//            if(rand() % 100 < 20) {
+//                continue;
+//            }
+//            int created = 0;
+//            for(int i = 0; i < 2; i++) {
+//                if(rand() % 100 > i * 15) {
+//                    continue;
+//                }
+//                GameObject* p = CreateGrass();
+//                IPosition * transform = dynamic_cast<IPosition*>(p->GetComponent(EComponentType::Position));
+//                transform->SetPosition(Vector3(x, 0.25f + 0.5f * created, y));
+//                manager->AddGameObject(p);
+//                created++;
+//            }
+//        }
+//    }
+//}
