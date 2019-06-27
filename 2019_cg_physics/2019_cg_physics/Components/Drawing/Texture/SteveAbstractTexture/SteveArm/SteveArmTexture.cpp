@@ -58,7 +58,7 @@ SteveArmTexture::SteveArmTexture()
         
         // back
         0.8125f, 0.5f,
-        0.875f, 0.5f,
+        0.875f, 0.5f, // rechts unten
         0.875f, 0.6875f,
         
         0.8125f, 0.5f,
