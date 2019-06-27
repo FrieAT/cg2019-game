@@ -24,7 +24,7 @@ public:
     static void GenerateBallsForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
     static void GenerateGeometrieForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
 
-    
+    static void GenerateFenceAroundField(ObjectManager * manager);
 };
 
 #endif /* PrimitiveObjects_hpp */

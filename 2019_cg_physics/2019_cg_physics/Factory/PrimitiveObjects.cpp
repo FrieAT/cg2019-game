@@ -19,6 +19,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <sstream>
 //#include "SphereDrawing.hpp"
 
      GLdouble times = glfwGetTime();
@@ -210,4 +211,64 @@ void PrimitiveObjects::GenerateGeometrieForLevel(ObjectManager * manager, Vector
             
         }
     }
+}
+
+
+void PrimitiveObjects::GenerateFenceAroundField(ObjectManager * manager)
+{
+    std::string renderLayer = "Opaque";
+    PixelTransform * transform;
+    SphereShader * usedShader;
+    IDrawing * drawing;
+    GameObject * child;
+    
+    float coordinates[12][6] = {
+        {-2.5f, 0.35f, 1.0f, 0.1f, 0.7f, 0.1f}, // left front
+        {2.5f, 0.35f, 1.0f, 0.1f, 0.7f, 0.1f}, // right front
+        {-2.5f, 0.35f, -1.0f, 0.1f, 0.7f, 0.1f}, // left back
+        {2.5f, 0.35f, -1.0f, 0.1f, 0.7f, 0.1f}, // right back
+        
+        // back sprouts
+        {0.0f, 0.45f, -1.0f, 5.0f, 0.1f, 0.1f},
+        {0.0f, 0.25f, -1.0f, 5.0f, 0.1f, 0.1f},
+        
+        // front sprouts
+        {0.0f, 0.45f, 1.0f, 5.0f, 0.1f, 0.1f},
+        {0.0f, 0.25f, 1.0f, 5.0f, 0.1f, 0.1f},
+        
+        // left sprouts
+        {-2.5f, 0.45f, 0.0f, 0.1f, 0.1f, 2.0f},
+        {-2.5f, 0.25f, 0.0f, 0.1f, 0.1f, 2.0f},
+        
+        // right sprouts
+        {2.5f, 0.45f, 0.0f, 0.1f, 0.1f, 2.0f},
+        {2.5f, 0.25f, 0.0f, 0.1f, 0.1f, 2.0f},
+    };
+    
+
+    
+    GameObject * g = new GameObject("FenceCenter", renderLayer);
+    usedShader = new SphereShader();
+    transform = new PixelTransform();
+    //transform->SetScale(Vector3(1.0f));
+    transform->SetPosition(Vector3(0.0, 0.0, 0.0));
+    g->SetComponent(usedShader);
+    g->SetComponent(transform);
+    
+    for(int object = 0; object < 12; object++) {
+        std::stringstream ss;
+        ss << "fencePart_" << object;
+        child = new GameObject(ss.str(), renderLayer);
+        transform = new PixelTransform();
+        transform->SetPosition(Vector3(coordinates[object][0], coordinates[object][1], coordinates[object][2]));
+        transform->SetScale(Vector3(coordinates[object][3], coordinates[object][4], coordinates[object][5]));
+        child->SetComponent(transform);
+        drawing = new CubeDrawing();
+        drawing->SetTexture(new SteveHeadTexture());
+        child->SetComponent(drawing);
+        child->SetComponent(usedShader);
+        g->AddChild(child);
+    }
+    
+    manager->AddGameObject(g);
 }
