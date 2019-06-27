@@ -21,12 +21,14 @@ public:
     
     WindowManager(const Game & engine);
     ~WindowManager() = default;
+    
+    void drawString (void * font, char *s, float x, float y);
 private:
     int windowWidth =1024;
-
+    
     
     int windowHeight =768;
-   
+    
     
     const char* windowName = "The Game";
     

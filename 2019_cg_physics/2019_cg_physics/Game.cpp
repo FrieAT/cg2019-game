@@ -54,7 +54,13 @@ void Game::Initialize()
 //    auto sphere = PrimitiveObjects::CreateSphereDummy();
 //    GetManager<ObjectManager>()->AddGameObject(sphere);
     PrimitiveObjects::GenerateBallsForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
+    PrimitiveObjects::GenerateGeometrieForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
+    
+    
+    PrimitiveObjects::GenerateLandschaft(GetManager<ObjectManager>(), Vector3(0.0f, 0.0f,-1.0f), 5.0f, 3.2f);
  PrimitiveObjects::GenerateGeometrieForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
+    
+    PrimitiveObjects::GenerateFenceAroundField(GetManager<ObjectManager>());
     
 
     this->initializeManagers();

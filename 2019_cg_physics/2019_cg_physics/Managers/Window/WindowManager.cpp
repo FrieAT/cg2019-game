@@ -3,6 +3,13 @@
 
 #include "WindowManager.hpp"
 #include "Exception.hpp"
+#include "PrimitiveObjects.hpp"
+
+#include<string.h>
+#include<GLUT/glut.h>
+#include <iostream>
+
+
 
 WindowManager::WindowManager(const Game & engine)
 : AbstractManager(engine)
@@ -46,6 +53,17 @@ void WindowManager::Initialize()
     // tell GL to only draw onto a pixel if the shape is closer to the viewer
     glEnable(GL_DEPTH_TEST); // enable depth-testing
     glDepthFunc(GL_LESS); // depth-testing interprets a smaller value as "closer"
+    
+    glfwSetTime( 40 );
+    
+    
+    //glViewport( 0.0f, 0.0f, screenWidth, screenHeight ); // specifies the part of the window to which OpenGL will draw (in pixels), convert from normalised to pixels
+    glMatrixMode( GL_PROJECTION ); // projection matrix defines the properties of the camera that views the objects in the world coordinate frame. Here you typically set the zoom factor, aspect ratio and the near and far clipping planes
+    glLoadIdentity( ); // replace the current matrix with the identity matrix and starts us a fresh because matrix transforms such as glOrpho and glRotate cumulate, basically puts us at (0, 0, 0)
+    // glOrtho( 0, SCREEN_WIDTH, 0, SCREEN_HEIGHT, 0, 1 ); // essentially set coordinate system
+    glMatrixMode( GL_MODELVIEW ); // (default matrix mode) modelview matrix defines how your objects are transformed (meaning translation, rotation and scaling) in your world
+    glLoadIdentity( );
+    
 }
 
 void WindowManager::errorCallback(int error, const char*logText)
@@ -58,6 +76,21 @@ void WindowManager::Loop()
     /*
      Program Loop
      */
+    // glClear( GL_COLOR_BUFFER_BIT );
+    
+    double seconds = glfwGetTime();
+    glColor3f(1.0f, 0.0f, 0.0f);
+    if(seconds >=50){
+        drawString(GLUT_BITMAP_TIMES_ROMAN_24, "Game Over",500,300);
+        // std::cout << seconds << std::endl;
+        // glfwSetWindowShouldClose(this->_window, GL_TRUE);
+        // glfwTerminate();
+        
+        
+    }
+    
+    // Poll for and process events
+    glfwPollEvents( );
     if(glfwWindowShouldClose(this->_window)) {
         // close GL context and any other GLFW resources
         glfwTerminate();
@@ -67,4 +100,10 @@ void WindowManager::Loop()
 GLFWwindow * WindowManager::GetWindow()
 {
     return this->_window;
+}
+void WindowManager::drawString (void * font, char *s, float x, float y){
+    unsigned int i;
+    glRasterPos2f(x, y);
+    for (i = 0; i < strlen (s); i++)
+        glutBitmapCharacter (font, s[i]);
 }
