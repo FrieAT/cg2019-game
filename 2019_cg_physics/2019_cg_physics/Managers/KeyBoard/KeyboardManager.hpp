@@ -34,6 +34,7 @@ private:
     static int _dir;
     Vector2 _orientation;
     float _mouseSpeedOrientation;
+    bool _mousePosState;
 };
 
 #endif /* KeyboardManager_hpp */
