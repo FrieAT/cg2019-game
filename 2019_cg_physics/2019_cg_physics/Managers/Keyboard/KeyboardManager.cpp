@@ -20,14 +20,14 @@
 #include "ObjectManager.hpp"
 #include "IView.hpp"
 
-int KeyboardManager::_dir = -1;
+Vector2 KeyboardManager::_dir = Vector2(0.0f);
 
 KeyboardManager::KeyboardManager(const Game & engine)
 : AbstractManager(engine)
 , _mouseSpeedOrientation(0.005f)
 , _mousePosState(0)
 {
-    KeyboardManager::_dir = -1;
+    KeyboardManager::_dir = Vector2(0.0f);
 }
 
 void KeyboardManager::Initialize()
@@ -55,11 +55,7 @@ void KeyboardManager::Loop()
         if(player != nullptr && movement != nullptr) {
             //_dir = GetMoveDirection();
            // std::cout << _dir<< "\n";
-            Vector3 velocity = Vector3(0.0, 0.0, 0.0);
-            if(_dir == 0) velocity = Vector3(1.0, 0.0, 0.0);
-            else if(_dir == 1) velocity = Vector3(-1.0, 0.0, 0.0);
-            else if(_dir == 2) velocity = Vector3(0.0, 0.0, 1.0);
-            else if(_dir == 3) velocity = Vector3(0.0, 0.0, -1.0);
+            Vector3 velocity = Vector3(_dir.x, 0.0, _dir.y);
             
             auto cameras = objectManager->GetObjectsByName("Camera");
             
@@ -88,15 +84,27 @@ void KeyboardManager:: keyCallbackM(GLFWwindow* myWindow, int key, int scanCode,
     if (((key == GLFW_KEY_ESCAPE) || (key == GLFW_KEY_Q)) && (action == GLFW_PRESS))
     /* close window upon hitting the escape key or Q/q */
         glfwSetWindowShouldClose(myWindow, GL_TRUE);
-    else if ((key == GLFW_KEY_RIGHT) && (action == GLFW_PRESS || GLFW_REPEAT== action)) {
-        _dir = 0;
-    } else if ((key == GLFW_KEY_LEFT) && (action == GLFW_PRESS|| GLFW_REPEAT== action)) {
-        _dir = 1;
-    } else if ((key == GLFW_KEY_DOWN) && (action == GLFW_PRESS || GLFW_REPEAT== action)) {
-        _dir = 2;
-    } else if ((key == GLFW_KEY_UP) && (action == GLFW_PRESS || GLFW_REPEAT== action)){
-        _dir = 3;
-    } else {
-        _dir = -1;
+    if ((key == GLFW_KEY_RIGHT) && action == GLFW_PRESS) {
+        _dir += Vector2(1.0f, 0.0f);
+    } else if (key == GLFW_KEY_RIGHT && action != GLFW_REPEAT) {
+        _dir -= Vector2(1.0f, 0.0f);
+    }
+    
+    if ((key == GLFW_KEY_LEFT) && action == GLFW_PRESS) {
+        _dir -= Vector2(1.0f, 0.0f);
+    } else if (key == GLFW_KEY_LEFT && action != GLFW_REPEAT) {
+        _dir += Vector2(1.0f, 0.0f);
+    }
+    
+    if ((key == GLFW_KEY_DOWN) && action == GLFW_PRESS) {
+        _dir += Vector2(0.0f, 1.0f);
+    } else if (key == GLFW_KEY_DOWN && action != GLFW_REPEAT) {
+        _dir -= Vector2(0.0f, 1.0f);
+    }
+    
+    if ((key == GLFW_KEY_UP) && action == GLFW_PRESS) {
+        _dir -= Vector2(0.0f, 1.0f);
+    } else if (key == GLFW_KEY_UP && action != GLFW_REPEAT) {
+        _dir += Vector2(0.0f, 1.0f);
     }
 }
