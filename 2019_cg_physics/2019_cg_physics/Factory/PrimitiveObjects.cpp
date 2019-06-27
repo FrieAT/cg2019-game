@@ -23,6 +23,7 @@
 //#include "SphereDrawing.hpp"
 #include "GrassBlockTexture.hpp"
 #include "GameOverBlockTexture.hpp"
+#include "WoodBlockTexture.hpp"
 
      GLdouble times = glfwGetTime();
 GameObject * PrimitiveObjects::CreateStageDummy()
@@ -323,20 +324,20 @@ void PrimitiveObjects::GenerateFenceAroundField(ObjectManager * manager)
         {2.5f, 0.35f, -1.0f, 0.1f, 0.7f, 0.1f}, // right back
         
         // back sprouts
-        {0.0f, 0.45f, -1.0f, 5.0f, 0.1f, 0.1f},
-        {0.0f, 0.25f, -1.0f, 5.0f, 0.1f, 0.1f},
+        {0.0f, 0.50f, -1.0f, 5.0f, 0.1f, 0.1f},
+        {0.0f, 0.30f, -1.0f, 5.0f, 0.1f, 0.1f},
         
         // front sprouts
-        {0.0f, 0.45f, 1.0f, 5.0f, 0.1f, 0.1f},
-        {0.0f, 0.25f, 1.0f, 5.0f, 0.1f, 0.1f},
+        {0.0f, 0.50f, 1.0f, 5.0f, 0.1f, 0.1f},
+        {0.0f, 0.30f, 1.0f, 5.0f, 0.1f, 0.1f},
         
         // left sprouts
-        {-2.5f, 0.45f, 0.0f, 0.1f, 0.1f, 2.0f},
-        {-2.5f, 0.25f, 0.0f, 0.1f, 0.1f, 2.0f},
+        {-2.5f, 0.50f, 0.0f, 0.1f, 0.1f, 2.0f},
+        {-2.5f, 0.30f, 0.0f, 0.1f, 0.1f, 2.0f},
         
         // right sprouts
-        {2.5f, 0.45f, 0.0f, 0.1f, 0.1f, 2.0f},
-        {2.5f, 0.25f, 0.0f, 0.1f, 0.1f, 2.0f},
+        {2.5f, 0.50f, 0.0f, 0.1f, 0.1f, 2.0f},
+        {2.5f, 0.30f, 0.0f, 0.1f, 0.1f, 2.0f},
     };
     
 
@@ -358,7 +359,7 @@ void PrimitiveObjects::GenerateFenceAroundField(ObjectManager * manager)
         transform->SetScale(Vector3(coordinates[object][3], coordinates[object][4], coordinates[object][5]));
         child->SetComponent(transform);
         drawing = new CubeDrawing();
-        drawing->SetTexture(new SteveHeadTexture());
+        drawing->SetTexture(new WoodBlockTexture());
         child->SetComponent(drawing);
         child->SetComponent(usedShader);
         g->AddChild(child);
