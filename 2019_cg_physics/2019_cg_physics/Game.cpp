@@ -50,7 +50,6 @@ void Game::Initialize()
     // Adding GameObjects below.
     auto camera = PrimitiveObjects::CreateCamera();
     GetManager<ObjectManager>()->AddGameObject(camera);
-    triangle->AddChild(camera);
 //    auto sphere = PrimitiveObjects::CreateSphereDummy();
 //    GetManager<ObjectManager>()->AddGameObject(sphere);
     PrimitiveObjects::GenerateBallsForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);

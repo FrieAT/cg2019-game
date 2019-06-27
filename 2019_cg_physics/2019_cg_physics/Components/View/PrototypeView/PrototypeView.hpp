@@ -21,6 +21,7 @@ public:
     }
     
     void LookAt(Vector3 position);
+    Vector3 GetLookAt() { return _lookAt; }
     Matrix4 GetView();
     
     PrototypeView();
