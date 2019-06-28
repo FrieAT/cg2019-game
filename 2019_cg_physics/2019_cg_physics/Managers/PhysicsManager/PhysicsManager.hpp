@@ -22,6 +22,7 @@ public:
     PhysicsManager(const Game &engine);
 private:
     float _gravity = 8.34;
+    float _oldRotation = 0;
 };
 
 #endif /* PhysicsManager_hpp */

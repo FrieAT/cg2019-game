@@ -55,7 +55,8 @@ void KeyboardManager::Loop()
         if(player != nullptr && movement != nullptr) {
             //_dir = GetMoveDirection();
            // std::cout << _dir<< "\n";
-            Vector3 velocity = Vector3(_dir.x, 0.0, _dir.y);
+            Vector3 velocity = Vector3(_dir.x, 0.0, _dir.y) * GetEngine().GetDeltaTime() * 2.5f;
+            float rotation = _dir.x * GetEngine().GetDeltaTime() * 2.5f;
             
             auto cameras = objectManager->GetObjectsByName("Camera");
             
@@ -72,6 +73,7 @@ void KeyboardManager::Loop()
                 cameraIt++;
             }
             movement->SetVelocity(velocity);
+            position->AddRotation(ERotation::Pitch, rotation);
         }
         
         it++;
