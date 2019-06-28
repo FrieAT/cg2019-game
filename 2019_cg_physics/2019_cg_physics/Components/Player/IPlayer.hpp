@@ -17,13 +17,15 @@ public:
     IPlayer() = default;
     ~IPlayer() = default;
     
-    void SetPlayerId(unsigned int pId) { _playerId = pId; }
+    void SetPlayerId(unsigned int pId) { _playerId = pId; IPlayer::PlayerOne = GetAssignedGameObject(); }
     unsigned int GetPlayerId() { return _playerId; }
     
     EComponentType GetComponentType() override
     {
         return EComponentType::Player;
     }
+    
+    static GameObject * PlayerOne;
 private:
     unsigned int _playerId = 1;
 };

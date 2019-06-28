@@ -103,6 +103,7 @@ GameObject * PrimitiveObjects::CreateSteve()
     g->SetComponent(transform);
     g->SetComponent(new LinearMovement());
     g->SetComponent(new IPlayer());
+    dynamic_cast<IPlayer*>(g->GetComponent(EComponentType::Player))->SetPlayerId(1);
     
     GameObject * head = new GameObject("sHead", renderLayer);
     transform = new PixelTransform();
@@ -220,15 +221,22 @@ void PrimitiveObjects::GenerateBallsForLevel(ObjectManager * manager, Vector3 ce
 { glfwSetTime( 0 );
     float ballSize = 0.3;
     float startingHeight = 4.0;
+    int maxBallsAmount = 50;
     for(float y = centerPosition.y - laenge; y < centerPosition.y + laenge; y+=ballSize*2.0f) {
         for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=ballSize*2.0f) {
            double birthTime = glfwGetTime();
+            
+            if(maxBallsAmount <= 0 || rand() % 100 < 75) {
+                continue;
+            }
+            
             GameObject* p = CreateSphereDummy();
             IPosition * transform = new PixelTransform();
             transform->SetPosition(Vector3(x, 3.0f, y));
             transform->SetScale(Vector3(ballSize));
             p->SetComponent(transform);
             manager->AddGameObject(p);
+            maxBallsAmount--;
             
 //            if( transform->GetPosition().z == -5.0f){
 //              std::cout << transform->GetPosition().z<< "\n";
@@ -293,12 +301,6 @@ void PrimitiveObjects::GenerateLandschaft(ObjectManager * manager, Vector3 cente
                 created++;
             }
         }
-        
-        // Game Over Object in Planar
-        GameObject* go = CreateGameOverBlock();
-        IPosition * transforme= dynamic_cast<IPosition*>(go->GetComponent(EComponentType::Position));
-        transforme->SetPosition(Vector3(0.0f, 0.25f + 0.5f, 0.0f));
-        manager->AddGameObject(go);
     }
 }
 
