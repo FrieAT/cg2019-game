@@ -55,7 +55,8 @@ void KeyboardManager::Loop()
         if(player != nullptr && movement != nullptr) {
             //_dir = GetMoveDirection();
            // std::cout << _dir<< "\n";
-            Vector3 velocity = Vector3(_dir.x, 0.0, _dir.y) * GetEngine().GetDeltaTime() * 2.5f;
+            float speed = 4.5f;
+            Vector3 velocity = Vector3(_dir.x, 0.0, _dir.y) * GetEngine().GetDeltaTime() * speed;
             //float rotation = _dir.x * GetEngine().GetDeltaTime() * 2.5f;
             
             auto cameras = objectManager->GetObjectsByName("Camera");
@@ -72,6 +73,24 @@ void KeyboardManager::Loop()
                 
                 cameraIt++;
             }
+            
+            // Fence boundary check. Primitive.
+            Vector3 newPosition = position->GetPosition() + velocity;
+            if(newPosition.x <= -2.4) {
+                newPosition.x = -2.4f;
+                velocity = newPosition - position->GetPosition();
+            } else if(newPosition.x >= 2.4) {
+                newPosition.x = 2.4f;
+                velocity = newPosition - position->GetPosition();
+            }
+            if(newPosition.z > 0.9) {
+                newPosition.z = 0.9f;
+                velocity = newPosition - position->GetPosition();
+            } else if(newPosition.z < -0.9) {
+                newPosition.z = -0.9;
+                velocity = newPosition - position->GetPosition();
+            }
+            
             movement->SetVelocity(velocity);
             //position->AddRotation(ERotation::Pitch, rotation);
         }
