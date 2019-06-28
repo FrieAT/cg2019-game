@@ -53,13 +53,13 @@ void PixelTransform::AddRotation(ERotation type, float degreeRotation)
     switch(type)
     {
         case ERotation::Yaw:
-            vecRotate = Vector4(1.0, 0.0, 0.0, 1.0f);
+            vecRotate = Vector4(1.0, 0.0, 0.0, GetPosition().x);
             break;
         case ERotation::Pitch:
-            vecRotate = Vector4(0.0, 1.0, 0.0, 1.0f);
+            vecRotate = Vector4(0.0, 1.0, 0.0, GetPosition().y);
             break;
         case ERotation::Roll:
-            vecRotate = Vector4(0.0, 0.0, 1.0, 1.0f);
+            vecRotate = Vector4(0.0, 0.0, 1.0, GetPosition().z);
             break;
     }
     _rotation = _rotation * glm::rotate(Matrix4(1.0f), glm::radians(degreeRotation), vecRotate);

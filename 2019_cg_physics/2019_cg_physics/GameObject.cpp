@@ -5,6 +5,7 @@
 // GameObject constructor
 GameObject::GameObject(std::string strID, std::string strName)
 : _active(true)
+, _parent(nullptr)
 {
     this->m_strID = strID;
     this->m_strName = strName;

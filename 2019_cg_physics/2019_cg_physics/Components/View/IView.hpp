@@ -24,6 +24,7 @@ public:
     virtual Matrix4 GetProjection() = 0;
     virtual Matrix4 GetView() = 0;
     virtual void LookAt(Vector3 position) = 0;
+    virtual Vector3 GetLookAt() = 0;
     
     EComponentType GetComponentType() override
     {

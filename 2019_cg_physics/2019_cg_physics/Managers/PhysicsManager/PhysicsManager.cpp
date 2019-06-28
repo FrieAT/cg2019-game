@@ -11,6 +11,7 @@
 #include "ObjectManager.hpp"
 #include "IPosition.hpp"
 #include "IMovement.hpp"
+#include "IAnimation.hpp"
 #include <glm/gtx/string_cast.hpp>
 PhysicsManager::PhysicsManager(const Game &engine)
 : AbstractManager(engine)
@@ -41,16 +42,31 @@ void PhysicsManager::Loop()
                 
                 //TODO: Multiply velocity with deltaTime. deltaTime is time since last frame.
                 velocity = velocity* Game::GetEngine()->GetDeltaTime();
-                
-                if(velocity.x < 0) position->SetRotation(ERotation::Pitch, -45.0);
-                else if(velocity.x > 0) position->SetRotation(ERotation::Pitch, 45.0);
-                if(velocity.z < 0) position->SetRotation(ERotation::Pitch, 135.0);
-                else if(velocity.z > 0) position->SetRotation(ERotation::Pitch, -135.0);
-                
-                position->AddPosition(velocity);
+            
+            float newRotation = 0.0;
+            if(velocity.x < 0 && velocity.z > 0) newRotation = ( -90.0 + 45.0);
+            else if(velocity.x < 0 && velocity.z < 0) newRotation = ( -90.0 - 45.0);
+            else if(velocity.x < 0) newRotation = ( -90.0);
+            else if(velocity.x > 0 && velocity.z < 0) newRotation = ( 90.0 + 45.0);
+            else if(velocity.x > 0 && velocity.z > 0) newRotation = ( 90.0 - 45.0);
+            else if(velocity.x > 0) newRotation = ( 90.0);
+            else if(velocity.z < 0) newRotation = ( 180.0);
+            position->SetRotation(ERotation::Pitch, newRotation - (newRotation - _oldRotation) * GetEngine().GetDeltaTime() * 0.5f);
+            _oldRotation = newRotation;
+            
+            position->AddPosition(velocity);
            // }
            
-    }
+            auto childsIt = (*it)->GetChildsIterator();
+            while(childsIt != (*it)->GetChildsIteratorEnd()) {
+                auto animation = dynamic_cast<IAnimation*>((*childsIt)->GetComponent(EComponentType::Animation));
+                if(animation != nullptr) {
+                    animation->AnimateByVelocity(velocity, GetEngine().GetDeltaTime());
+                }
+                
+                childsIt++;
+            }
+        }
         
         it++;
     }

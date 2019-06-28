@@ -27,6 +27,8 @@
 		D8796391228E7D93002FDFD8 /* SphereShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D879638F228E7D93002FDFD8 /* SphereShader.cpp */; };
 		D8BA0D0722870AC9008B4580 /* PixelTransform.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8BA0D0522870AC9008B4580 /* PixelTransform.cpp */; };
 		D8D4098722C54C2F00E725B1 /* WoodBlockTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D4098522C54C2F00E725B1 /* WoodBlockTexture.cpp */; };
+		D8D4098D22C5D2B100E725B1 /* SteveArmAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D4098B22C5D2B100E725B1 /* SteveArmAnimation.cpp */; };
+		D8D4099222C5DE8E00E725B1 /* SteveLegAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D4099022C5DE8E00E725B1 /* SteveLegAnimation.cpp */; };
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
 		D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD4B227C2F7000D08539 /* SphereDrawing.cpp */; };
 		D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD54227C75ED00D08539 /* PrimitiveObjects.cpp */; };
@@ -108,6 +110,11 @@
 		D8CE66D9228EBDFA005C2478 /* PrototypeView.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = PrototypeView.hpp; sourceTree = "<group>"; };
 		D8D4098522C54C2F00E725B1 /* WoodBlockTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = WoodBlockTexture.cpp; sourceTree = "<group>"; };
 		D8D4098622C54C2F00E725B1 /* WoodBlockTexture.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = WoodBlockTexture.hpp; sourceTree = "<group>"; };
+		D8D4098922C5D15400E725B1 /* IAnimation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IAnimation.hpp; sourceTree = "<group>"; };
+		D8D4098B22C5D2B100E725B1 /* SteveArmAnimation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveArmAnimation.cpp; sourceTree = "<group>"; };
+		D8D4098C22C5D2B100E725B1 /* SteveArmAnimation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveArmAnimation.hpp; sourceTree = "<group>"; };
+		D8D4099022C5DE8E00E725B1 /* SteveLegAnimation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveLegAnimation.cpp; sourceTree = "<group>"; };
+		D8D4099122C5DE8E00E725B1 /* SteveLegAnimation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveLegAnimation.hpp; sourceTree = "<group>"; };
 		D8EBCD43227C287500D08539 /* AbstractManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractManager.cpp; sourceTree = "<group>"; };
 		D8EBCD44227C287500D08539 /* AbstractManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AbstractManager.hpp; sourceTree = "<group>"; };
 		D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IDrawing.hpp; sourceTree = "<group>"; };
@@ -251,6 +258,7 @@
 		D858CACB227C27B900ABFE72 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				D8D4098822C5D14100E725B1 /* Animate */,
 				ED002904229AA8570049E17B /* Player */,
 				D8CE66D5228EAEB4005C2478 /* View */,
 				D879638C228E7C71002FDFD8 /* Shader */,
@@ -368,6 +376,34 @@
 				D8D4098622C54C2F00E725B1 /* WoodBlockTexture.hpp */,
 			);
 			path = WoodBlock;
+			sourceTree = "<group>";
+		};
+		D8D4098822C5D14100E725B1 /* Animate */ = {
+			isa = PBXGroup;
+			children = (
+				D8D4098F22C5DE7B00E725B1 /* SteveLegAnimation */,
+				D8D4098A22C5D29E00E725B1 /* SteveArmAnimation */,
+				D8D4098922C5D15400E725B1 /* IAnimation.hpp */,
+			);
+			path = Animate;
+			sourceTree = "<group>";
+		};
+		D8D4098A22C5D29E00E725B1 /* SteveArmAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				D8D4098B22C5D2B100E725B1 /* SteveArmAnimation.cpp */,
+				D8D4098C22C5D2B100E725B1 /* SteveArmAnimation.hpp */,
+			);
+			path = SteveArmAnimation;
+			sourceTree = "<group>";
+		};
+		D8D4098F22C5DE7B00E725B1 /* SteveLegAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				D8D4099022C5DE8E00E725B1 /* SteveLegAnimation.cpp */,
+				D8D4099122C5DE8E00E725B1 /* SteveLegAnimation.hpp */,
+			);
+			path = SteveLegAnimation;
 			sourceTree = "<group>";
 		};
 		D8EBCD40227C285000D08539 /* Window */ = {
@@ -590,6 +626,7 @@
 				D833541022B0D9C000C69B8A /* SteveLegTexture.cpp in Sources */,
 				ED0028FE229AA0570049E17B /* PhysicsManager.cpp in Sources */,
 				D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */,
+				D8D4099222C5DE8E00E725B1 /* SteveLegAnimation.cpp in Sources */,
 				D858CAB82279C06F00ABFE72 /* Exception.cpp in Sources */,
 				D833541322B0D9C000C69B8A /* SteveAbstractTexture.cpp in Sources */,
 				D858CAC1227C261100ABFE72 /* ObjectManager.cpp in Sources */,
@@ -597,6 +634,7 @@
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
 				D82D408A226EE90200F5B73D /* Game.cpp in Sources */,
 				D8735D9122BD30F50026AB06 /* GrassBlockTexture.cpp in Sources */,
+				D8D4098D22C5D2B100E725B1 /* SteveArmAnimation.cpp in Sources */,
 				ED1BEF1522A6F1AD00B4C540 /* Geometrie.cpp in Sources */,
 				D858CABB227C1FB200ABFE72 /* RenderManager.cpp in Sources */,
 				D833541122B0D9C000C69B8A /* SteveHeadTexture.cpp in Sources */,
