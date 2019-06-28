@@ -14,6 +14,7 @@
 #include "KeyboardManager.hpp"
 #include "PhysicsManager.hpp"
 #include "SphereDrawing.hpp"
+#include "PixelTransform.hpp"
 SphereDrawing sphereDrawing;
 Game* Game::_engine = nullptr;
 
@@ -60,7 +61,15 @@ void Game::Initialize()
  PrimitiveObjects::GenerateGeometrieForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
     
     PrimitiveObjects::GenerateFenceAroundField(GetManager<ObjectManager>());
-    
+    // Einziger Fallender Ball.
+    auto sphere = PrimitiveObjects::CreateSphereDummy();
+    GetManager<ObjectManager>()->AddGameObject(sphere);
+    auto drawing = dynamic_cast<SphereDrawing*>(sphere->GetComponent(EComponentType::Drawing));
+    drawing->SetFreeze(false);
+    IPosition * transform = new PixelTransform();
+    transform->SetPosition(Vector3(1.5f, 2.0f,0.0f));
+    transform->SetScale(Vector3(0.3f));
+    sphere->SetComponent(transform);
 
     this->initializeManagers();
    
