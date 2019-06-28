@@ -24,6 +24,8 @@
 #include "GrassBlockTexture.hpp"
 #include "GameOverBlockTexture.hpp"
 #include "WoodBlockTexture.hpp"
+#include "SteveArmAnimation.hpp"
+#include "SteveLegAnimation.hpp"
 
      GLdouble times = glfwGetTime();
 GameObject * PrimitiveObjects::CreateStageDummy()
@@ -90,6 +92,7 @@ GameObject * PrimitiveObjects::CreateSteve()
     PixelTransform * transform;
     SphereShader * usedShader;
     IDrawing * drawing;
+    IAnimation * animation;
     
     GameObject * g = new GameObject("Steve", renderLayer);
     usedShader = new SphereShader();
@@ -130,6 +133,9 @@ GameObject * PrimitiveObjects::CreateSteve()
     drawing = new CubeDrawing();
     drawing->SetTexture(new SteveLegTexture());
     leftLeg->SetComponent(drawing);
+    animation = new SteveLegAnimation();
+    animation->SetForward(false);
+    leftLeg->SetComponent(animation);
     
     GameObject * rightLeg = new GameObject("sRightLeg", renderLayer);
     transform = new PixelTransform();
@@ -140,6 +146,9 @@ GameObject * PrimitiveObjects::CreateSteve()
     drawing = new CubeDrawing();
     drawing->SetTexture(new SteveLegTexture());
     rightLeg->SetComponent(drawing);
+    animation = new SteveLegAnimation();
+    animation->SetForward(true);
+    rightLeg->SetComponent(animation);
     
     GameObject * leftArm = new GameObject("sLeftArm", renderLayer);
     transform = new PixelTransform();
@@ -151,6 +160,10 @@ GameObject * PrimitiveObjects::CreateSteve()
     drawing = new CubeDrawing();
     drawing->SetTexture(new SteveArmTexture());
     leftArm->SetComponent(drawing);
+    animation = new SteveArmAnimation();
+    //animation->SetInitialRotation(45.0f);
+    animation->SetForward(true);
+    leftArm->SetComponent(animation);
     
     GameObject * rightArm = new GameObject("sRightArm", renderLayer);
     transform = new PixelTransform();
@@ -162,6 +175,10 @@ GameObject * PrimitiveObjects::CreateSteve()
     drawing = new CubeDrawing();
     drawing->SetTexture(new SteveArmTexture());
     rightArm->SetComponent(drawing);
+    animation = new SteveArmAnimation();
+    //animation->SetInitialRotation(-45.0f);
+    animation->SetForward(false);
+    rightArm->SetComponent(animation);
     
     g->AddChild(head);
     g->AddChild(body);

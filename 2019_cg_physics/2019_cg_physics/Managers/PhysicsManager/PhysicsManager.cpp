@@ -11,6 +11,7 @@
 #include "ObjectManager.hpp"
 #include "IPosition.hpp"
 #include "IMovement.hpp"
+#include "IAnimation.hpp"
 #include <glm/gtx/string_cast.hpp>
 PhysicsManager::PhysicsManager(const Game &engine)
 : AbstractManager(engine)
@@ -56,7 +57,16 @@ void PhysicsManager::Loop()
             position->AddPosition(velocity);
            // }
            
-    }
+            auto childsIt = (*it)->GetChildsIterator();
+            while(childsIt != (*it)->GetChildsIteratorEnd()) {
+                auto animation = dynamic_cast<IAnimation*>((*childsIt)->GetComponent(EComponentType::Animation));
+                if(animation != nullptr) {
+                    animation->AnimateByVelocity(velocity, GetEngine().GetDeltaTime());
+                }
+                
+                childsIt++;
+            }
+        }
         
         it++;
     }
