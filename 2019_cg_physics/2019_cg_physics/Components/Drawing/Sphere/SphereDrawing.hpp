@@ -35,6 +35,7 @@ public:
     
     SphereDrawing generateBall(GLint posAttrib, GLint normAttrib, GLint uvAttrib);
     void SetFreeze(bool freeze) { _freeze = freeze; }
+    bool GetFreeze() { return _freeze; }
    
     float getRadius();
     

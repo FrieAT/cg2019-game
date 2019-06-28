@@ -14,6 +14,7 @@
 #include "KeyboardManager.hpp"
 #include "PhysicsManager.hpp"
 #include "SphereDrawing.hpp"
+#include "GameLogicManager.hpp"
 SphereDrawing sphereDrawing;
 Game* Game::_engine = nullptr;
 
@@ -35,6 +36,7 @@ void Game::Initialize()
     AddManager<RenderManager>();
     AddManager<ObjectManager>();
     AddManager<PhysicsManager>();
+    AddManager<GameLogicManager>();
     // Adding GameObjects below.
     
     
@@ -52,7 +54,7 @@ void Game::Initialize()
     GetManager<ObjectManager>()->AddGameObject(camera);
 //    auto sphere = PrimitiveObjects::CreateSphereDummy();
 //    GetManager<ObjectManager>()->AddGameObject(sphere);
-    PrimitiveObjects::GenerateBallsForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
+    PrimitiveObjects::GenerateBallsForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 2.0f, 5.0f);
     PrimitiveObjects::GenerateGeometrieForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
     
     
@@ -69,7 +71,7 @@ void Game::Initialize()
     
     double lastTime = 0;
     double currentTime;
-    double maxFPS = 1.0 / 50.0; // limiting FPS to 50 - 65 FPS!
+    double maxFPS = 1.0 / 30.0; // limiting FPS to 50 - 65 FPS!
     // Run the loop.
     while(!this->_shutdown) // TODO: Check for Keyboard Interrupt!
     {

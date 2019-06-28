@@ -29,6 +29,8 @@
 		D8D4098722C54C2F00E725B1 /* WoodBlockTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D4098522C54C2F00E725B1 /* WoodBlockTexture.cpp */; };
 		D8D4098D22C5D2B100E725B1 /* SteveArmAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D4098B22C5D2B100E725B1 /* SteveArmAnimation.cpp */; };
 		D8D4099222C5DE8E00E725B1 /* SteveLegAnimation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D4099022C5DE8E00E725B1 /* SteveLegAnimation.cpp */; };
+		D8D4099622C5E02C00E725B1 /* GameLogicManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D4099422C5E02C00E725B1 /* GameLogicManager.cpp */; };
+		D8D4099822C5E95200E725B1 /* IPlayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8D4099722C5E95200E725B1 /* IPlayer.cpp */; };
 		D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD43227C287500D08539 /* AbstractManager.cpp */; };
 		D8EBCD4D227C2F7000D08539 /* SphereDrawing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD4B227C2F7000D08539 /* SphereDrawing.cpp */; };
 		D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D8EBCD54227C75ED00D08539 /* PrimitiveObjects.cpp */; };
@@ -115,6 +117,9 @@
 		D8D4098C22C5D2B100E725B1 /* SteveArmAnimation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveArmAnimation.hpp; sourceTree = "<group>"; };
 		D8D4099022C5DE8E00E725B1 /* SteveLegAnimation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SteveLegAnimation.cpp; sourceTree = "<group>"; };
 		D8D4099122C5DE8E00E725B1 /* SteveLegAnimation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SteveLegAnimation.hpp; sourceTree = "<group>"; };
+		D8D4099422C5E02C00E725B1 /* GameLogicManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameLogicManager.cpp; sourceTree = "<group>"; };
+		D8D4099522C5E02C00E725B1 /* GameLogicManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameLogicManager.hpp; sourceTree = "<group>"; };
+		D8D4099722C5E95200E725B1 /* IPlayer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = IPlayer.cpp; sourceTree = "<group>"; };
 		D8EBCD43227C287500D08539 /* AbstractManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AbstractManager.cpp; sourceTree = "<group>"; };
 		D8EBCD44227C287500D08539 /* AbstractManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AbstractManager.hpp; sourceTree = "<group>"; };
 		D8EBCD4A227C2F1000D08539 /* IDrawing.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = IDrawing.hpp; sourceTree = "<group>"; };
@@ -244,6 +249,7 @@
 		D858CAC9227C279900ABFE72 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				D8D4099322C5E01C00E725B1 /* GameLogicManager */,
 				ED0028FB229AA00D0049E17B /* PhysicsManager */,
 				ED01EBA52284A5E50088ED35 /* KeyBoard */,
 				D8EBCD42227C285900D08539 /* Object */,
@@ -406,6 +412,15 @@
 			path = SteveLegAnimation;
 			sourceTree = "<group>";
 		};
+		D8D4099322C5E01C00E725B1 /* GameLogicManager */ = {
+			isa = PBXGroup;
+			children = (
+				D8D4099422C5E02C00E725B1 /* GameLogicManager.cpp */,
+				D8D4099522C5E02C00E725B1 /* GameLogicManager.hpp */,
+			);
+			path = GameLogicManager;
+			sourceTree = "<group>";
+		};
 		D8EBCD40227C285000D08539 /* Window */ = {
 			isa = PBXGroup;
 			children = (
@@ -521,6 +536,7 @@
 			isa = PBXGroup;
 			children = (
 				ED002905229AA86D0049E17B /* IPlayer.hpp */,
+				D8D4099722C5E95200E725B1 /* IPlayer.cpp */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -633,9 +649,11 @@
 				D8EBCD56227C75ED00D08539 /* PrimitiveObjects.cpp in Sources */,
 				D8EBCD45227C287500D08539 /* AbstractManager.cpp in Sources */,
 				D82D408A226EE90200F5B73D /* Game.cpp in Sources */,
+				D8D4099822C5E95200E725B1 /* IPlayer.cpp in Sources */,
 				D8735D9122BD30F50026AB06 /* GrassBlockTexture.cpp in Sources */,
 				D8D4098D22C5D2B100E725B1 /* SteveArmAnimation.cpp in Sources */,
 				ED1BEF1522A6F1AD00B4C540 /* Geometrie.cpp in Sources */,
+				D8D4099622C5E02C00E725B1 /* GameLogicManager.cpp in Sources */,
 				D858CABB227C1FB200ABFE72 /* RenderManager.cpp in Sources */,
 				D833541122B0D9C000C69B8A /* SteveHeadTexture.cpp in Sources */,
 				ED01EBAB2284A6620088ED35 /* KeyboardManager.cpp in Sources */,
