@@ -42,24 +42,20 @@ void Game::Initialize()
     
     auto stage = PrimitiveObjects::CreateStageDummy();
     GetManager<ObjectManager>()->AddGameObject(stage);
-//    for(int i = 0; i <5;i++){
-//    auto geometrie = PrimitiveObjects::CreateGeometrie();
-//    GetManager<ObjectManager>()->AddGameObject(geometrie);
-//    }
+
     auto triangle = PrimitiveObjects::CreateSteve();
     GetManager<ObjectManager>()->AddGameObject(triangle);
     
     // Adding GameObjects below.
     auto camera = PrimitiveObjects::CreateCamera();
     GetManager<ObjectManager>()->AddGameObject(camera);
-//    auto sphere = PrimitiveObjects::CreateSphereDummy();
-//    GetManager<ObjectManager>()->AddGameObject(sphere);
+
     PrimitiveObjects::GenerateBallsForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 2.0f, 5.0f);
     PrimitiveObjects::GenerateGeometrieForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
     
     
     PrimitiveObjects::GenerateLandschaft(GetManager<ObjectManager>(), Vector3(0.0f, 0.0f,-1.0f), 5.0f, 3.2f);
- PrimitiveObjects::GenerateGeometrieForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
+    PrimitiveObjects::GenerateGeometrieForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
     
     PrimitiveObjects::GenerateFenceAroundField(GetManager<ObjectManager>());
     

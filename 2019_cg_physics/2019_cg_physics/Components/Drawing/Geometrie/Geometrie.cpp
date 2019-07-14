@@ -36,112 +36,13 @@ void Geometrie::Draw(RenderManager* renderManager)
     int shininessAttrib = shader->GetUniform(EShaderUniform::Shininess);
     
     draw(colAttrib, shininessAttrib);
-    // glBindVertexArray(0);
+  
 }
 /* generate and organize buffers */
 void Geometrie::organize(GLint posAttrib)
 {
     GLfloat points[] = {
-//        -0.8f,0.50f,-0.05f, /* bottom */
-//        -0.78f,0.50f,-0.05f,
-//        -0.8f,0.50f, 0.05f,
-//        -0.78f,0.50f,-0.05f,
-//        -0.78f,0.50f, 0.05f,
-//        -0.8f,0.50f, 0.05f,
-//        -0.8f,0.25f,-0.05f, /* top */
-//        -0.8f,0.25f, 0.05f,
-//        -0.78f,0.25f,-0.05f,
-//        -0.78f,0.25f,-0.05f,
-//        -0.8f,0.25f, 0.05f,
-//        -0.78f,0.25f, 0.05f,
-//        -0.8f,0.50f, 0.05f, /* font */
-//        -0.78f,0.50f, 0.05f,
-//        -0.8f,0.25f, 0.05f,
-//        -0.78f,0.50f, 0.05f,
-//        -0.78f,0.25f, 0.05f,
-//        -0.8f,0.25f, 0.05f,
-//        -0.8f,0.50f,-0.05f, /* back */
-//        -0.8f,0.25f,-0.05f,
-//       -0.78f,0.50f,-0.05f,
-//        -0.78f,0.50f,-0.05f,
-//        -0.8f,0.25f,-0.05f,
-//        -0.78f,0.25f,-0.05f,
-//        -0.8f,0.50f, 0.05f, /* left */
-//        -0.8f,0.25f,-0.05f,
-//        -0.8f,0.50f,-0.05f,
-//        -0.8f,0.50f, 0.05f,
-//        -0.8f,0.25f, 0.05f,
-//        -0.8f,0.25f,-0.05f,
-//       -0.78f,0.50f, 0.05f, /* right */
-//       -0.78f,0.50f,-0.05f,
-//       -0.78f,0.50f,-0.05f,
-//        -0.78f,0.50f, 0.05f,
-//        -0.78f,0.50f,-0.05f,
-//        -0.78f,0.50f, 0.05f,
-   
-//      0.0f, 1.0f, 0.0f,
-//
-//      -0.1f, 0.25f, 0.1f,
-//
-//      0.1f, 0.25f, 0.1,
-//
-//        // Right
-//
-//      0.0f, 1.0f, 0.0f,
-//
-//      0.1f, 0.25f,0.1f,
-//
-//     0.1f, 0.25f, -0.1f,
-//
-//        // Back
-//
-//     0.0f, 1.0f, 0.0f,
-//
-//      0.1f, 0.25f, -1.0f,
-//
-//    -0.1f, 0.25f, -1.0f,
-//
-//        // Left
-//
-//   0.0f, 1.0f, 0.0f,
-//
-//-0.1f,0.25f,-0.1,
-//
-// 0.1f,0.25f, 0.1f,
-        //''''''#############
-//        -0.8f, 0.3f,   -0.8f,
-//
-//        -0.9f, 0.0f,  -0.7f,
-//
-//        -0.7f, 0.0f,  -0.7f,
-//
-//        // Right
-//
-//       -0.8f, 0.3f,   -0.8f,
-//
-//       -0.7f, 0.0f, -0.7f,
-//
-//        -0.7f, 0.0f, -0.9f,
-//
-//        // Back
-//
-//        -0.8f, 0.3f,   -0.8f,
-//
-//        -0.7f, 0.0f, -0.9f,
-//
-//        -0.9f, 0.0f,  -0.7f,
-//
-//        // Left
-//
-//       -0.8f, 0.3f,   -0.8f,
-//
-//        -0.9f,0.0f,-0.9f,
-//
-//        -0.7f,0.0f,  -0.7f,
-//
-        
 
-  //////////////////////
   
         // Front
       
@@ -194,8 +95,7 @@ void Geometrie::draw(GLint colAttrib, GLint shininessAttrib)
 {
     glBindVertexArray(myVAO);
     
-    //    auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
-    //    position->SetPosition(Vector3(curTrans[0], curTrans[1], curTrans[2]));
+ 
     
     glUniform1f(shininessAttrib,300);
     

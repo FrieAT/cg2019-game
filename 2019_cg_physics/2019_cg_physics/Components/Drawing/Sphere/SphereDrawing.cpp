@@ -91,16 +91,15 @@ void SphereDrawing::organize(GLint posAttrib, GLint normAttrib, GLint uvAttrib)
 
 void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint shininessAttrib)
 {
-    //update(time);
-    /*binded*/
-    update_fall(time);
-    //http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
-    //texture
+    if(_road)
+    update_fall_pos(time);
+    else
+    update_fall_neg(time);
     glUniform1f(shininessAttrib, 300);
     
     auto texture = GetTexture();
     if(texture != nullptr) {
-        //glUniform1i(enableTextureUniform, 1);
+        
         
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, texture->GetTextureHandle());
@@ -120,28 +119,8 @@ void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint shininessAttrib)
     glBindVertexArray(0);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
-void SphereDrawing::update(GLdouble time)
-{
-    //TODO: This code below may not be here. Should be moved to PhysicsManager.
-    if(!_freeze ) {
-        auto positionComponent = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
-        Vector3 currentPos = positionComponent->GetPosition();
-        //dy =-speed * (time -birthTime) ;
-        //dy =2.0f;
-        dx = speed * (time -birthTime)/ per;
-        //* Game::GetEngine()->GetDeltaTime();
-        //dy = std::abs(amp * sinf(speed * (time - birthTime) + phase));
-        dy = std::abs(amp * cosf(speed * (time - birthTime) + phase));
-        //* Game::GetEngine()->GetDeltaTime();
-        //anim = glm::translate(glm::mat4(1.0f), glm::vec3(dx,dy, 0.0f)); // anim matrix for the ball
-        
-        currentPos = Vector3(currentPos.x,dy, 0.0f);
-        
-        positionComponent->SetPosition(currentPos);
-    }
-    
-}
-void SphereDrawing::update_fall(GLdouble time)
+
+void SphereDrawing::update_fall_pos(GLdouble time)
 {
     //TODO: This code below may not be here. Should be moved to PhysicsManager.
     if(!_freeze ) {
@@ -154,17 +133,12 @@ void SphereDrawing::update_fall(GLdouble time)
         
         
         if(dy <=0.28f){
-            if(dx>=0.0f){
+        
      
             dx =speed*(time -birthTime)/per +currentPos.x -1.7f ;
 
             dy = std::abs(amp * sinf(speed * (time - birthTime))) +0.2f;
-            }
-            else{
-            dx =-speed*(time -birthTime)/per +currentPos.x+1.7f  ;
-            
-            dy = std::abs(amp * sinf(speed * (time - birthTime))) +0.2f;
-            }
+           
         }
 
         
@@ -174,17 +148,40 @@ void SphereDrawing::update_fall(GLdouble time)
     }
     
 }
+void SphereDrawing::update_fall_neg(GLdouble time)
+{
+    //TODO: This code below may not be here. Should be moved to PhysicsManager.
+    if(!_freeze ) {
+        auto positionComponent = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
+        Vector3 currentPos = positionComponent->GetPosition();
+        
+        dy = -speed*(time -birthTime)/per +2.0f;
+        
+        dx =currentPos.x;
+        
+        
+        if(dy <=0.28f){
+        
+                dx =-speed*(time -birthTime)/per +currentPos.x+1.7f  ;
+                
+                dy = std::abs(amp * sinf(speed * (time - birthTime))) +0.2f;
+            }
+       
+        
+        
+        currentPos = Vector3(dx,dy, currentPos.z);
+        
+        positionComponent->SetPosition(currentPos);
+    }
+    
+}
 float SphereDrawing::getCurrentCX()
 {
-    // return cx + dx;
+   
     return dx;
 }
 
-bool SphereDrawing::checkFinished()
-{
-    float offset = 0.4; // the ball shall not vanish immediately at the border of the stage
-    return dx > 2 * stageLengthHalf + offset + 2 * _radius;
-}
+
 void SphereDrawing::deleteBufferAndArray()
 {
     glDeleteBuffers(1, &vbo);
@@ -193,9 +190,8 @@ void SphereDrawing::deleteBufferAndArray()
 /* initialize the parameters of the ball with partially random values */
 void SphereDrawing::initializeParameters()
 {
-   // birthTime = glfwGetTime();
+  
     _radius = MIN_RADIUS + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_RADIUS - MIN_RADIUS)));
-    phase = static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / 3.0));
     per = MIN_PER + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_PER - MIN_PER)));
     amp = MIN_AMP + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_AMP - MIN_AMP)));
     speed = MIN_SPEED + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX / (MAX_SPEED - MIN_SPEED)));
@@ -216,12 +212,12 @@ void SphereDrawing::initializeColorValues()
     colorValues[index] = BRIGHTNESS;
 }
 
-//https://de.wikipedia.org/wiki/Kugel
+
 void SphereDrawing::initializeVertices()
 {
     float space = 10;
     int n = 0;
-    //ball
+   
     for (float phi = 0; phi < 180; phi += space) {//10,20,30,40...180
         for (float theta = 0; theta < 360; theta += space) {//10,20..360
             

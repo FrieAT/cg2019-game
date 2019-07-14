@@ -20,7 +20,6 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <sstream>
-//#include "SphereDrawing.hpp"
 #include "GrassBlockTexture.hpp"
 #include "GameOverBlockTexture.hpp"
 #include "WoodBlockTexture.hpp"
@@ -233,23 +232,17 @@ void PrimitiveObjects::GenerateBallsForLevel(ObjectManager * manager, Vector3 ce
             GameObject* p = CreateSphereDummy();
             IPosition * transform = new PixelTransform();
             transform->SetPosition(Vector3(x, 3.0f, y));
+            auto drawing = dynamic_cast<SphereDrawing*>(p->GetComponent(EComponentType::Drawing));
+            if(x<0)
+            drawing->SetRoad(true);
+           else
+            drawing->SetRoad(false);
             transform->SetScale(Vector3(ballSize));
             p->SetComponent(transform);
             manager->AddGameObject(p);
             maxBallsAmount--;
             
-//            if( transform->GetPosition().z == -5.0f){
-//              std::cout << transform->GetPosition().z<< "\n";
-//                x = 1.0f * (times - birthTime) / 1.2f;
-//                  std::cout << times<< "\n";  std::cout << birthTime<< "\n";
-//
-//                y =std::abs(2.0f *sinf(1.0f * (times - birthTime)+ 0.5f));
-//                transform->SetPosition(Vector3(x, 3.0f, y));
-////                transform->SetScale(Vector3(ballSize));
-////                p->SetComponent(transform);
-////                manager->AddGameObject(p);
-          //  }
-//
+
            
         }
     }
@@ -269,11 +262,7 @@ void PrimitiveObjects::GenerateGeometrieForLevel(ObjectManager * manager, Vector
             transform->SetScale(Vector3(ballSize));
             p->SetComponent(transform);
             manager->AddGameObject(p);
-            //            auto position = dynamic_cast<IPosition*>(p->GetComponent(EComponentType::Position));
-            //            position->SetPosition(Vector3(x, 3.0f, y));
-            //            auto position = dynamic_cast<IPosition*>(p->GetComponent(EComponentType::Position));
-            //            position->SetPosition(Vector3(x, y, startingHeight));
-            
+         
         }
     }
 }
@@ -304,28 +293,7 @@ void PrimitiveObjects::GenerateLandschaft(ObjectManager * manager, Vector3 cente
     }
 }
 
-//void PrimitiveObjects::GenerateLandschaft(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite)
-//{
-//    float cubeSize = 0.5;
-//    for(float y = centerPosition.y - laenge; y < centerPosition.y + laenge; y+=cubeSize*2.0f) {
-//        for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=cubeSize*2.0f) {
-//            if(rand() % 100 < 20) {
-//                continue;
-//            }
-//            int created = 0;
-//            for(int i = 0; i < 2; i++) {
-//                if(rand() % 100 > i * 15) {
-//                    continue;
-//                }
-//                GameObject* p = CreateGrass();
-//                IPosition * transform = dynamic_cast<IPosition*>(p->GetComponent(EComponentType::Position));
-//                transform->SetPosition(Vector3(x, 0.25f + 0.5f * created, y));
-//                manager->AddGameObject(p);
-//                created++;
-//            }
-//        }
-//    }
-//}
+
 
 
 void PrimitiveObjects::GenerateFenceAroundField(ObjectManager * manager)

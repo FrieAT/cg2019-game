@@ -76,15 +76,13 @@ void WindowManager::Loop()
     /*
      Program Loop
      */
-    // glClear( GL_COLOR_BUFFER_BIT );
+    
     
     double seconds = glfwGetTime();
     glColor3f(1.0f, 0.0f, 0.0f);
     if(seconds >=50){
         drawString(GLUT_BITMAP_TIMES_ROMAN_24, "Game Over",500,300);
-        // std::cout << seconds << std::endl;
-        // glfwSetWindowShouldClose(this->_window, GL_TRUE);
-        // glfwTerminate();
+      
         
         
     }

@@ -35,7 +35,7 @@ void StageDrawing::Draw(RenderManager* renderManager)
     int shininessAttrib = shader->GetUniform(EShaderUniform::Shininess);
     
     draw(colAttrib, shininessAttrib);
-       // glBindVertexArray(0);
+       
 }
 void StageDrawing::organize(GLint posAttrib, GLint normAttrib)
 {

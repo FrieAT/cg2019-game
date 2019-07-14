@@ -37,7 +37,7 @@ void PhysicsManager::Loop()
         
         if(position != nullptr && movement != nullptr)  {
        
-//            if((position->GetPosition().x <= 2.3 &&  movement->GetVelocity().x==1.0) ||(position->GetPosition().x >= -2.3 &&  movement->GetVelocity().x==-1.0)||(position->GetPosition().z<=1.5 &&  movement->GetVelocity().z==1.0) ||(position->GetPosition().z>=-0.5 &&  movement->GetVelocity().z==-1.0)){
+
                 Vector3 velocity = movement->GetVelocity() * movement->GetSpeed();
                 
                 //TODO: Multiply velocity with deltaTime. deltaTime is time since last frame.

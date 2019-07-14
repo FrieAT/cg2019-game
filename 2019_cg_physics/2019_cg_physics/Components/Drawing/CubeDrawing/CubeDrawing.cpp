@@ -42,9 +42,7 @@ void CubeDrawing::Draw(RenderManager* renderManager)
     int shininessAttrib = shader->GetUniform(EShaderUniform::Shininess);
     int enableTextureUniform = shader->GetUniform(EShaderUniform::EnableTexture);
     
-    //dir = KeyboardManager::GetMoveDirection();
-    
-   // movement();
+
     draw(colAttrib, shininessAttrib, enableTextureUniform);
 }
 
@@ -144,10 +142,6 @@ void CubeDrawing::organize(GLint posAttrib, GLint uvAttrib, GLint normAttrib)
 void CubeDrawing::draw(GLint colAttrib, GLint shininessAttrib, GLint enableTextureUniform)
 {
     
-    
-//    auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
-//    position->SetPosition(Vector3(curTrans[0], curTrans[1], curTrans[2]));
- 
     glUniform1f(shininessAttrib,300);
     
     auto texture = GetTexture();
@@ -177,25 +171,4 @@ void CubeDrawing::deleteBufferAndArray()
     glDeleteBuffers(1, &myVBO);
     glDeleteVertexArrays(1, &myVAO);
 }
-//void CubeDrawing::movement(){
-//    
-//    if (dir == 0) {
-//        if ((curTrans[0] + SPEED) <= (STAGE_AREA_LENGTH_HALF - SPEED))
-//            curTrans[0] = curTrans[0] + SPEED;
-//        
-//    } else if (dir == 1) {
-//        if ((curTrans[0] - SPEED) >= (-STAGE_AREA_LENGTH_HALF + SPEED))
-//            curTrans[0] = curTrans[0] - SPEED;
-//      
-//    } else if (dir == 2) {
-//        if ((curTrans[2] + SPEED) <= (STAGE_AREA_WIDTH_HALF_BOTTOM - SPEED))
-//            curTrans[2] = curTrans[2] + SPEED;
-//        
-//    
-//    } else if (dir == 3) {
-//        if ((curTrans[2] - SPEED) >= (-STAGE_AREA_WIDTH_HALF + SPEED))
-//            curTrans[2] = curTrans[2] - SPEED;
-//        
-//    
-//    }
-//}
+

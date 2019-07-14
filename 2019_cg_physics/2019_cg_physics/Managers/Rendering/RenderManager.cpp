@@ -23,31 +23,7 @@ void RenderManager::Initialize()
 {
     auto objectManager = this->GetEngine().GetManager<ObjectManager>();
     
-    /*
-    auto cameras = objectManager->GetObjectsByName("Camera");
-    
-    auto cameraIt = cameras.begin();
-    while(cameraIt != cameras.end())
-    {
-        if(!(*cameraIt)->IsActive()) {
-            continue;
-        }
-        
-        auto cameraPosition = dynamic_cast<IPosition*>((*cameraIt)->GetComponent(EComponentType::Position));
-        auto cameraView = dynamic_cast<IView*>((*cameraIt)->GetComponent(EComponentType::View));
-        if(cameraPosition != nullptr && cameraView != nullptr) {
-
-            // Set the current Camera to render.
-            _currentCamera = cameraView;
-            
  
-        }
-        
-
-        
-        cameraIt++;
-    }
-    */
     
     auto objects = objectManager->GetObjectsByName("Opaque");
     auto it = objects.begin();

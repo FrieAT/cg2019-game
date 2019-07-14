@@ -30,58 +30,58 @@ public:
    
     
 private:
-    const GLfloat STAGE_AREA_LENGTH_HALF = 2.5f;
-    const GLfloat STAGE_AREA_WIDTH_HALF = 1.0f;
+    const GLfloat STAGE_LENGTH = 2.5f;
+    const GLfloat STAGE_WIDTH = 1.0f;
     GLuint vao;
     GLuint vbo;
    
     GLfloat vtxStage[2 * (6 * 6 * 3 + 4 * 3 * 2)] = {
-        -STAGE_AREA_LENGTH_HALF, -0.04f, -STAGE_AREA_WIDTH_HALF, 0.0f, -1.0f, 0.0f, /* bottom */
-        STAGE_AREA_LENGTH_HALF, -0.04f, -STAGE_AREA_WIDTH_HALF, 0.0f, -1.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.04f, STAGE_AREA_WIDTH_HALF, 0.0f, -1.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF, -0.04f, -STAGE_AREA_WIDTH_HALF, 0.0f, -1.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF, -0.04f, STAGE_AREA_WIDTH_HALF, 0.0f, -1.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.04f, STAGE_AREA_WIDTH_HALF, 0.0f, -1.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.001f, -STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f, /* top */
-        -STAGE_AREA_LENGTH_HALF, -0.001f, STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF, -0.001f, -STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF, -0.001f, -STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.001f, STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF, -0.001f, STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.04f, STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, -1.0f, /* front */
-        STAGE_AREA_LENGTH_HALF, -0.04f, STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, -1.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.001f, STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, -1.0f,
-        STAGE_AREA_LENGTH_HALF, -0.04f, STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, -1.0f,
-        STAGE_AREA_LENGTH_HALF, -0.001f, STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, -1.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.001f, STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, -1.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.04f, -STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, 1.0f, /* back */
-        -STAGE_AREA_LENGTH_HALF, -0.001f, -STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, 1.0f,
-        STAGE_AREA_LENGTH_HALF, -0.04f, -STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, 1.0f,
-        STAGE_AREA_LENGTH_HALF, -0.04f, -STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, 1.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.001f, -STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, 1.0f,
-        STAGE_AREA_LENGTH_HALF, -0.001f, -STAGE_AREA_WIDTH_HALF, 0.0f, 0.0f, 1.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.04f, STAGE_AREA_WIDTH_HALF, -1.0f, 0.0f, 0.0f, /* left */
-        -STAGE_AREA_LENGTH_HALF, -0.001f, STAGE_AREA_WIDTH_HALF, -1.0f, 0.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.04f, -STAGE_AREA_WIDTH_HALF, -1.0f, 0.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.04f, STAGE_AREA_WIDTH_HALF, -1.0f, 0.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.001f, STAGE_AREA_WIDTH_HALF, -1.0f, 0.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF, -0.001f, -STAGE_AREA_WIDTH_HALF, -1.0f, 0.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF, -0.04f, STAGE_AREA_WIDTH_HALF, 1.0f, 0.0f, 0.0f, /* right */
-        STAGE_AREA_LENGTH_HALF, -0.04f, -STAGE_AREA_WIDTH_HALF, 1.0f, 0.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF, -0.001f, -STAGE_AREA_WIDTH_HALF, 1.0f, 0.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF, -0.04f, STAGE_AREA_WIDTH_HALF, 1.0f, 0.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF, -0.001f, -STAGE_AREA_WIDTH_HALF, 1.0f, 0.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF, -0.001f, STAGE_AREA_WIDTH_HALF, 1.0f, 0.0f, 0.0f,
+        -STAGE_LENGTH, -0.04f, -STAGE_WIDTH, 0.0f, -1.0f, 0.0f, /* bottom */
+        STAGE_LENGTH, -0.04f, -STAGE_WIDTH, 0.0f, -1.0f, 0.0f,
+        -STAGE_LENGTH, -0.04f, STAGE_WIDTH, 0.0f, -1.0f, 0.0f,
+        STAGE_LENGTH, -0.04f, -STAGE_WIDTH, 0.0f, -1.0f, 0.0f,
+        STAGE_LENGTH, -0.04f, STAGE_WIDTH, 0.0f, -1.0f, 0.0f,
+        -STAGE_LENGTH, -0.04f, STAGE_WIDTH, 0.0f, -1.0f, 0.0f,
+        -STAGE_LENGTH, -0.001f, -STAGE_WIDTH, 0.0f, 1.0f, 0.0f, /* top */
+        -STAGE_LENGTH, -0.001f, STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
+        STAGE_LENGTH, -0.001f, -STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
+        STAGE_LENGTH, -0.001f, -STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
+        -STAGE_LENGTH, -0.001f, STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
+        STAGE_LENGTH, -0.001f, STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
+        -STAGE_LENGTH, -0.04f, STAGE_WIDTH, 0.0f, 0.0f, -1.0f, /* front */
+        STAGE_LENGTH, -0.04f, STAGE_WIDTH, 0.0f, 0.0f, -1.0f,
+        -STAGE_LENGTH, -0.001f, STAGE_WIDTH, 0.0f, 0.0f, -1.0f,
+        STAGE_LENGTH, -0.04f, STAGE_WIDTH, 0.0f, 0.0f, -1.0f,
+        STAGE_LENGTH, -0.001f, STAGE_WIDTH, 0.0f, 0.0f, -1.0f,
+        -STAGE_LENGTH, -0.001f, STAGE_WIDTH, 0.0f, 0.0f, -1.0f,
+        -STAGE_LENGTH, -0.04f, -STAGE_WIDTH, 0.0f, 0.0f, 1.0f, /* back */
+        -STAGE_LENGTH, -0.001f, -STAGE_WIDTH, 0.0f, 0.0f, 1.0f,
+        STAGE_LENGTH, -0.04f, -STAGE_WIDTH, 0.0f, 0.0f, 1.0f,
+        STAGE_LENGTH, -0.04f, -STAGE_WIDTH, 0.0f, 0.0f, 1.0f,
+        -STAGE_LENGTH, -0.001f, -STAGE_WIDTH, 0.0f, 0.0f, 1.0f,
+        STAGE_LENGTH, -0.001f, -STAGE_WIDTH, 0.0f, 0.0f, 1.0f,
+        -STAGE_LENGTH, -0.04f, STAGE_WIDTH, -1.0f, 0.0f, 0.0f, /* left */
+        -STAGE_LENGTH, -0.001f, STAGE_WIDTH, -1.0f, 0.0f, 0.0f,
+        -STAGE_LENGTH, -0.04f, -STAGE_WIDTH, -1.0f, 0.0f, 0.0f,
+        -STAGE_LENGTH, -0.04f, STAGE_WIDTH, -1.0f, 0.0f, 0.0f,
+        -STAGE_LENGTH, -0.001f, STAGE_WIDTH, -1.0f, 0.0f, 0.0f,
+        -STAGE_LENGTH, -0.001f, -STAGE_WIDTH, -1.0f, 0.0f, 0.0f,
+        STAGE_LENGTH, -0.04f, STAGE_WIDTH, 1.0f, 0.0f, 0.0f, /* right */
+        STAGE_LENGTH, -0.04f, -STAGE_WIDTH, 1.0f, 0.0f, 0.0f,
+        STAGE_LENGTH, -0.001f, -STAGE_WIDTH, 1.0f, 0.0f, 0.0f,
+        STAGE_LENGTH, -0.04f, STAGE_WIDTH, 1.0f, 0.0f, 0.0f,
+        STAGE_LENGTH, -0.001f, -STAGE_WIDTH, 1.0f, 0.0f, 0.0f,
+        STAGE_LENGTH, -0.001f, STAGE_WIDTH, 1.0f, 0.0f, 0.0f,
         /* black surface on the left of the stage, s.t. shadows are not drawn here */
-        -STAGE_AREA_LENGTH_HALF, 0.001f, -STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF, 0.001f, STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF - 1.0f, 0.001f, -STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
-        -STAGE_AREA_LENGTH_HALF - 1.0f, 0.001f, STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
+        -STAGE_LENGTH, 0.001f, -STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
+        -STAGE_LENGTH, 0.001f, STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
+        -STAGE_LENGTH - 1.0f, 0.001f, -STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
+        -STAGE_LENGTH - 1.0f, 0.001f, STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
         /* black surface on the right of the stage, s.t. shadows are not drawn here */
-        STAGE_AREA_LENGTH_HALF, 0.001f, -STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF, 0.001f, STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF + 1.0f, 0.001f, -STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f,
-        STAGE_AREA_LENGTH_HALF + 1.0f, 0.001f, STAGE_AREA_WIDTH_HALF, 0.0f, 1.0f, 0.0f
+        STAGE_LENGTH, 0.001f, -STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
+        STAGE_LENGTH, 0.001f, STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
+        STAGE_LENGTH + 1.0f, 0.001f, -STAGE_WIDTH, 0.0f, 1.0f, 0.0f,
+        STAGE_LENGTH + 1.0f, 0.001f, STAGE_WIDTH, 0.0f, 1.0f, 0.0f
     };
 
 };

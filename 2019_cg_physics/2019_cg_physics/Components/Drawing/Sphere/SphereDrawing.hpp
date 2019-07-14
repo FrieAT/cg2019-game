@@ -21,8 +21,8 @@ public:
     void organize(GLint posAttrib, GLint normAttrib, GLint uvAttrib);
     void draw(GLdouble time, GLint colAttrib, GLint shininessAttrib);
     void update(GLdouble time);
-    void update_fall(GLdouble time);
-    bool checkFinished();
+    void update_fall_pos(GLdouble time);
+    void update_fall_neg(GLdouble time);
     void deleteBufferAndArray();
     float stageWidthHalf;
     float stageLengthHalf;
@@ -36,6 +36,8 @@ public:
     SphereDrawing generateBall(GLint posAttrib, GLint normAttrib, GLint uvAttrib);
     void SetFreeze(bool freeze) { _freeze = freeze; }
     bool GetFreeze() { return _freeze; }
+    void SetRoad(bool road) { _road = road; }
+    bool GetRoad() { return _road; }
    
     float getRadius();
     
@@ -61,8 +63,8 @@ private:
     static constexpr float MAX_PER = 5.0f;
     static constexpr float MIN_PER = 3.0f;
     
-    static constexpr float MAX_SPEED = 1.5f;
-    static constexpr float MIN_SPEED = 0.8f;
+    static constexpr float MAX_SPEED = 1.3f;
+    static constexpr float MIN_SPEED = 0.7f;
     static constexpr float STAGE_AREA_LENGTH_HALF = 2.5;
     static constexpr float STAGE_AREA_WIDTH_HALF = 1.0;
     
@@ -85,11 +87,11 @@ private:
     GLint uniformMode;
     
   
-   std::vector<SphereDrawing> ballList;
+
     GLdouble time ;
     bool _freeze = true;
+    bool _road = true;
     float amp;
-    float phase;
-    
+ 
 };
 #endif /* SphereDrawing_hpp */

@@ -29,7 +29,7 @@ public:
     ~Geometrie();
     void Init();
     void Draw(RenderManager* renderManager);
-    //void movement();
+  
     void organize(GLint posAttrib);
     void draw(RenderManager* renderManager);
     void deleteBufferAndArray();
@@ -46,7 +46,7 @@ private:
     const GLfloat STAGE_AREA_LENGTH_HALF = 2.5f;
     const GLfloat STAGE_AREA_WIDTH_HALF = 1.0f;
     const GLfloat STAGE_AREA_WIDTH_HALF_BOTTOM = 2.0f;
-    // int dir;
+   
     
 };
 #endif /* Geometrie_hpp */
