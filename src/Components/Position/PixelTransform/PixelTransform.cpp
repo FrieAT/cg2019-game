@@ -6,7 +6,7 @@
 //  Copyright © 2019 Universität Salzburg. All rights reserved.
 //
 
-#include <glm/gtx/euler_angles.hpp>
+#include "glm/gtx/euler_angles.hpp"
 
 #include "PixelTransform.hpp"
 

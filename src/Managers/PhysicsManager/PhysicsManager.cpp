@@ -12,7 +12,7 @@
 #include "IPosition.hpp"
 #include "IMovement.hpp"
 #include "IAnimation.hpp"
-#include <glm/gtx/string_cast.hpp>
+#include "glm/gtx/string_cast.hpp"
 PhysicsManager::PhysicsManager(const Game &engine)
 : AbstractManager(engine)
 {

@@ -6,9 +6,9 @@
 //  Copyright © 2019 Universität Salzburg. All rights reserved.
 //
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 #include "PrototypeView.hpp"
 #include "IPosition.hpp"

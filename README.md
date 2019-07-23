@@ -17,7 +17,16 @@ Folgende Befehle im Terminal ausführen ('$' representiert die Ausführung ohne 
 $ chmod u+x runGame.sh # Nur 1x ausführen nach dem ersten entpacken.
 $ ./runGame.sh # Skript kann von jedem Verzeichnis aus gestartet werden.
 
-## Benötigte Vorkunfiguration auf macOS
+Falls es Fehler beim Kompilieren / Linken gibt, die benötigte Vorkunfiguration bitte ausführen.
+
+## Benötigte Vorkonfiguration auf Ubuntu / Debian
+$ sudo -i # Ubuntu (mit root Rechten fortfahren)
+$ su # Debian (als root Anmelden)
+$ apt update
+$ apt install build-essential cmake
+$ apt install freeglut3-dev libglew-dev libglfw3-dev
+
+## Benötigte Vorkonfiguration auf macOS
 * XCode installieren/aktualisieren
 * XCode CommandLine Tools installieren über den Terminal
 ```
@@ -31,9 +40,8 @@ Quelle: https://brew.sh/
 * Notwendige Bibliotheken über den Terminal installieren
 GLFW ... Context- / Fenstermanager
 GLEW ... Wrapper für OpenGL für diverse Systeme
-GLM ... Mathematische Bibliothek für OpenGL (Vektoren, Matrizen, ...)
 ```
-$ brew install glfw glew glm
+$ brew install glfw glew
 ```
 
 ## Quellen:
