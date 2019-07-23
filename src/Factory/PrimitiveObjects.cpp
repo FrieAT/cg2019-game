@@ -238,10 +238,12 @@ void PrimitiveObjects::GenerateBallsForLevel(ObjectManager * manager, Vector3 ce
             IPosition * transform = new PixelTransform();
             transform->SetPosition(Vector3(x, 3.0f, y));
             auto drawing = dynamic_cast<SphereDrawing*>(p->GetComponent(EComponentType::Drawing));
-            if(x<0)
-            drawing->SetRoad(true);
-           else
-            drawing->SetRoad(false);
+            if(x<0) {
+                drawing->SetRoad(true);
+            }
+            else {
+                drawing->SetRoad(false);
+            }
             transform->SetScale(Vector3(ballSize));
             p->SetComponent(transform);
             manager->AddGameObject(p);

@@ -25,7 +25,7 @@ $ sudo -i # Ubuntu (mit root Rechten fortfahren)
 $ su # Debian (als root Anmelden)
 $ apt update
 $ apt install build-essential cmake
-$ apt install freeglut3-dev libglew-dev libglfw3-dev
+$ apt install freeglut3-dev libglew-dev libglfw3-dev libxmu-dev libxi-dev
 
 ## Benötigte Vorkonfiguration auf macOS
 * XCode installieren/aktualisieren
