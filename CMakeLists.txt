@@ -19,8 +19,8 @@ option(WITH_GLEW "Building with GLEW library" "ON")
 # More verbose output by make
 # set(CMAKE_VERBOSE_MAKEFILE "ON")
 
-
-add_subdirectory(2019_cg_physics/src)
+add_subdirectory(glm)
+add_subdirectory(src)
 
 
 
