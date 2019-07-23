@@ -45,19 +45,16 @@ void GameLogicManager::Loop()
         
         //std::cout << "BallFallPercentage: " << ballFallPercentage << " and remaining time " << _remainingGameTime << std::endl;
         
-        if(abs(_remainingGameTime - (int)_remainingGameTime) <= 0.01) {
-            auto objects = objectManager->GetObjectsByName("Opaque");
-            auto it = objects.begin();
-            while(it != objects.end()) {
+        
+        auto objects = objectManager->GetObjectsByName("Opaque");
+        auto it = objects.begin();
+        while(it != objects.end()) {
+            
+            auto sphereDrawing = dynamic_cast<SphereDrawing*>((*it)->GetComponent(EComponentType::Drawing));
+            if(sphereDrawing != nullptr) {
                 
-                if(maxBallsFall <= 0) {
-                    break;
-                }
-                
-                auto sphereDrawing = dynamic_cast<SphereDrawing*>((*it)->GetComponent(EComponentType::Drawing));
-                if(sphereDrawing != nullptr) {
-                    
-                    if((int)_remainingGameTime % 9 == 0) {
+                if(abs(_remainingGameTime - (int)_remainingGameTime) <= 0.01) {
+                    if(maxBallsFall > 0 && (int)_remainingGameTime % 9 == 0) {
                         if(sphereDrawing->GetFreeze()) {
                             float randomNumber = rand() % 100;
                             if(randomNumber < ballFallPercentage) {
@@ -66,33 +63,33 @@ void GameLogicManager::Loop()
                             }
                         }
                     }
-                
-                    // If ball reaches player position.
-                    spherePosition = dynamic_cast<IPosition*>((*it)->GetComponent(EComponentType::Position));
-                    if(playerPosition != nullptr && !sphereDrawing->GetFreeze() && spherePosition != nullptr) {
-                        // std::cout << "Distance to a ball: " << glm::length(playerPosition->GetPosition() - spherePosition->GetPosition()) << std::endl;
-                        if(glm::length(playerPosition->GetPosition() - spherePosition->GetPosition()) < 0.7f) {
-                            auto childsIt = playerPosition->GetAssignedGameObject()->GetChildsIterator();
-                            while(childsIt != playerPosition->GetAssignedGameObject()->GetChildsIteratorEnd()) {
-                                
-                                if((*childsIt)->GetID().compare("sHead") == 0) {
-                                    auto headDrawing = dynamic_cast<IDrawing*>((*childsIt)->GetComponent(EComponentType::Drawing));
-                                    headDrawing->SetTexture(new GameOverBlockTexture());
-                                    headDrawing->Init();
-                                    break;
-                                }
-                                
-                                childsIt++;
-                            }
-                            
-                            _gameOver = true;
-                        }
-                    }
-                    
                 }
             
-                it++;
+                // If ball reaches player position.
+                spherePosition = dynamic_cast<IPosition*>((*it)->GetComponent(EComponentType::Position));
+                if(playerPosition != nullptr && !sphereDrawing->GetFreeze() && spherePosition != nullptr) {
+                    // std::cout << "Distance to a ball: " << glm::length(playerPosition->GetPosition() - spherePosition->GetPosition()) << std::endl;
+                    if(glm::length(playerPosition->GetPosition() - spherePosition->GetPosition()) < 0.45f) {
+                        auto childsIt = playerPosition->GetAssignedGameObject()->GetChildsIterator();
+                        while(childsIt != playerPosition->GetAssignedGameObject()->GetChildsIteratorEnd()) {
+                            
+                            if((*childsIt)->GetID().compare("sHead") == 0) {
+                                auto headDrawing = dynamic_cast<IDrawing*>((*childsIt)->GetComponent(EComponentType::Drawing));
+                                headDrawing->SetTexture(new GameOverBlockTexture());
+                                headDrawing->Init();
+                                break;
+                            }
+                            
+                            childsIt++;
+                        }
+                        
+                        _gameOver = true;
+                    }
+                }
+                
             }
+        
+            it++;
         }
     }
     _remainingGameTime -= 1.0f * GetEngine().GetDeltaTime();
