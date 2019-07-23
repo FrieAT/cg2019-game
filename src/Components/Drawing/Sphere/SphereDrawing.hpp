@@ -2,9 +2,9 @@
 #define SphereDrawing_hpp
 
 #include "IDrawing.hpp"
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 #include <GL/glew.h>
 #define GLSL(src) "#version 330 core\n" #src
 #include <vector>

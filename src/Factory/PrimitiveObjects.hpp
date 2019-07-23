@@ -1,7 +1,7 @@
 #ifndef PrimitiveObjects_hpp
 #define PrimitiveObjects_hpp
 
-#include <glm/glm.hpp>
+#include "glm/glm.hpp"
 
 #include "Game.hpp"
 #include "GameObject.hpp"
