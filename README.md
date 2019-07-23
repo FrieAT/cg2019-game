@@ -1,4 +1,4 @@
-# cg2019-game
+# MinecraftBalls
 
 ## Mitglieder
 * Mostafa Masud (01123222)
