@@ -30,9 +30,10 @@
 GameObject * PrimitiveObjects::CreateStageDummy()
 {
     GameObject * g = new GameObject("Stage", "Opaque");
-    
+    IPosition * t = new PixelTransform();
+    t->SetScale(Vector3(20.0f, 1.0f, 20.0f));
     g->SetComponent(new SphereShader());
-    g->SetComponent(new PixelTransform());
+    g->SetComponent(t);
     g->SetComponent(new StageDrawing());
     
     return g;
@@ -92,6 +93,7 @@ GameObject * PrimitiveObjects::CreateSteve()
     SphereShader * usedShader;
     IDrawing * drawing;
     IAnimation * animation;
+    IMovement * movement;
     
     GameObject * g = new GameObject("Steve", renderLayer);
     usedShader = new SphereShader();
@@ -100,7 +102,9 @@ GameObject * PrimitiveObjects::CreateSteve()
     transform->SetPosition(Vector3(0.0, 0.0, 0.0));
     g->SetComponent(usedShader);
     g->SetComponent(transform);
-    g->SetComponent(new LinearMovement());
+    movement = new LinearMovement();
+    movement->SetSpeed(3.5f);
+    g->SetComponent(movement);
     g->SetComponent(new IPlayer());
     dynamic_cast<IPlayer*>(g->GetComponent(EComponentType::Player))->SetPlayerId(1);
     
@@ -223,7 +227,7 @@ void PrimitiveObjects::GenerateBallsForLevel(ObjectManager * manager, Vector3 ce
     int maxBallsAmount = 50;
     for(float y = centerPosition.y - laenge; y < centerPosition.y + laenge; y+=ballSize*2.0f) {
         for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=ballSize*2.0f) {
-           double birthTime = glfwGetTime();
+           //double birthTime = glfwGetTime();
             
             if(maxBallsAmount <= 0 || rand() % 100 < 75) {
                 continue;
@@ -249,45 +253,34 @@ void PrimitiveObjects::GenerateBallsForLevel(ObjectManager * manager, Vector3 ce
 
 }
 
-
-void PrimitiveObjects::GenerateGeometrieForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite)
-{
-    float ballSize = 0.05;
-    float startingHeight = 4.0;
-    for(float y = centerPosition.y - laenge; y < centerPosition.y + laenge; y+=ballSize*2.0f) {
-        for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=ballSize*2.0f) {
-            GameObject* p = CreateGeometrie();
-            IPosition * transform = new PixelTransform();
-            transform->SetPosition(Vector3(x, 0.0f, y));
-            transform->SetScale(Vector3(ballSize));
-            p->SetComponent(transform);
-            manager->AddGameObject(p);
-         
-        }
-    }
-}
-
 void PrimitiveObjects::GenerateLandschaft(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite)
 {
-    float cubeSize = 0.5;
-    for(float y = -4.0f ; y < centerPosition.z; y+=cubeSize*2.0f) {
-        for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=cubeSize*2.0f) {
+    float cubeSize = 0.49f;
+    int previousCreated = 1;
+    for(float y = centerPosition.z - breite ; y < centerPosition.z + breite; y+=cubeSize) {
+        for(float x = centerPosition.x - laenge; x < centerPosition.x + laenge; x+=cubeSize) {
             if(rand() % 100 < 0) {
                 continue;
             }
             int created = 0;
-            for(int i = 0; i < 2; i++) {
-                if(rand() % 100 > i * 45) {
-                    continue;
+            for(int i = 0; i < (previousCreated+1); i++) {
+                
+                if(created == 2 + (int)abs(y + 2.0)) {
+                    break;
+                } else if(created > 0 && ((x >= -3.5 && x <= 3.5 && y >= -2.5) || (y >= -2.5 && y <= 1.0) || (y > 1.0 && (x < -4.5 || x > 4.5)) ) ) {
+                    break;
+                } else if(created > 0 && rand() % 100 > 75 + i * 10) {
+                    break;
                 }
-                
-                
                 
                 GameObject* p = CreateGrass();
                 IPosition * transform = dynamic_cast<IPosition*>(p->GetComponent(EComponentType::Position));
-                transform->SetPosition(Vector3(x, 0.25f + 0.5f * created, y));
+                transform->SetPosition(Vector3(x, centerPosition.y + 0.5f * created, y));
                 manager->AddGameObject(p);
                 created++;
+            }
+            if(created > previousCreated) {
+                previousCreated = created;
             }
         }
     }

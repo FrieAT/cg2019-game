@@ -42,7 +42,7 @@ void KeyboardManager::Initialize()
 void KeyboardManager::Loop()
 {
     auto objectManager = Game::GetEngine()->GetManager<ObjectManager>();
-    auto windowManager = Game::GetEngine()->GetManager<WindowManager>();
+    //auto windowManager = Game::GetEngine()->GetManager<WindowManager>();
     
     auto objects = objectManager->GetObjectsByName("Opaque");
     auto it = objects.begin();

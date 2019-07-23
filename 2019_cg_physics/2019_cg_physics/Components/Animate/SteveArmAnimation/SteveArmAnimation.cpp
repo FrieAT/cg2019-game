@@ -9,13 +9,22 @@
 #include "SteveArmAnimation.hpp"
 
 #include "IPosition.hpp"
+#include "IMovement.hpp"
 
 void SteveArmAnimation::AnimateByVelocity(Vector3 velocity, float deltaTime)
 {
     auto position = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
     if(position != nullptr) {
         float newRotation;
-        float speed = 2.5f + glm::length(velocity);
+        
+        float speed = glm::length(velocity);
+        
+        auto movement = dynamic_cast<IMovement*>(GetAssignedGameObject()->GetComponent(EComponentType::Movement));
+        if(movement != nullptr) {
+            speed += movement->GetSpeed() * 2;
+        } else {
+            speed += 2.5f;
+        }
         
         if(glm::length(velocity) > 0.0f) {
             if(_forward) {
