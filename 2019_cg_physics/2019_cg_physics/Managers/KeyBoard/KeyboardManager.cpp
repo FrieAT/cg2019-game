@@ -42,7 +42,7 @@ void KeyboardManager::Initialize()
 void KeyboardManager::Loop()
 {
     auto objectManager = Game::GetEngine()->GetManager<ObjectManager>();
-    auto windowManager = Game::GetEngine()->GetManager<WindowManager>();
+    //auto windowManager = Game::GetEngine()->GetManager<WindowManager>();
     
     auto objects = objectManager->GetObjectsByName("Opaque");
     auto it = objects.begin();
@@ -53,11 +53,10 @@ void KeyboardManager::Loop()
         auto position = dynamic_cast<IPosition*>((*it)->GetComponent(EComponentType::Position));
         
         if(player != nullptr && movement != nullptr) {
-            //_dir = GetMoveDirection();
-           // std::cout << _dir<< "\n";
+          
             float speed = 4.5f;
             Vector3 velocity = Vector3(_dir.x, 0.0, _dir.y) * GetEngine().GetDeltaTime() * speed;
-            //float rotation = _dir.x * GetEngine().GetDeltaTime() * 2.5f;
+          
             
             auto cameras = objectManager->GetObjectsByName("Camera");
             

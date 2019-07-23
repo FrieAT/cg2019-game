@@ -24,7 +24,6 @@ public:
     static GameObject * CreateGrass();
     static GameObject * CreateGameOverBlock();
     static void GenerateBallsForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
-    static void GenerateGeometrieForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
     static void GenerateLandschaft(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite);
     
 

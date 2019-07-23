@@ -24,7 +24,7 @@ void Geometrie::Init()
 {
     auto shader = dynamic_cast<IShader*>(GetAssignedGameObject()->GetComponent(EComponentType::Shader));
     int posAttrib = shader->GetAttrib(EShaderAttrib::Position);
-    int normAttrib = shader->GetAttrib(EShaderAttrib::Normal);
+    //int normAttrib = shader->GetAttrib(EShaderAttrib::Normal);
     
     organize(posAttrib);
 }

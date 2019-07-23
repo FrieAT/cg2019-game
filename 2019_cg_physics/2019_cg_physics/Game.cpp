@@ -40,8 +40,8 @@ void Game::Initialize()
     // Adding GameObjects below.
     
     
-    auto stage = PrimitiveObjects::CreateStageDummy();
-    GetManager<ObjectManager>()->AddGameObject(stage);
+    //auto stage = PrimitiveObjects::CreateStageDummy();
+    //GetManager<ObjectManager>()->AddGameObject(stage);
 
     auto triangle = PrimitiveObjects::CreateSteve();
     GetManager<ObjectManager>()->AddGameObject(triangle);
@@ -51,23 +51,16 @@ void Game::Initialize()
     GetManager<ObjectManager>()->AddGameObject(camera);
 
     PrimitiveObjects::GenerateBallsForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 2.0f, 5.0f);
-    PrimitiveObjects::GenerateGeometrieForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
-    
-    
-    PrimitiveObjects::GenerateLandschaft(GetManager<ObjectManager>(), Vector3(0.0f, 0.0f,-1.0f), 5.0f, 3.2f);
-    PrimitiveObjects::GenerateGeometrieForLevel(GetManager<ObjectManager>(), Vector3(0.0f), 5.0f, 5.0f);
-    
+    PrimitiveObjects::GenerateLandschaft(GetManager<ObjectManager>(), Vector3(0.0f, -0.25f, 0.0f), 7.0f, 4.0f);
     PrimitiveObjects::GenerateFenceAroundField(GetManager<ObjectManager>());
-    
 
     this->initializeManagers();
    
     _initialized = true;
     
-    
     double lastTime = 0;
     double currentTime;
-    double maxFPS = 1.0 / 30.0; // limiting FPS to 50 - 65 FPS!
+    double maxFPS = 1.0 / 24.0;
     // Run the loop.
     while(!this->_shutdown) // TODO: Check for Keyboard Interrupt!
     {
