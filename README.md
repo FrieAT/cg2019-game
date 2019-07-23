@@ -6,28 +6,28 @@
 * Friedrich Alexander Schmidt (11736211)
 
 ## Beschreibung
-Ein Spiel. Der Charakter versucht von Spielbeginn bis zu einem Zeitlimit alle Bälle vom Himmel abzuschießen.
+Ein Spiel. Der Charakter versucht von Spielbeginn bis zu einem Zeitlimit alle Bälle vom Himmel die runterfliegen auszuweichen.
 Ziel ist es einen freien Himmel zu erreichen.
 
-### Direktionales Licht
-Während des Spielverlaufs bewegt sich die Sonne von Aufgang (links) nach Untergang (rechts) und strahlt direktionales Licht auf die Umgebung.
-Dementsprechend wird auch der Schatten von den Objekten geworfen.
-Nice-to-have: Wolken in der Szene, die zusätzlich das Licht abschwächen.
-
 ### Steuerung
-Der Charakter wird mit der Tastatur horizontal gesteuert. Mit der Maus wird die Richtung des Geschosses bestimmt, der vom Charakter ausgeht. 
+Der Charakter wird mit den Pfeiltasten an der Tastatur gesteuert.
+Mit Q oder ESC wird das Spiel geschlossen. 
 
-### Physik (nicht selbst implementiert)
-Zur Unterstützung wird eine Bibliothek verwendet, um die Physik beim Treffen der Bälle zu simulieren, sowie deren Aufprall.
+## Schnell-Start
+Folgende Befehle im Terminal ausführen ('$' representiert die Ausführung ohne root-Rechte)
+$ chmod u+x runGame.sh # Nur 1x ausführen nach dem ersten entpacken.
+$ ./runGame.sh # Skript kann von jedem Verzeichnis aus gestartet werden.
 
-### Landschaftsgenerierung
-Die Landschaft besteht aus einer planaren Fläche, deren Struktur mittels Fraktalmodelle generiert werden.
-Nice-to-have: In der Szene stehen auch wenige Bäume, die auch zufällig generiert werden.
-Nice-to-have: Nach n-Spielversuchen verändert sich die Jahreszeit und auch die Wetterverhältnisse, sowie Baumstrukturen.
+Falls es Fehler beim Kompilieren / Linken gibt, die benötigte Vorkunfiguration bitte ausführen.
 
-### 1. Prototyp Meilenstein am 03. April 2019
+## Benötigte Vorkonfiguration auf Ubuntu / Debian
+$ sudo -i # Ubuntu (mit root Rechten fortfahren)
+$ su # Debian (als root Anmelden)
+$ apt update
+$ apt install build-essential cmake
+$ apt install freeglut3-dev libglew-dev libglfw3-dev
 
-## Installation auf macOS
+## Benötigte Vorkonfiguration auf macOS
 * XCode installieren/aktualisieren
 * XCode CommandLine Tools installieren über den Terminal
 ```
@@ -41,27 +41,10 @@ Quelle: https://brew.sh/
 * Notwendige Bibliotheken über den Terminal installieren
 GLFW ... Context- / Fenstermanager
 GLEW ... Wrapper für OpenGL für diverse Systeme
-GLM ... Mathematische Bibliothek für OpenGL (Vektoren, Matrizen, ...)
 ```
-$ brew install glfw glew glm
+$ brew install glfw glew
 ```
-
-
-## TODO: Prototyp Aufgaben bis 22.03.2019
-* 3D Modell einladen und planarer Boden in den Hoprizont (einfärbig)
-* Physik Bibliothek einbauen Test: Ball fliegt nach unten. (z.B. Abprallen)
-* Steuerung
-* Noch nicht wichtig: Direktionale Beleuchtung
-* REVIEW from 22. März: Es wurde nichts davon gemacht.
-* -> Dafür Aber: Testprojekte von fliegenden Bällen und einem sehr simplen gerendertem Dreieck.
-
-## Meeting von 22. März 2019 (TODO bis 12. April 2019)
-* Terraingenerierung mit einer Planaren-Fläche @Mariya
-* Steuerung eines Quaders auf horizontaler Ebene. Möglichkeit die Schießrichtung mit einem Mausklick zu definieren. @Mostafa 
-* Einbettung der Physik. Beim Anklicken der Bälle, soll simuliert werden, das Treffen eines Balles. (Aufprall, Gravitation, Verschwinden) @Friedrich
 
 ## Quellen:
 
 * Erstes OpenGL Programm: http://antongerdelan.net/opengl/hellotriangle.html
-* PhysicsEngine Bullet: https://github.com/bulletphysics/bullet3
-* To-be-continued until 17.03.2019 ... @ Friedrich
