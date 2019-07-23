@@ -91,7 +91,8 @@ void WindowManager::Loop()
     glfwPollEvents( );
     if(glfwWindowShouldClose(this->_window)) {
         // close GL context and any other GLFW resources
-        glfwTerminate();
+        //glfwTerminate();
+        exit(0);
     }
 }
 

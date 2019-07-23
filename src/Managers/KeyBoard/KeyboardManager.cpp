@@ -99,9 +99,11 @@ void KeyboardManager::Loop()
 
 void KeyboardManager:: keyCallbackM(GLFWwindow* myWindow, int key, int scanCode, int action, int mod)
 {
-    if (((key == GLFW_KEY_ESCAPE) || (key == GLFW_KEY_Q)) && (action == GLFW_PRESS))
+    if (((key == GLFW_KEY_ESCAPE) || (key == GLFW_KEY_Q)) && (action == GLFW_PRESS)) {
     /* close window upon hitting the escape key or Q/q */
-        glfwSetWindowShouldClose(myWindow, GL_TRUE);
+        //glfwSetWindowShouldClose(myWindow, GL_TRUE);
+        exit(0);
+    }
     if ((key == GLFW_KEY_RIGHT) && action == GLFW_PRESS) {
         _dir += Vector2(1.0f, 0.0f);
     } else if (key == GLFW_KEY_RIGHT && action != GLFW_REPEAT) {
