@@ -200,6 +200,7 @@ GameObject * PrimitiveObjects::CreateSphereDummy()
     g->SetComponent(new SphereShader());
     g->SetComponent(new SphereDrawing());
     g->SetComponent(new PixelTransform());
+    g->SetComponent(new LinearMovement());
     
     return g;
 }

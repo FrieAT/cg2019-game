@@ -41,56 +41,58 @@ void GameLogicManager::Loop()
         
         float ballFallPercentage = (100.0f - (100.0f / _maxGameTime * _remainingGameTime)) / 4.0f;
         
-        int maxBallsFall = (int)(3 *ballFallPercentage);
+        int maxBallsFall = (int)(3 * ballFallPercentage);
         
         //std::cout << "BallFallPercentage: " << ballFallPercentage << " and remaining time " << _remainingGameTime << std::endl;
         
-        auto objects = objectManager->GetObjectsByName("Opaque");
-        auto it = objects.begin();
-        while(it != objects.end()) {
-            
-            if(maxBallsFall <= 0) {
-                break;
-            }
-            
-            auto sphereDrawing = dynamic_cast<SphereDrawing*>((*it)->GetComponent(EComponentType::Drawing));
-            if(sphereDrawing != nullptr) {
+        if(abs(_remainingGameTime - (int)_remainingGameTime) <= 0.01) {
+            auto objects = objectManager->GetObjectsByName("Opaque");
+            auto it = objects.begin();
+            while(it != objects.end()) {
                 
-                if((int)_remainingGameTime % 15 == 0) {
-                    if(sphereDrawing->GetFreeze()) {
-                        float randomNumber = rand() % 100;
-                        if(randomNumber < ballFallPercentage) {
-                            sphereDrawing->SetFreeze(false);
-                            maxBallsFall--;
+                if(maxBallsFall <= 0) {
+                    break;
+                }
+                
+                auto sphereDrawing = dynamic_cast<SphereDrawing*>((*it)->GetComponent(EComponentType::Drawing));
+                if(sphereDrawing != nullptr) {
+                    
+                    if((int)_remainingGameTime % 9 == 0) {
+                        if(sphereDrawing->GetFreeze()) {
+                            float randomNumber = rand() % 100;
+                            if(randomNumber < ballFallPercentage) {
+                                sphereDrawing->SetFreeze(false);
+                                maxBallsFall--;
+                            }
                         }
                     }
-                }
-            
-                // If ball reaches player position.
-                spherePosition = dynamic_cast<IPosition*>((*it)->GetComponent(EComponentType::Position));
-                if(playerPosition != nullptr && !sphereDrawing->GetFreeze() && spherePosition != nullptr) {
-                    // std::cout << "Distance to a ball: " << glm::length(playerPosition->GetPosition() - spherePosition->GetPosition()) << std::endl;
-                    if(glm::length(playerPosition->GetPosition() - spherePosition->GetPosition()) < 0.7f) {
-                        auto childsIt = playerPosition->GetAssignedGameObject()->GetChildsIterator();
-                        while(childsIt != playerPosition->GetAssignedGameObject()->GetChildsIteratorEnd()) {
-                            
-                            if((*childsIt)->GetID().compare("sHead") == 0) {
-                                auto headDrawing = dynamic_cast<IDrawing*>((*childsIt)->GetComponent(EComponentType::Drawing));
-                                headDrawing->SetTexture(new GameOverBlockTexture());
-                                headDrawing->Init();
-                                break;
+                
+                    // If ball reaches player position.
+                    spherePosition = dynamic_cast<IPosition*>((*it)->GetComponent(EComponentType::Position));
+                    if(playerPosition != nullptr && !sphereDrawing->GetFreeze() && spherePosition != nullptr) {
+                        // std::cout << "Distance to a ball: " << glm::length(playerPosition->GetPosition() - spherePosition->GetPosition()) << std::endl;
+                        if(glm::length(playerPosition->GetPosition() - spherePosition->GetPosition()) < 0.7f) {
+                            auto childsIt = playerPosition->GetAssignedGameObject()->GetChildsIterator();
+                            while(childsIt != playerPosition->GetAssignedGameObject()->GetChildsIteratorEnd()) {
+                                
+                                if((*childsIt)->GetID().compare("sHead") == 0) {
+                                    auto headDrawing = dynamic_cast<IDrawing*>((*childsIt)->GetComponent(EComponentType::Drawing));
+                                    headDrawing->SetTexture(new GameOverBlockTexture());
+                                    headDrawing->Init();
+                                    break;
+                                }
+                                
+                                childsIt++;
                             }
                             
-                            childsIt++;
+                            _gameOver = true;
                         }
-                        
-                        _gameOver = true;
                     }
+                    
                 }
-                
+            
+                it++;
             }
-        
-            it++;
         }
     }
     _remainingGameTime -= 1.0f * GetEngine().GetDeltaTime();

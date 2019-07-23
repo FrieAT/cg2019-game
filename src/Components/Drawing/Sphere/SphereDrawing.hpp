@@ -34,7 +34,7 @@ public:
 
     
     SphereDrawing generateBall(GLint posAttrib, GLint normAttrib, GLint uvAttrib);
-    void SetFreeze(bool freeze) { _freeze = freeze; }
+    void SetFreeze(bool freeze);
     bool GetFreeze() { return _freeze; }
     void SetRoad(bool road) { _road = road; }
     bool GetRoad() { return _road; }
@@ -56,14 +56,14 @@ private:
     static constexpr float PI = 3.14159265358979323846;
     static constexpr float MAX_RADIUS = 0.2;
     static constexpr float MIN_RADIUS = 0.1;
-    static constexpr float MIN_AMP = 0.2f;
-    static constexpr float MAX_AMP = 1.5f;
+    static constexpr float MIN_AMP = 0.3f;
+    static constexpr float MAX_AMP = 0.9f;
      static constexpr float MAX_AMPL = 10;
     static constexpr float BRIGHTNESS_FACTOR = 0.5; // constant to set the maximal brightness for shadows to avoid totally white shadows
     static constexpr float MAX_PER = 5.0f;
     static constexpr float MIN_PER = 3.0f;
     
-    static constexpr float MAX_SPEED = 1.3f;
+    static constexpr float MAX_SPEED = 1.9f;
     static constexpr float MIN_SPEED = 0.7f;
     static constexpr float STAGE_AREA_LENGTH_HALF = 2.5;
     static constexpr float STAGE_AREA_WIDTH_HALF = 1.0;
@@ -92,6 +92,7 @@ private:
     bool _freeze = true;
     bool _road = true;
     float amp;
+    bool _fallState = true;
  
 };
 #endif /* SphereDrawing_hpp */
