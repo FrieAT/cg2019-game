@@ -9,7 +9,8 @@
 #ifndef IShader_h
 #define IShader_h
 
-#define GLSL(src) "#version 330 core\n" #src
+// Andere Versionen getestet auf "bergilt": 150
+#define GLSL(src) "#version 150 core\n" #src
 
 #include <map>
 

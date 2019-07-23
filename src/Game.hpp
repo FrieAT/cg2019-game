@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <vector>
+#include <typeinfo> // Needed for gcc (Debian 6.3.0-18+deb9u1) 6.3.0 20170516
 
 #include "AbstractManager.hpp"
 #include "Exception.hpp"
