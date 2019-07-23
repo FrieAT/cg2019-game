@@ -12,7 +12,7 @@ Ziel ist es einen freien Himmel zu erreichen.
 ### Steuerung
 Der Charakter wird mit der Tastatur horizontal gesteuert. Mit der Maus wird die Richtung des Geschosses bestimmt, der vom Charakter ausgeht. 
 
-## Kompilieren / Starten
+## Schnell-Start
 Folgende Befehle im Terminal ausführen ('$' representiert die Ausführung ohne root-Rechte)
 $ chmod u+x runGame.sh # Nur 1x ausführen nach dem ersten entpacken.
 $ ./runGame.sh # Skript kann von jedem Verzeichnis aus gestartet werden.
