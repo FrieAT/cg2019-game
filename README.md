@@ -10,7 +10,8 @@ Ein Spiel. Der Charakter versucht von Spielbeginn bis zu einem Zeitlimit alle B�
 Ziel ist es einen freien Himmel zu erreichen.
 
 ### Steuerung
-Der Charakter wird mit der Tastatur horizontal gesteuert. Mit der Maus wird die Richtung des Geschosses bestimmt, der vom Charakter ausgeht. 
+Der Charakter wird mit den Pfeiltasten an der Tastatur gesteuert.
+Mit Q oder ESC wird das Spiel geschlossen. 
 
 ## Schnell-Start
 Folgende Befehle im Terminal ausführen ('$' representiert die Ausführung ohne root-Rechte)
