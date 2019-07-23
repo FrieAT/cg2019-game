@@ -136,7 +136,7 @@ void CubeDrawing::organize(GLint posAttrib, GLint uvAttrib, GLint normAttrib)
         
         glBufferSubData(GL_ARRAY_BUFFER, positionSize, textureSize, texture->GetUVCoordinates());
         glEnableVertexAttribArray(uvAttrib);
-        glVertexAttribPointer(uvAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (char*)positionSize);
+        glVertexAttribPointer(uvAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), static_cast<char*>(0) + positionSize);
     }
 }
 void CubeDrawing::draw(GLint colAttrib, GLint shininessAttrib, GLint enableTextureUniform)

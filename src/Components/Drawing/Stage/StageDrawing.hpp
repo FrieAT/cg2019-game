@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include "IDrawing.hpp"
 #include <GL/glew.h>
-#define GLSL(src) "#version 330 core\n" #src
 
 class StageDrawing : public IDrawing
 {

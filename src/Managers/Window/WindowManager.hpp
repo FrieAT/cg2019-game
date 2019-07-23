@@ -22,7 +22,7 @@ public:
     WindowManager(const Game & engine);
     ~WindowManager() = default;
     
-    void drawString (void * font, char *s, float x, float y);
+    void drawString (void * font, const char *s, float x, float y);
 private:
     int windowWidth =1024;
     

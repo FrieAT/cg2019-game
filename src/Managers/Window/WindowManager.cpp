@@ -1,3 +1,5 @@
+#define GL_SILENCE_DEPRECATION
+
 #include <stdio.h>
 #include <math.h>
 
@@ -85,7 +87,8 @@ void WindowManager::Loop()
     double seconds = glfwGetTime();
     glColor3f(1.0f, 0.0f, 0.0f);
     if(seconds >=50){
-        drawString(GLUT_BITMAP_TIMES_ROMAN_24, "Game Over",500,300);
+        const char* text = "Game Over";
+	drawString(GLUT_BITMAP_TIMES_ROMAN_24,text,500,300);
       
         
         
@@ -104,7 +107,7 @@ GLFWwindow * WindowManager::GetWindow()
 {
     return this->_window;
 }
-void WindowManager::drawString (void * font, char *s, float x, float y){
+void WindowManager::drawString (void * font, const char *s, float x, float y){
     unsigned int i;
     glRasterPos2f(x, y);
     for (i = 0; i < strlen (s); i++)

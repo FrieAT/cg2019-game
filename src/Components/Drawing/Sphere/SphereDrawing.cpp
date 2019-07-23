@@ -85,7 +85,7 @@ void SphereDrawing::organize(GLint posAttrib, GLint normAttrib, GLint uvAttrib)
         
         glBufferSubData(GL_ARRAY_BUFFER, positionSize, textureSize, texture->GetUVCoordinates());
         glEnableVertexAttribArray(uvAttrib);
-        glVertexAttribPointer(uvAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), (void*)positionSize);
+        glVertexAttribPointer(uvAttrib, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(GLfloat), static_cast<char*>(0) + positionSize);
     }
     
     glBindVertexArray(0);
@@ -154,7 +154,6 @@ void SphereDrawing::update_fall_neg(GLdouble time)
         auto positionComponent = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
         auto movementComponent = dynamic_cast<IMovement*>(GetAssignedGameObject()->GetComponent(EComponentType::Movement));
         Vector3 currentPos = positionComponent->GetPosition();
-        Vector3 currentVel = movementComponent->GetVelocity();
         
         if(_fallState) {
             dy = -speed;
