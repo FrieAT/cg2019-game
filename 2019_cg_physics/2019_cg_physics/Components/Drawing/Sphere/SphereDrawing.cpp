@@ -164,14 +164,14 @@ void SphereDrawing::update_fall_neg(GLdouble time)
             }
         } else {
             if(_road) {
-                dx = speed;
+                dx = (speed )/per;
             } else {
-                dx = -speed;
+                dx = -(speed)/per;
             }
             
-            dy = amp * sinf(speed * (time - birthTime));
+            dy = amp * sinf(speed * (time - birthTime))+0.05f;
             //dy = (sinf(amp * (time - birthTime))) - currentVel.y;
-            std::cout << "SIN: " << dy << "DeltaTime: " << (time - birthTime) << std::endl;
+            //std::cout << "SIN: " << dy << "DeltaTime: " << (time - birthTime) << std::endl;
         }
         
         currentPos = Vector3(dx,dy, currentPos.z);
