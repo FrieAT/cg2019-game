@@ -1,0 +1,38 @@
+FIND_PATH(SOIL_INCLUDE_DIR SOIL.h
+	HINTS
+	$ENV{SOILDIR}
+	PATH_SUFFIXES include/GL include
+	PATHS
+	/usr/local/include/SOIL
+	/usr/include/SOIL
+	/opt/local
+	/opt
+)
+
+MESSAGE("SOIL_INCLUDE_DIR is ${SOIL_INCLUDE_DIR}")
+
+FIND_LIBRARY(SOIL_LIBRARY
+	NAMES SOIL
+	HINTS
+	$ENV{SOILDIR}
+	PATH_SUFFIXES lib64 lib
+	PATHS
+	/sw
+	/usr/lib
+    /usr/lib/x86_64-linux-gnu
+	/usr/local
+	/opt/local
+	/opt
+)
+
+MESSAGE("SOIL_LIBRARY_DIR is ${SOIL_LIBRARY}")
+
+IF(SOIL_LIBRARY)
+
+    SET(SOIL_LIBRARIES ${SOIL_LIBRARY})
+
+    SET(SOIL_FOUND TRUE)
+
+ENDIF(SOIL_LIBRARY)
+
+MESSAGE("-- Found SOIL: ${SOIL_FOUND}")
