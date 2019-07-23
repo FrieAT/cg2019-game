@@ -171,7 +171,7 @@ void SphereDrawing::update_fall_neg(GLdouble time)
             
             dy = amp * sinf(speed * (time - birthTime));
             //dy = (sinf(amp * (time - birthTime))) - currentVel.y;
-            std::cout << "SIN: " << dy << "DeltaTime: " << (time - birthTime) << std::endl;
+            // std::cout << "SIN: " << dy << "DeltaTime: " << (time - birthTime) << std::endl;
         }
         
         currentPos = Vector3(dx,dy, currentPos.z);
