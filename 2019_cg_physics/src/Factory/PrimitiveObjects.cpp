@@ -223,7 +223,7 @@ GameObject * PrimitiveObjects::CreateCamera()
 void PrimitiveObjects::GenerateBallsForLevel(ObjectManager * manager, Vector3 centerPosition, float laenge, float breite)
 { glfwSetTime( 0 );
     float ballSize = 0.3;
-    float startingHeight = 4.0;
+    //float startingHeight = 4.0;
     int maxBallsAmount = 50;
     for(float y = centerPosition.y - laenge; y < centerPosition.y + laenge; y+=ballSize*2.0f) {
         for(float x = centerPosition.x - breite; x < centerPosition.x + breite; x+=ballSize*2.0f) {

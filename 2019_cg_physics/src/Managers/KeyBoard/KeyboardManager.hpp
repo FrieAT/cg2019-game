@@ -12,8 +12,6 @@
 #include "AbstractManager.hpp"
 #include "IPosition.hpp"
 
-class GLFWwindow;
-
 class KeyboardManager : public AbstractManager
 {
 public:
@@ -30,8 +28,6 @@ public:
     static void keyCallbackM(GLFWwindow* myWindow, int key, int scanCode, int action, int mod); // TODO.
 private:
     static Vector2 _dir;
-    float _mouseSpeedOrientation;
-    bool _mousePosState;
 };
 
 #endif /* KeyboardManager_hpp */

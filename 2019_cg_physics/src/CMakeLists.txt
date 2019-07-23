@@ -24,7 +24,6 @@ set( 2019_cg_phsysics_SRC
 ./Components/Drawing/Texture/SteveAbstractTexture/WoodBlock/WoodBlockTexture.cpp
 ./Components/Drawing/Texture/SteveAbstractTexture/SteveArm/SteveArmTexture.cpp
 ./Components/Drawing/Texture/SteveAbstractTexture/SteveAbstractTexture.cpp
-./Components/Drawing/Stage/DummyStageDrawing.cpp
 ./Components/Drawing/Stage/StageDrawing.cpp
 ./Components/Drawing/CubeDrawing/CubeDrawing.cpp
 ./Components/Drawing/Probe/Probe.cpp

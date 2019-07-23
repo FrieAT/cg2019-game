@@ -34,8 +34,6 @@ private:
     
     GLFWwindow * _window;
     
-    GLuint _defaultShaderPrograms;
-    
     static void errorCallback(int error, const char*logText);
 };
 

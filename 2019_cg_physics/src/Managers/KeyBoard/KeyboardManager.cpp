@@ -24,8 +24,6 @@ Vector2 KeyboardManager::_dir = Vector2(0.0f);
 
 KeyboardManager::KeyboardManager(const Game & engine)
 : AbstractManager(engine)
-, _mouseSpeedOrientation(0.005f)
-, _mousePosState(0)
 {
     KeyboardManager::_dir = Vector2(0.0f);
 }

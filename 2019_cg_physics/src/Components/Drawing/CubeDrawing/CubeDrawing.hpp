@@ -34,19 +34,8 @@ public:
     void deleteBufferAndArray();
   
 private:
-    float colorValues[3] = { 0 };
-    const GLfloat SPEED=0.5;
     GLuint myVAO;
     GLuint myVBO;
-    glm::mat4 animPlayer= glm::mat4(1.0f);
-    glm::mat4  anim= glm::mat4(1.0f);
-    GLfloat curTrans [3] = { 0.0f, 0.0f, 0.0f };
-    
-    const GLfloat STAGE_AREA_LENGTH_HALF = 2.5f;
-    const GLfloat STAGE_AREA_WIDTH_HALF = 1.0f;
-    const GLfloat STAGE_AREA_WIDTH_HALF_BOTTOM = 2.0f;
-  
-
 };
 
 #endif /* CubeDrawing_hpp */
