@@ -57,7 +57,7 @@ void GameLogicManager::Loop()
                 auto sphereDrawing = dynamic_cast<SphereDrawing*>((*it)->GetComponent(EComponentType::Drawing));
                 if(sphereDrawing != nullptr) {
                     
-                    if((int)_remainingGameTime % 3 == 0) {
+                    if((int)_remainingGameTime % 9 == 0) {
                         if(sphereDrawing->GetFreeze()) {
                             float randomNumber = rand() % 100;
                             if(randomNumber < ballFallPercentage) {

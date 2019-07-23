@@ -10,6 +10,7 @@
 #include <time.h>
 #include "KeyboardManager.hpp"
 #include "IPosition.hpp"
+#include "IMovement.hpp"
 #include "Game.hpp"
 
 SphereDrawing::~SphereDrawing()
@@ -45,6 +46,7 @@ SphereDrawing::SphereDrawing()
     
     anim = glm::mat4(1.0f);
     animPlane = glm::mat4(1.0f);
+    _fallState = true;
     
     initializeParameters();
     initializeVertices();
@@ -91,9 +93,6 @@ void SphereDrawing::organize(GLint posAttrib, GLint normAttrib, GLint uvAttrib)
 
 void SphereDrawing::draw(GLdouble time, GLint colAttrib, GLint shininessAttrib)
 {
-    if(_road)
-    update_fall_pos(time);
-    else
     update_fall_neg(time);
     glUniform1f(shininessAttrib, 300);
     
@@ -127,7 +126,7 @@ void SphereDrawing::update_fall_pos(GLdouble time)
         auto positionComponent = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
         Vector3 currentPos = positionComponent->GetPosition();
       
-        dy = -speed*(time -birthTime)/per +2.0f;
+        dy = -(speed*(time -birthTime)/per +2.0f);
        
         dx =currentPos.x;
         
@@ -153,25 +152,32 @@ void SphereDrawing::update_fall_neg(GLdouble time)
     //TODO: This code below may not be here. Should be moved to PhysicsManager.
     if(!_freeze ) {
         auto positionComponent = dynamic_cast<IPosition*>(GetAssignedGameObject()->GetComponent(EComponentType::Position));
+        auto movementComponent = dynamic_cast<IMovement*>(GetAssignedGameObject()->GetComponent(EComponentType::Movement));
         Vector3 currentPos = positionComponent->GetPosition();
+        Vector3 currentVel = movementComponent->GetVelocity();
         
-        dy = -speed*(time -birthTime)/per +2.0f;
-        
-        dx =currentPos.x;
-        
-        
-        if(dy <=0.28f){
-        
-                dx =-speed*(time -birthTime)/per +currentPos.x+1.7f  ;
-                
-                dy = std::abs(amp * sinf(speed * (time - birthTime))) +0.2f;
+        if(_fallState) {
+            dy = -speed;
+            if(currentPos.y <= 0.28f) {
+                _fallState = false;
+                birthTime = glfwGetTime();
             }
-       
-        
+        } else {
+            if(_road) {
+                dx = speed;
+            } else {
+                dx = -speed;
+            }
+            
+            dy = amp * sinf(speed * (time - birthTime));
+            //dy = (sinf(amp * (time - birthTime))) - currentVel.y;
+            std::cout << "SIN: " << dy << "DeltaTime: " << (time - birthTime) << std::endl;
+        }
         
         currentPos = Vector3(dx,dy, currentPos.z);
         
-        positionComponent->SetPosition(currentPos);
+        //positionComponent->SetPosition(currentPos);
+        movementComponent->SetVelocity(Vector3(dx, dy, 0.0f));
     }
     
 }
@@ -247,4 +253,10 @@ SphereDrawing SphereDrawing:: generateBall(GLint posAttrib, GLint normAttrib, GL
     SphereDrawing ball;
     ball.organize(posAttrib, normAttrib,uvAttrib);
     return ball;
+}
+
+void SphereDrawing::SetFreeze(bool freeze)
+{
+    birthTime = glfwGetTime();
+    _freeze = freeze;
 }
